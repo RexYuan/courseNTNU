@@ -1,0 +1,31 @@
+TODO:
+    learn bootstrap: done
+    set up basic template: done
+    index and link: done
+    set up database: done
+    screen scrape
+        standard: done
+        general ed: done
+    set up ratings system
+        database: done
+        template: done
+        logic: done
+    learn JQuery: done
+    upgrade ratings system with Ajax: done
+
+    postponed:
+        available this semester
+        time
+        instructor
+        instructor ratings
+    
+    extra feature
+        Search Class:
+        Sort Class:
+        Feature Class:
+        Facebook login
+        trading system:
+            second-hand textbook
+            notes
+        upgrade:
+            rewrite with Ruby on Rails
