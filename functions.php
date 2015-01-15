@@ -19,7 +19,7 @@
             try
             {
                 // connect to database
-                $handle = new PDO("mysql:dbname=coursentnu;host=localhost", "jharvard", "crimson");
+                $handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=7777", "sqluser", "woohoo");
 
                 // ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
