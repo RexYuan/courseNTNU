@@ -7,6 +7,7 @@
     // if a course selected
     if (isset($_GET["dpm"]) && isset($_GET["cod"]))
     {
+        query("SET NAMES utf8");
         // query courses for corresponding course
         $course = query("SELECT * FROM course WHERE code = ?", $_GET["cod"]);
         
@@ -35,6 +36,7 @@
     // if a department selected
     else if (isset($_GET["dpm"]))
     {
+        query("SET NAMES utf8");
         // query courses for corresponding courses
         $courses = query("SELECT * FROM course WHERE department = ?", $_GET["dpm"]);
         
