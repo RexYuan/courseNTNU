@@ -1,8 +1,8 @@
 <div class="container" id="middle">
-    <form action="<?= $urlroot ?>coursentnu/index.php" method="get" role="form">
+    <form action="<?= $urlroot ?>index.php" method="get" role="form">
         
         <h3>
-            <a href="<?= $urlroot ?>coursentnu/index.php?dpm=<?= $courses[0]['department'] ?>">
+            <a href="<?= $urlroot ?>index.php?dpm=<?= $courses[0]['department'] ?>">
                 <?= $courses[0]['chdepartment'] ?>
             </a>
         </h3>
@@ -11,7 +11,7 @@
         <?php foreach($courses as $course): ?>
 
             <li class="list-group-item">
-                <h4><a href="<?= $urlroot ?>coursentnu/index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
+                <h4><a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
                     <?= $course['chname'] ?>
                 </a></h4>
             </li>
