@@ -12,12 +12,14 @@ TODO:
         logic: done
     learn JQuery: done
     upgrade ratings system with Ajax: done
+    screen scrape
+        instructor:
+        available this semester:
+    instructor database:
+
 
     postponed:
-        available this semester
         time
-        instructor
-        instructor ratings
     
     extra feature
         Search Class:
