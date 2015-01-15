@@ -1,11 +1,11 @@
 <div class="container" id="middle">
 
     <h3>
-        <a href="<?= $urlroot ?>coursentnu/index.php?dpm=<?= $course['department'] ?>">
+        <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>">
             <?= $course['chdepartment'] ?>
         </a>
         >>
-        <a href="<?= $urlroot ?>coursentnu/index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
+        <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
             <?= $course['chname'] ?>
         </a>
     </h3>
