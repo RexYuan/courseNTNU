@@ -22,50 +22,7 @@
 
     <body>
         <div id="fb-root"></div>
-        <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId      : '1423906917900490',
-                    xfbml      : true,
-                    version    : 'v2.2'
-                });
-            };
-
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-            function statusChangeCallback(response) {
-                if (response.status === 'connected')
-                {
-                    // Logged into your app and Facebook.
-                    console.log(response);
-                }
-                else if (response.status === 'not_authorized')
-                {
-                    // The person is logged into Facebook, but not your app.
-                    document.getElementById('status').innerHTML = 'Please log into this app.';
-                    console.log(response);
-                }
-                else
-                {
-                    // The person is not logged into Facebook, so we're not sure if
-                    // they are logged into this app or not.
-                    document.getElementById('status').innerHTML = 'Please log into Facebook.';
-                    console.log(response);
-                }
-            }
-
-            function checkLoginState() {
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            }
-        </script>
+        <script src="<?= $urlroot ?>fb.js"></script>
         <div class="container-fluid" id="head">
             <div class="row">
                 <div class="col-xs-12">
@@ -73,8 +30,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-6">
                     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                </div>
+                <div class="col-xs-6">
+                    <div class="btn btn-success" id="logout" name="logout"></div>
                 </div>
             </div>
         </div>
