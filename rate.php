@@ -8,7 +8,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // check if voted
-        //$voted = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+        $voted = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         /*// if liked
         if ($_POST["rate"] == "推")
