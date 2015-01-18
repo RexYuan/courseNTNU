@@ -5,13 +5,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <link href="<?= $urlroot ?>bootstrap.min.css" rel="stylesheet"/>
-        <link href="<?= $urlroot ?>bootstrap-theme.min.css" rel="stylesheet"/>
-        <link href="<?= $urlroot ?>styles.css" rel="stylesheet"/>
+        <link href="bootstrap.min.css" rel="stylesheet"/>
+        <link href="bootstrap-theme.min.css" rel="stylesheet"/>
+        <link href="styles.css" rel="stylesheet"/>
         
-        <script src="<?= $urlroot ?>jquery-1.10.2.min.js"></script>
-        <script src="<?= $urlroot ?>bootstrap.min.js"></script>
-        <script src="<?= $urlroot ?>scripts.js"></script>
+        <script src="jquery-1.10.2.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="scripts.js"></script>
         
         <?php if (isset($title)): ?>
             <title>courseNTNU: <?= htmlspecialchars($title) ?></title>
@@ -22,11 +22,11 @@
 
     <body>
         <div id="fb-root"></div>
-        <script src="<?= $urlroot ?>fb.js"></script>
+        <script src="fb.js"></script>
         <div class="container-fluid" id="head">
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 class="text-center"><a href="<?= $urlroot ?>index.php">courseNTNU</a></h1>
+                    <h1 class="text-center"><a href="index.php">courseNTNU</a></h1>
                 </div>
             </div>
             <div class="row">
