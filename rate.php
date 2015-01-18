@@ -39,7 +39,7 @@
         else if ($_POST["rate"] == "不推")
         {
             // update database
-            if (isempty($voterow))
+            if (empty($voterow))
             {
                 query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '0');
                 query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
@@ -65,8 +65,16 @@
         // calculates JSON
         $total = $course[0]["likeit"] + $course[0]["dislikeit"];
         $like_percentage = $course[0]["likeit"] / ($total);
-        $like_bar = ((string) ($like_percentage * 100)) . "%";
-        $dislike_bar = ((string) ((1 - $like_percentage) * 100)) . "%";
+        if ($total = 0)
+        {
+            $like_bar = "0%";
+            $dislike_bar = "0%";    
+        }
+        else
+        {
+            $like_bar = ((string) ($like_percentage * 100)) . "%";
+            $dislike_bar = ((string) ((1 - $like_percentage) * 100)) . "%";
+        }
         $message = "根據 $total 個投票";
         $ratings = sprintf('%2d', ($like_percentage * 100));
 
