@@ -1,41 +1,17 @@
-var response;
-function statusChangeCallback(response) {
-    response = response.status;
-    /*if (response.status === 'connected')
-    {
-        // Logged into your app and Facebook.
-        console.log(response);
-        FB.api('/me', function(response) {
-            console.log(JSON.stringify(response));
-        });
-    }
-    else if (response.status === 'not_authorized')
-    {
-        // The person is logged into Facebook, but not your app.
-        document.getElementById('fbstatus').innerHTML = 'Please log into this app.';
-        console.log(response);
-    }
-    else
-    {
-        // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-        document.getElementById('fbstatus').innerHTML = 'Please log into Facebook.';
-        console.log(response);
-    }*/
-}
-
+var status;
 function checkLoginStateRate() {
     FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
+        statusChangeCallbackRate(response);
+        status = response.status;
     });
 }
+checkLoginStateRate();
 
 $(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
-        checkLoginStateRate();
         event.preventDefault();
-        if (response == "connected"){
+        if (status == "connected"){
         var cod= $('#code').val();
         var rat = $('#likebtn').val();
 
@@ -57,9 +33,8 @@ $(function() {
     
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
-        checkLoginStateRate();
         event.preventDefault();
-        if (response == "connected"){
+        if (status == "connected"){
         var cod= $('#code').val();
         var rat = $('#dislikebtn').val();
 
