@@ -5,7 +5,7 @@
     require("constants.php");
 
     // if a course selected
-    if (isset($_GET["dpm"]) && isset($_GET["cod"]))
+    /*if (isset($_GET["dpm"]) && isset($_GET["cod"]))
     {
         query("SET NAMES utf8");
         // query courses for corresponding course
@@ -49,6 +49,7 @@
     {
         // render department list
         render("department.php", ["urlroot" => $urlroot]);
-    }
+    }*/
+    print_r(query("SELECT * FROM vote WHERE fbid = ? AND code = ?", 'abc', 'asd'));
     
 ?>
