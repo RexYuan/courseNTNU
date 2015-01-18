@@ -1,4 +1,5 @@
-var cod = $('#code').val();
+$(function() {
+    var cod = $('#code').val();
 $.post("btn.php", {"code": cod, "fbid": fbID})
     .done(function( data ) {
         // update html
@@ -17,4 +18,5 @@ $.post("btn.php", {"code": cod, "fbid": fbID})
     })
     .fail(function() {
         alert("Error!Error!Error!這你也有問題？!");
+    });
     });
