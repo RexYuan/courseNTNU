@@ -10,11 +10,11 @@ var initBtn = function() {
                 // update html
                 var datum = jQuery.parseJSON(data);
                 console.log(datum);
-                if (datum["vote"] === 1)
+                if (datum["vote"] === "1")
                 {
                     $("#likebtn").addClass('active');
                 }
-                else if (datum["vote"] === 0)
+                else if (datum["vote"] === "0")
                 {
                     $("#dislikebtn").addClass('active');
                 }
