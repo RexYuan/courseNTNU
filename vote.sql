@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:7777
--- Generation Time: Jan 18, 2015 at 04:54 PM
+-- Generation Time: Jan 18, 2015 at 04:57 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `vote` (
 `id` int(30) NOT NULL,
-  `fbid` int(50) NOT NULL,
+  `fbid` varchar(30) NOT NULL,
   `code` varchar(10) NOT NULL,
   `vote` tinyint(1) NOT NULL COMMENT '1 for yay 0 for nay'
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
