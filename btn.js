@@ -1,6 +1,9 @@
 var check = function(){
     if (fbID !== null)
     {
+        console.log(fbID);
+        console.log(fbstatus);
+        console.log(cod);
         $(function() {
             var cod = $('#code').val();
             if (fbstatus == "connected")
@@ -28,5 +31,6 @@ var check = function(){
     else
     {
         setTimeout(check, 500); // check again in 1 second
+        console.log('checking');
     }
 }
