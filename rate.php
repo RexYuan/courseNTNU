@@ -72,7 +72,7 @@
         $ratings = sprintf('%2d', ($like_percentage * 100));
 
         // echo JSON
-        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $_POST["fbid"]]);
+        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $good]);
     }
     else
     {
