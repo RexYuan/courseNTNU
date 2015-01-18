@@ -8,7 +8,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // check if voted
-        $voted = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+        //$voted = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         /*// if liked
         if ($_POST["rate"] == "推")
@@ -32,7 +32,7 @@
                     $result = query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
                     $result = query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
                 }
-            }*/
+            }
         }
 
         // if disliked
@@ -58,7 +58,7 @@
                     $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
                 }
             }
-        }
+        }*/
         
         // query database
         $course = query("SELECT * FROM course WHERE code = ?", $_POST["code"]);
