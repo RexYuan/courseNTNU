@@ -77,7 +77,7 @@ var initBtn = function() {
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
-                console.log(datum);
+                //console.log(datum);
                 if (datum["vote"] === "1")
                 {
                     $("#likebtn").addClass('active');
