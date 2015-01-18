@@ -31,9 +31,9 @@
             }
         }*/
 
-$result = 'likeit';
+        //$result = 'likeit';
         // echo JSON
-        echo json_encode(["voted" => $result]);
+        echo json_encode(["vote" => 'likeit']);
     }
     else
     {
