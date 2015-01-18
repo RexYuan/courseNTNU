@@ -16,10 +16,10 @@
             // update database
             if (isempty($voted))
             {
-                query("INSERT INTO vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
+                //query("INSERT INTO vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
                 $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
             }
-            else
+            /*else
             {
                 if (voted[0]["vote"] == '1')
                 {
@@ -32,7 +32,7 @@
                     $result = query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
                     $result = query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
                 }
-            }
+            }*/
         }
 
         // if disliked
