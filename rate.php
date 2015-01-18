@@ -9,7 +9,7 @@
     {
         // check if voted
         //$_POST["fbid"] = 2;
-        //$_POST["code"] = "a";
+        // $_POST["code"] = "a";
         //$voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         // if liked
@@ -73,7 +73,7 @@
         $ratings = sprintf('%2d', ($like_percentage * 100));
 
         // echo JSON
-        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message/*, "voted" => $voterow[0]*/);
+        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message/*, "voted" => $voterow[0]*/]);
     }
     else
     {
