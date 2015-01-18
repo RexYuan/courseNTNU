@@ -7,8 +7,6 @@ $(function() {
             var cod = $('#code').val();
             var rat = $('#likebtn').val();
 
-            console.log(fbID);
-
             // update database
             $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbID})
                 .done(function( data ) {
