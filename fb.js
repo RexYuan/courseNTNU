@@ -6,11 +6,15 @@ window.fbAsyncInit = function() {
     });
 
     checkLoginState();
+    console.log(fbID);
+    a();
 };
 
-/*$.when( window.fbAsyncInit() ).done(function() {
+var a = function(){
+  $.when( window.fbAsyncInit() ).done(function() {
     console.log(fbID);
-});*/
+    });
+}
 
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
