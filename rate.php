@@ -29,8 +29,8 @@
                 else
                 {
                     query("UPDATE vote SET vote = 0 WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
-                    query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
-                    query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
                 }
             }
         }

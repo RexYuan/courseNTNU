@@ -51,7 +51,14 @@ $(function() {
                 $('#like_bar').css("width", datum["like_bar"]);
                 $('#dislike_bar').css("width", datum["dislike_bar"]);
                 $('#message').html(datum["message"]);
-                $("#dislikebtn").addClass('active');
+                if ($("#dislikebtn").hasClass("active"))
+                {
+                    $("#dislikebtn").attr('btn', 'btn-danger', 'btn-block');
+                }
+                else
+                {
+                    $("#dislikebtn").addClass('active');
+                }
             })
             .fail(function() {
                 alert("Error!Error!Error!因為很重要所以要說三次!");
