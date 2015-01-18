@@ -27,10 +27,10 @@
                     <div class="row">
                         <input id="code" class="hidden" name="code" value="<?= $course['code'] ?>"/>
                         <div class="col-xs-6 form-group">
-                            <input id="likebtn" type="submit" class="btn btn-success btn-block active" name="rate" value="推"/>
+                            <input id="likebtn" type="submit" class="btn btn-success btn-block" name="rate" value="推"/>
                         </div>
                         <div class="col-xs-6 form-group">
-                            <input id="dislikebtn" type="submit" class="btn btn-danger btn-block active" name="rate" value="不推"/>
+                            <input id="dislikebtn" type="submit" class="btn btn-danger btn-block" name="rate" value="不推"/>
                         </div>
                     </div>
                 </form>

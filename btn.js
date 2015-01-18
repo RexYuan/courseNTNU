@@ -5,7 +5,11 @@ $.post("rate.php", {"code": cod, "fbid": fbID})
         var datum = jQuery.parseJSON(data);
         if ($datum["vote"] == 'likeit')
         {
-            
+            $("#likebtn").addClass('active');
+        }
+        else if ($datum["vote"] == 'dislikeit')
+        {
+            $("#dislikebtn").addClass('active');
         }
     })
     .fail(function() {

@@ -16,6 +16,7 @@ $(function() {
                     $('#like_bar').css("width", datum["like_bar"]);
                     $('#dislike_bar').css("width", datum["dislike_bar"]);
                     $('#message').html(datum["message"]);
+                    $("#likebtn").addClass('active');
                 })
                 .fail(function() {
                     alert("Error!Error!Error!因為很重要所以要說三次!");
@@ -43,6 +44,7 @@ $(function() {
                 $('#like_bar').css("width", datum["like_bar"]);
                 $('#dislike_bar').css("width", datum["dislike_bar"]);
                 $('#message').html(datum["message"]);
+                $("#dislikebtn").addClass('active');
             })
             .fail(function() {
                 alert("Error!Error!Error!因為很重要所以要說三次!");
