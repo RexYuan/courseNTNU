@@ -10,6 +10,7 @@ window.fbAsyncInit = function() {
 
     checkLoginState();
     console.log(fbID);
+    initBtn();
 };
 
 

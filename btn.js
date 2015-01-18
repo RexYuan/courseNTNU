@@ -24,5 +24,3 @@ var initBtn = function() {
             });
     }
 };
-
-initBtn();
