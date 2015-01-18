@@ -45,4 +45,6 @@ function checkLoginState() {
     });
 }
 
-checkLoginState();
+FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
