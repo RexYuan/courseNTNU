@@ -32,7 +32,7 @@
         }
 
         // echo JSON
-        echo json_encode(["vote" => $voterow]);
+        echo json_encode(["vote" => $vote]);
     }
     else
     {
