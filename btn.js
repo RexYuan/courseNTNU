@@ -24,3 +24,5 @@ var initBtn = function() {
             });
     }
 };
+
+console.log(fbID);

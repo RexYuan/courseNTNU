@@ -11,7 +11,6 @@ window.fbAsyncInit = function() {
     checkLoginState();
     console.log(fbID);
 };
-initBtn();
 
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
