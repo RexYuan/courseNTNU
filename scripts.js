@@ -25,6 +25,7 @@ $(function() {
             else
             {
                 console.log("PLEASE LOGIN");
+                $("#likebtn").attr('btn', 'btn-success', 'btn-block');
             }
         });
     
