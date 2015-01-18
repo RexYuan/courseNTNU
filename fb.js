@@ -1,7 +1,3 @@
-
-
-  $.when(
-
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '1423906917900490',
@@ -11,9 +7,9 @@ window.fbAsyncInit = function() {
 
     checkLoginState();
     console.log(fbID);
-}
+};
 
-   ).done(function() {
+  $.when( window.fbAsyncInit() ).done(function() {
     console.log(fbID);
     });
 
