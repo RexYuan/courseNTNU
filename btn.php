@@ -12,7 +12,7 @@
         $vote = $voterow[0];
 
         // if not yet voted
-        if (empty($vote))
+        if (empty($voterow))
         {
             $result = 'no';
         }

@@ -5,7 +5,7 @@
     require("constants.php");
 
     // if a course selected
-    if (isset($_GET["dpm"]) && isset($_GET["cod"]))
+    /*if (isset($_GET["dpm"]) && isset($_GET["cod"]))
     {
         query("SET NAMES utf8");
         // query courses for corresponding course
@@ -49,10 +49,9 @@
     {
         // render department list
         render("department.php", ["urlroot" => $urlroot]);
-    }
-    /*
-    $_POST["fbid"] = 2;
-        $_POST["code"] = "a";
-$voterow = query("SELECT * FROM vote");
-    print_r($voterow);*/
+    }*/
+    
+    $_POST["code"] = 'ITU0004';
+    $_POST["fbid"] = '10203739867764562';
+    print_r(query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]));
 ?>
