@@ -5,6 +5,7 @@ $(function() {
         if (fbstatus == "connected"){
         var cod= $('#code').val();
         var rat = $('#likebtn').val();
+        console.log(fbid);
 
         // update database
         $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbid})
