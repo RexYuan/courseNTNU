@@ -3,6 +3,7 @@ $.post("rate.php", {"code": cod, "fbid": fbID})
     .done(function( data ) {
         // update html
         var datum = jQuery.parseJSON(data);
+        console.log(datum);
         if (datum["vote"] == 'likeit')
         {
             $("#likebtn").addClass('active');
