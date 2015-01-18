@@ -32,6 +32,7 @@ function checkLoginStateRate() {
 $(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
+        checkLoginStateRate();
         if (response == "connected"){
         event.preventDefault();
         var cod= $('#code').val();
@@ -54,6 +55,7 @@ $(function() {
     
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
+        checkLoginStateRate();
         if (response == "connected"){
         event.preventDefault();
         var cod= $('#code').val();
