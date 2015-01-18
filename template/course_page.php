@@ -26,7 +26,7 @@
                     <div class="row">
                         <input id="code" class="hidden" name="code" value="<?= $course['code'] ?>"/>
                         <div class="col-xs-6 form-group">
-                            <input id="likebtn" type="submit" class="btn btn-success btn-block" name="rate" value="推" disabled/>
+                            <input id="likebtn" type="submit" class="btn btn-success btn-block" name="rate" value="推" disabled="false"/>
                         </div>
                         <div class="col-xs-6 form-group">
                             <input id="dislikebtn" type="submit" class="btn btn-danger btn-block" name="rate" value="不推" disabled="disabled"/>
