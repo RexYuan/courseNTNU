@@ -1,8 +1,8 @@
 $(function() {
+    var cod = $('#code').val();
     console.log(cod);
     console.log(fbID);
     console.log(fbstatus);
-    var cod = $('#code').val();
     if (fbstatus == "connected")
     {
         $.post("btn.php", {"code": cod, "fbid": fbID})
