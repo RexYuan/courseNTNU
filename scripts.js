@@ -50,7 +50,8 @@ $(function() {
             })
             .fail(function() {
                 alert("Error!Error!Error!因為很重要所以要說三次!");
-            });}else{console.log(PLEASE LOGIN);}
+            });
+        }else{console.log("PLEASE LOGIN");}
     });
     
     // when dislike clicked
@@ -73,7 +74,7 @@ $(function() {
             })
             .fail(function() {
                 alert("Error!Error!Error!因為很重要所以要說三次!");
-            });}else{console.log(PLEASE LOGIN);}
+            });}else{console.log("PLEASE LOGIN");}
     });
 });
 
