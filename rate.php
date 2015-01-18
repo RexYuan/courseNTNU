@@ -63,6 +63,8 @@
         // query database
         $course = query("SELECT * FROM course WHERE code = ?", $_POST["code"]);
         // calculates JSON
+        $a = $course[0]["likeit"];
+        $b = $course[0]["dislikeit"];
         $total = $course[0]["likeit"] + $course[0]["dislikeit"];
         $like_percentage = $course[0]["likeit"] / ($total);
         if ($total = 0)
@@ -77,7 +79,7 @@
             $like_bar = ((string) ($like_percentage * 100)) . "%";
             $dislike_bar = ((string) ((1 - $like_percentage) * 100)) . "%";
             $ratings = sprintf('%2d', ($like_percentage * 100));
-            $message = " $course[0]['likeit'] + $course[0]['dislikeit'] 根據 $total 個投票";
+            $message = "$a + $b 根據 $total 個投票";
         }
 
         // echo JSON
