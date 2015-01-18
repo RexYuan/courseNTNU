@@ -1,5 +1,6 @@
+var response;
 function statusChangeCallback(response) {
-    var response = response.status;
+    response = response.status;
     /*if (response.status === 'connected')
     {
         // Logged into your app and Facebook.
