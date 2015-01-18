@@ -1,5 +1,5 @@
 var cod = $('#code').val();
-$.post("rate.php", {"code": cod, "fbid": fbID})
+$.post("btn.php", {"code": cod, "fbid": fbID})
     .done(function( data ) {
         // update html
         var datum = jQuery.parseJSON(data);
