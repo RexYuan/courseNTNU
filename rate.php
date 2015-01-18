@@ -8,14 +8,14 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // check if voted
-        //$voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+        $voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         // if liked
         if ($_POST["rate"] == "推")
         {
             // update database
-            /*if (isempty($voted))
-            {*/
+            if (isempty($voterow[0]))
+            {
                 //query("INSERT INTO vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
                 $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
             //}
@@ -69,11 +69,9 @@
         $dislike_bar = ((string) ((1 - $like_percentage) * 100)) . "%";
         $message = "根據 $total 個投票";
         $ratings = sprintf('%2d', ($like_percentage * 100));
-        
-        $voted = '0';
 
         // echo JSON
-        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $voted]);
+        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $voterow[0]]);
     }
     else
     {
