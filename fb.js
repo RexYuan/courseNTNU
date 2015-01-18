@@ -24,9 +24,9 @@ function statusChangeCallback(response) {
     if (fbstatus === 'connected')
     {
         // Logged into your app and Facebook.
-        console.log(response);
+        // console.log(response);
         FB.api('/me', function(response) {
-            console.log(JSON.stringify(response));
+            // console.log(JSON.stringify(response));
             document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
             fbID = response.id;
         });
@@ -35,14 +35,14 @@ function statusChangeCallback(response) {
     {
         // The person is logged into Facebook, but not your app.
         document.getElementById('fbstatus').innerHTML = 'Please log into this app.';
-        console.log(response);
+        // console.log(response);
     }
     else
     {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
         document.getElementById('fbstatus').innerHTML = 'Please log into Facebook.';
-        console.log(response);
+        // console.log(response);
     }
 }
 
