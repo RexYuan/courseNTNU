@@ -3,7 +3,7 @@ var check = function(){
     {
         console.log(fbID);
         console.log(fbstatus);
-        console.log(cod);
+        //console.log(cod);
         $(function() {
             var cod = $('#code').val();
             if (fbstatus == "connected")
@@ -34,5 +34,3 @@ var check = function(){
         console.log('checking');
     }
 }
-
-check();
