@@ -1,4 +1,3 @@
-<script src="btn.js"></script>
 <div class="container" id="middle">
 
     <h3>

@@ -12,6 +12,7 @@
         <script src="jquery-1.10.2.min.js"></script>
         <script src="bootstrap.min.js"></script>
         <script src="scripts.js"></script>
+        <script src="btn.js"></script>
         
         <?php if (isset($title)): ?>
             <title>courseNTNU: <?= htmlspecialchars($title) ?></title>
