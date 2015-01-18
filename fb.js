@@ -12,7 +12,7 @@ window.fbAsyncInit = function() {
     console.log(fbID);
 };
 
-  $.when( checkLoginState() ).done(function() {
+  checkLoginState().done(function() {
     console.log(fbID);
     });
 
