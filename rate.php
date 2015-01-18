@@ -17,7 +17,9 @@
             if (empty($voterow))
             {
                 if(query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '1') === false)
-                {}
+                {
+                    $good='no';
+                }
                 else
                 {
                     $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
@@ -75,7 +77,7 @@
         $ratings = sprintf('%2d', ($like_percentage * 100));
 
         // echo JSON
-        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $voterow]);
+        echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $good]);
     }
     else
     {
