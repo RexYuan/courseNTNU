@@ -30,11 +30,11 @@ $(function() {
                     alert("Error!Error!Error!因為很重要所以要說三次!");
                 });
         }
-            else
-            {
-                console.log("PLEASE LOGIN");
-            }
-        });
+        else
+        {
+            $('#myModal').modal('show');
+        }
+    });
     
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
@@ -64,7 +64,12 @@ $(function() {
             })
             .fail(function() {
                 alert("Error!Error!Error!因為很重要所以要說三次!");
-            });}else{console.log("PLEASE LOGIN");}
+            });
+        }
+        else
+        {
+            $('#myModal').modal('show');
+        }
     });
 });
 

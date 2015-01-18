@@ -29,12 +29,4 @@
                     <h1 class="text-center"><a href="index.php">courseNTNU</a></h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-                </div>
-                <div class="col-xs-6">
-                    <h1 class="text-center" id="fbstatus"></h1>
-                </div>
-            </div>
         </div>

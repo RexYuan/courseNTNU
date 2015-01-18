@@ -27,8 +27,9 @@ function statusChangeCallback(response) {
         // console.log(response);
         FB.api('/me', function(response) {
             // console.log(JSON.stringify(response));
-            document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
+            //document.getElementById('fbstatus').innerHTML = 'Hi, ' + response.name;
             fbID = response.id;
+
             // initialize btn state
             initBtn();
         });
@@ -36,15 +37,19 @@ function statusChangeCallback(response) {
     else if (fbstatus === 'not_authorized')
     {
         // The person is logged into Facebook, but not your app.
-        document.getElementById('fbstatus').innerHTML = 'Please log into this app.';
-        // console.log(response);
+        //document.getElementById('fbstatus').innerHTML = '尚未登入';
+
+        // initialize btn state
+        initBtn();
     }
     else
     {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
-        document.getElementById('fbstatus').innerHTML = 'Please log into Facebook.';
-        // console.log(response);
+        //document.getElementById('fbstatus').innerHTML = '';
+
+        // initialize btn state
+            initBtn();
     }
 }
 
