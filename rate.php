@@ -10,7 +10,7 @@
         // check if voted
         $_POST["fbid"] = 2;
         $_POST["code"] = "a";
-        $voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+        // $voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         // if liked
         if ($_POST["rate"] == "推")
