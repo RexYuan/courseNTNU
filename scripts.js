@@ -1,7 +1,6 @@
 var status;
 function checkLoginStateRate() {
     FB.getLoginStatus(function(response) {
-        statusChangeCallbackRate(response);
         status = response.status;
     });
 }
