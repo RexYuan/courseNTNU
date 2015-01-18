@@ -4,12 +4,12 @@ $(function() {
         event.preventDefault();
         if (fbstatus == "connected")
         {
-            var cod= $('#code').val();
+            var cod = $('#code').val();
             var rat = $('#likebtn').val();
             console.log(fbID);
 
             // update database
-            $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbID})
+            $.post("rate.php", {"code": cod, "rate": rat/*, "fbid": fbID*/})
                 .done(function( data ) {
                     // update html
                     var datum = jQuery.parseJSON(data);
@@ -22,7 +22,7 @@ $(function() {
                 .fail(function() {
                     alert("Error!Error!Error!因為很重要所以要說三次!");
                 });
-            }
+        }
             else
             {
                 console.log("PLEASE LOGIN");
