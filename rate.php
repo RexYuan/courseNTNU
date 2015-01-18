@@ -8,7 +8,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // check if voted
-        //$voted = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+        //$voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         // if liked
         if ($_POST["rate"] == "推")
@@ -70,6 +70,8 @@
         $message = "根據 $total 個投票";
         $ratings = sprintf('%2d', ($like_percentage * 100));
         
+        $voted = '0';
+
         // echo JSON
         echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message, "voted" => $voted]);
     }
