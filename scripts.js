@@ -27,7 +27,7 @@ $(function() {
                     }
                 })
                 .fail(function() {
-                    alert("Error!Error!Error!因為很重要所以要說三次!");
+                    alert("錯誤: 代碼0，請聯絡開發人員");
                 });
         }
         else
@@ -63,7 +63,7 @@ $(function() {
                 }
             })
             .fail(function() {
-                alert("Error!Error!Error!因為很重要所以要說三次!");
+                alert("錯誤: 代碼1，請聯絡開發人員");
             });
         }
         else
@@ -95,7 +95,7 @@ var initBtn = function() {
                 }
             })
             .fail(function() {
-                alert("Error!Error!Error!因為很重要所以要說三次!");
+                alert("錯誤: 代碼2，請聯絡開發人員");
             });
     }
 };
