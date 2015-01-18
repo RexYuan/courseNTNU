@@ -8,7 +8,7 @@ $(function() {
         console.log(fbid);
 
         // update database
-        /*$.post("rate.php", {"code": cod, "rate": rat, "fbid": fbid})
+/*        $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbid})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
@@ -21,7 +21,7 @@ $(function() {
             .fail(function() {
                 alert("Error!Error!Error!因為很重要所以要說三次!");
             });
-        }else{console.log("PLEASE LOGIN");}*/
+        */}else{console.log("PLEASE LOGIN");}
     });
     
     // when dislike clicked
