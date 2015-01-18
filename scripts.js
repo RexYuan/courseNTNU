@@ -9,7 +9,7 @@ $(function() {
             console.log(fbid);
 
             // update database
-            $.post("rate.php", {"code": cod, "rate": rat})
+            $.post("rate.php", {"code": cod, "rate": rat, "fbID": fbid})
                 .done(function( data ) {
                     // update html
                     var datum = jQuery.parseJSON(data);
