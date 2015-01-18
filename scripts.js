@@ -88,7 +88,7 @@ var initBtn = function() {
                 }
             })
             .fail(function() {
-                alert("Error!Error!Error!這你也有問題？!");
+                alert("Error!Error!Error!因為很重要所以要說三次!");
             });
     }
 };
