@@ -1,7 +1,7 @@
 console.log(fbID);
 console.log(fbstatus);
 //console.log(cod);
-$(function() {
+var initBtn = function() {
     var cod = $('#code').val();
     if (fbstatus == "connected")
     {
@@ -23,4 +23,4 @@ $(function() {
                 alert("Error!Error!Error!這你也有問題？!");
             });
     }
-});
+};
