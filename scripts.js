@@ -43,7 +43,7 @@ $(function() {
         var rat = $('#dislikebtn').val();
 
         // update database
-        $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbid})
+        $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbID})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
