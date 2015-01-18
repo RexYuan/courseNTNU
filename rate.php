@@ -16,6 +16,8 @@
             // update database
             if (empty($voterow))
             {
+                $_POST["fbid"]='123';
+                $_POST["code"]='456';
                 query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '1');
                 $good = query("SELECT * FROM vote where fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
                 $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
