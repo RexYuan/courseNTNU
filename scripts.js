@@ -71,6 +71,7 @@ $(function() {
 // initialize btn state
 var initBtn = function() {
     $("#likebtn").prop('disabled', false);
+    $("#dislikebtn").prop('disabled', false);
     var cod = $('#code').val();
     if (fbstatus == "connected")
     {
