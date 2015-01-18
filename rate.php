@@ -16,14 +16,9 @@
             // update database
             if (empty($voterow))
             {
-                if(query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '1') === false)
-                {
-                    $good='no';
-                }
-                else
-                {
-                    $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
-                }
+                query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '1');
+                $good = query("SELECT * FROM vote where fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
+                $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
             }
             /*else
             {
