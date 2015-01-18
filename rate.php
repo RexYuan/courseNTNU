@@ -10,7 +10,7 @@
         // check if voted
         $voted = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
-        /*// if liked
+        // if liked
         if ($_POST["rate"] == "推")
         {
             // update database
@@ -58,7 +58,7 @@
                     $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
                 }
             }
-        }*/
+        }
         
         // query database
         $course = query("SELECT * FROM course WHERE code = ?", $_POST["code"]);
