@@ -16,7 +16,14 @@ $(function() {
                     $('#like_bar').css("width", datum["like_bar"]);
                     $('#dislike_bar').css("width", datum["dislike_bar"]);
                     $('#message').html(datum["message"]);
-                    $("#likebtn").addClass('active');
+                    if ($("#likebtn").hasClass("active"))
+                    {
+                        $("#likebtn").attr('btn', 'btn-success', 'btn-block');
+                    }
+                    else
+                    {
+                        $("#likebtn").addClass('active');
+                    }
                 })
                 .fail(function() {
                     alert("Error!Error!Error!因為很重要所以要說三次!");
@@ -25,7 +32,6 @@ $(function() {
             else
             {
                 console.log("PLEASE LOGIN");
-                $("#likebtn").attr('btn', 'btn-success', 'btn-block');
             }
         });
     
