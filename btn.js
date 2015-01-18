@@ -34,3 +34,5 @@ var check = function(){
         console.log('checking');
     }
 }
+
+check();
