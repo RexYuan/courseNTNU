@@ -17,49 +17,48 @@
             if (empty($voterow))
             {
                 query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '1');
-                $good = query("SELECT * FROM vote where fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
-                $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
+                query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
             }
-            /*else
+            else
             {
                 if (voted[0]["vote"] == '1')
                 {
                     query("DELETE FROM vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
-                    $result = query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
                 }
                 else
                 {
                     query("UPDATE vote SET vote = 0 WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
-                    $result = query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
-                    $result = query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
                 }
-            }*/
+            }
         }
 
         // if disliked
-        /*else if ($_POST["rate"] == "不推")
+        else if ($_POST["rate"] == "不推")
         {
             // update database
             if (isempty($voted))
             {
-                query("INSERT INTO vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '0');
-                $result = query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
+                query("INSERT INTO vote (fbid, code, vote) VALUES (?, ?, ?)", $_POST["fbid"], $_POST["code"], '0');
+                query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
             }
             else
             {
                 if (voted[0]["vote"] == '0')
                 {
                     query("DELETE FROM vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '0');
-                    $result = query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
                 }
                 else
                 {
                     query("UPDATE vote SET vote = 0 WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '0');
-                    $result = query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
-                    $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
+                    query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
                 }
             }
-        }*/
+        }
         
         // query database
         $course = query("SELECT * FROM course WHERE code = ?", $_POST["code"]);

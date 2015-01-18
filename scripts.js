@@ -6,14 +6,12 @@ $(function() {
         {
             var cod = $('#code').val();
             var rat = $('#likebtn').val();
-            console.log(fbID);
 
             // update database
             $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbID})
                 .done(function( data ) {
                     // update html
                     var datum = jQuery.parseJSON(data);
-                    console.log("voted="+datum["voted"]);
                     $('#rating_score').html(datum["ratings"]);
                     $('#like_bar').css("width", datum["like_bar"]);
                     $('#dislike_bar').css("width", datum["dislike_bar"]);
