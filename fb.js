@@ -21,6 +21,7 @@ function statusChangeCallback(response) {
         console.log(response);
         FB.api('/me', function(response) {
             console.log(JSON.stringify(response));
+            document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
         });
     }
     else if (response.status === 'not_authorized')
