@@ -14,7 +14,7 @@
         if ($_POST["rate"] == "推")
         {
             // update database
-            if (empty($voterow[0]))
+            if (empty($voterow))
             {
                 //query("INSERT INTO vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
                 $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
