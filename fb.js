@@ -6,9 +6,8 @@ window.fbAsyncInit = function() {
     });
 
     checkLoginState();
-};
 
-$(function() {
+    $(function() {
     var cod = $('#code').val();
     if (fbstatus == "connected")
     {
@@ -30,6 +29,7 @@ $(function() {
                 alert("Error!Error!Error!這你也有問題？!");
             });}
     });
+};
 
 (function(d, s, id){
     var js, fjs = d.getElementsByTagName(s)[0];
