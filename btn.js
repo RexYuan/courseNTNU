@@ -30,7 +30,7 @@ var check = function(){
     }
     else
     {
-        setTimeout(check, 500); // check again in 1 second
+        setTimeout(check(), 500); // check again in 1 second
         console.log('checking');
     }
 }
