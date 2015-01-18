@@ -8,19 +8,17 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // check if voted
-        //$_POST["fbid"] = 2;
-        // $_POST["code"] = "a";
         $voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
 
         // if liked
         if ($_POST["rate"] == "推")
         {
             // update database
-            //if (empty($voterow))
-            //{
+            if (empty($voterow))
+            {
                 //query("INSERT INTO vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
                 $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
-            //}
+            }
             /*else
             {
                 if (voted[0]["vote"] == '1')
