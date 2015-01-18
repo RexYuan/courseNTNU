@@ -53,6 +53,6 @@
     
     $_POST["fbid"] = 2;
         $_POST["code"] = "a";
-$voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+$voterow = query("SELECT * FROM vote");
     print_r($voterow);
 ?>
