@@ -16,8 +16,10 @@ window.fbAsyncInit = function() {
         fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
+var fbstatus;
 function statusChangeCallback(response) {
-    if (response.status === 'connected')
+    fbstatus = response.status;
+    if (fbstatus === 'connected')
     {
         // Logged into your app and Facebook.
         console.log(response);
@@ -26,7 +28,7 @@ function statusChangeCallback(response) {
             document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
         });
     }
-    else if (response.status === 'not_authorized')
+    else if (fbstatus === 'not_authorized')
     {
         // The person is logged into Facebook, but not your app.
         document.getElementById('fbstatus').innerHTML = 'Please log into this app.';

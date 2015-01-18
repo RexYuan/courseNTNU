@@ -1,16 +1,8 @@
-var status;
-function checkLoginStateRate() {
-    FB.getLoginStatus(function(response) {
-        status = response.status;
-    });
-}
-
 $(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
         event.preventDefault();
-        checkLoginStateRate();
-        if (status == "connected"){
+        if (fbstatus == "connected"){
         var cod= $('#code').val();
         var rat = $('#likebtn').val();
 
@@ -33,8 +25,7 @@ $(function() {
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
         event.preventDefault();
-        checkLoginStateRate();
-        if (status == "connected"){
+        if (fbstatus == "connected"){
         var cod= $('#code').val();
         var rat = $('#dislikebtn').val();
 
