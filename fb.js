@@ -17,7 +17,7 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 var fbstatus;
-var fbid;
+var fbID;
 
 function statusChangeCallback(response) {
     fbstatus = response.status;
@@ -28,7 +28,7 @@ function statusChangeCallback(response) {
         FB.api('/me', function(response) {
             console.log(JSON.stringify(response));
             document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
-            fbid = response.id;
+            fbID = response.id;
         });
     }
     else if (fbstatus === 'not_authorized')
