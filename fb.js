@@ -4,6 +4,8 @@ window.fbAsyncInit = function() {
         xfbml      : true,
         version    : 'v2.2'
     });
+
+    checkLoginState();
 };
 
 (function(d, s, id){
@@ -44,7 +46,3 @@ function checkLoginState() {
         statusChangeCallback(response);
     });
 }
-
-FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
