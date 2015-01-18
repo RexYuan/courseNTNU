@@ -23,6 +23,7 @@ $(function() {
                     else
                     {
                         $("#likebtn").addClass('active');
+                        $("#dislikebtn").removeClass('active');
                     }
                 })
                 .fail(function() {
@@ -58,6 +59,7 @@ $(function() {
                 else
                 {
                     $("#dislikebtn").addClass('active');
+                    $("#likebtn").removeClass('active');
                 }
             })
             .fail(function() {
