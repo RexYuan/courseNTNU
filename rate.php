@@ -68,7 +68,7 @@
         $c = $a + $b;
         $total = $course[0]["likeit"] + $course[0]["dislikeit"];
         $like_percentage = $course[0]["likeit"] / ($total);
-        if ($total = 0)
+        if ($total == 0)
         {
             $like_bar = "0%";
             $dislike_bar = "0%";
