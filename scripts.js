@@ -33,8 +33,8 @@ $(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
         checkLoginStateRate();
-        if (response == "connected"){
         event.preventDefault();
+        if (response == "connected"){
         var cod= $('#code').val();
         var rat = $('#likebtn').val();
 
@@ -57,8 +57,8 @@ $(function() {
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
         checkLoginStateRate();
-        if (response == "connected"){
         event.preventDefault();
+        if (response == "connected"){
         var cod= $('#code').val();
         var rat = $('#dislikebtn').val();
 
