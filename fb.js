@@ -9,7 +9,7 @@ window.fbAsyncInit = function() {
 };
 
 $.when( window.fbAsyncInit ).done(function() {
-    console.log('Facebook init done');
+    console.log(fbID);
 });
 
 (function(d, s, id){
