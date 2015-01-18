@@ -18,7 +18,7 @@ $(function() {
                     $('#message').html(datum["message"]);
                     if ($("#likebtn").hasClass("active"))
                     {
-                        $("#likebtn").attr('btn', 'btn-success', 'btn-block');
+                        $("#likebtn").removeClass('active');
                     }
                     else
                     {
@@ -53,7 +53,7 @@ $(function() {
                 $('#message').html(datum["message"]);
                 if ($("#dislikebtn").hasClass("active"))
                 {
-                    $("#dislikebtn").attr('btn', 'btn-danger', 'btn-block');
+                    $("#dislikebtn").removeClass('active');
                 }
                 else
                 {
