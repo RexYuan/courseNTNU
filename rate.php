@@ -36,7 +36,7 @@
         }
 
         // if disliked
-        else if ($_POST["rate"] == "不推")
+        /*else if ($_POST["rate"] == "不推")
         {
             // update database
             if (isempty($voted))
@@ -58,7 +58,7 @@
                     $result = query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
                 }
             }
-        }
+        }*/
         
         // query database
         $course = query("SELECT * FROM course WHERE code = ?", $_POST["code"]);

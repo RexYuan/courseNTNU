@@ -2,27 +2,32 @@ $(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
         event.preventDefault();
-        if (fbstatus == "connected"){
-        var cod= $('#code').val();
-        var rat = $('#likebtn').val();
-        console.log(fbid);
+        if (fbstatus == "connected")
+        {
+            var cod= $('#code').val();
+            var rat = $('#likebtn').val();
+            console.log(fbid);
 
-        // update database
-        $.post("rate.php", {"code": cod, "rate": rat})
-            .done(function( data ) {
-                // update html
-                var datum = jQuery.parseJSON(data);
-                console.log("voted="+datum["voted"]);
-                $('#rating_score').html(datum["ratings"]);
-                $('#like_bar').css("width", datum["like_bar"]);
-                $('#dislike_bar').css("width", datum["dislike_bar"]);
-                $('#message').html(datum["message"]);
-            })
-            .fail(function() {
-                alert("Error!Error!Error!因為很重要所以要說三次!");
-            });
-        }else{console.log("PLEASE LOGIN");}
-    });
+            // update database
+            $.post("rate.php", {"code": cod, "rate": rat})
+                .done(function( data ) {
+                    // update html
+                    var datum = jQuery.parseJSON(data);
+                    console.log("voted="+datum["voted"]);
+                    $('#rating_score').html(datum["ratings"]);
+                    $('#like_bar').css("width", datum["like_bar"]);
+                    $('#dislike_bar').css("width", datum["dislike_bar"]);
+                    $('#message').html(datum["message"]);
+                })
+                .fail(function() {
+                    alert("Error!Error!Error!因為很重要所以要說三次!");
+                });
+            }
+            else
+            {
+                console.log("PLEASE LOGIN");
+            }
+        });
     
     // when dislike clicked
     $('#dislikebtn').click(function(event) {

@@ -18,6 +18,7 @@ window.fbAsyncInit = function() {
 
 var fbstatus;
 var fbid;
+
 function statusChangeCallback(response) {
     fbstatus = response.status;
     if (fbstatus === 'connected')
