@@ -29,7 +29,6 @@ function statusChangeCallback(response) {
             console.log(JSON.stringify(response));
             document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
             fbID = response.id;
-            console.log(fbID);
         });
     }
     else if (fbstatus === 'not_authorized')
