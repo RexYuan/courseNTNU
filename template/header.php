@@ -34,7 +34,7 @@
                     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
                 </div>
                 <div class="col-xs-6">
-                    <div class="btn btn-success" id="logout" name="logout"></div>
+                    <div id="fbstatus"></div>
                 </div>
             </div>
         </div>
