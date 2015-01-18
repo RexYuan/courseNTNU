@@ -7,10 +7,11 @@ $(function() {
         var rat = $('#likebtn').val();
 
         // update database
-        $.post("rate.php", {"code": cod, "rate": rat})
+        $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbid})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
+                console.log("voted="+datum["voted"]);
                 $('#rating_score').html(datum["ratings"]);
                 $('#like_bar').css("width", datum["like_bar"]);
                 $('#dislike_bar').css("width", datum["dislike_bar"]);
@@ -30,7 +31,7 @@ $(function() {
         var rat = $('#dislikebtn').val();
 
         // update database
-        $.post("rate.php", {"code": cod, "rate": rat})
+        $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbid})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);

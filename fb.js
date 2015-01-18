@@ -17,6 +17,7 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 var fbstatus;
+var fbid;
 function statusChangeCallback(response) {
     fbstatus = response.status;
     if (fbstatus === 'connected')
@@ -25,7 +26,8 @@ function statusChangeCallback(response) {
         console.log(response);
         FB.api('/me', function(response) {
             console.log(JSON.stringify(response));
-            document.getElementById('fbstatus').innerHTML = 'Hi,' + response.id;
+            document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
+            fbid = response.id;
         });
     }
     else if (fbstatus === 'not_authorized')
