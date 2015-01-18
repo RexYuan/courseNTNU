@@ -70,14 +70,15 @@
             $like_bar = "0%";
             $dislike_bar = "0%";
             $ratings = "N/A";
+            $message = "沒有資料";
         }
         else
         {
             $like_bar = ((string) ($like_percentage * 100)) . "%";
             $dislike_bar = ((string) ((1 - $like_percentage) * 100)) . "%";
             $ratings = sprintf('%2d', ($like_percentage * 100));
+            $message = "根據 $total 個投票";
         }
-        $message = "根據 $total 個投票";
 
         // echo JSON
         echo json_encode(["ratings" => $ratings, "like_bar" => $like_bar, "dislike_bar" => $dislike_bar, "message" => $message]);
