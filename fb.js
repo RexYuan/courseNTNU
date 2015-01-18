@@ -1,3 +1,6 @@
+var fbstatus;
+var fbID;
+
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '1423906917900490',
@@ -9,7 +12,7 @@ window.fbAsyncInit = function() {
     console.log(fbID);
 };
 
-  $.when( window.fbAsyncInit() ).done(function() {
+  $.when( statusChangeCallback() ).done(function() {
     console.log(fbID);
     });
 
@@ -20,9 +23,6 @@ window.fbAsyncInit = function() {
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-
-var fbstatus;
-var fbID;
 
 function statusChangeCallback(response) {
     fbstatus = response.status;
