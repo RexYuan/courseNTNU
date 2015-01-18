@@ -8,7 +8,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // query database
-        $voterow = query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]);
+        /*$voterow = query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]);
         $vote = $voterow[0];
 
         // if not yet voted
@@ -29,7 +29,7 @@
             {
                 $result = "dislikeit";
             }
-        }
+        }*/
 
 $result = 'likeit';
         // echo JSON
