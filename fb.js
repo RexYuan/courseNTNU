@@ -9,7 +9,6 @@ window.fbAsyncInit = function() {
     });
 
     checkLoginState();
-    console.log(fbID);
 };
 
 (function(d, s, id){
@@ -30,7 +29,8 @@ function statusChangeCallback(response) {
             // console.log(JSON.stringify(response));
             document.getElementById('fbstatus').innerHTML = 'Hi,' + response.name;
             fbID = response.id;
-            console.log(fbID);
+            // initialize btn state
+            initBtn();
         });
     }
     else if (fbstatus === 'not_authorized')
