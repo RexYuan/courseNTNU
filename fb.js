@@ -8,7 +8,7 @@ window.fbAsyncInit = function() {
     checkLoginState();
 };
 
-$.when( checkLoginState() ).done(function() {
+$.when( statusChangeCallback() ).done(function() {
     console.log(fbID);
 });
 

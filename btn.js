@@ -1,5 +1,5 @@
-console.log(fbID);
-console.log(fbstatus);
+//console.log(fbID);
+//console.log(fbstatus);
 //console.log(cod);
 var initBtn = function() {
     var cod = $('#code').val();
