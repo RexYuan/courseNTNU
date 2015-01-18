@@ -53,5 +53,10 @@
     
     $_POST["code"] = 'ITU0004';
     $_POST["fbid"] = '10203739867764562';
+    $voterow = query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]);
+    $vote = $voterow[0];
     print_r(query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]));
+    print("\n");
+    print_r($voterow);
+    print_r($vote);
 ?>
