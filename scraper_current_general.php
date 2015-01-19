@@ -60,7 +60,7 @@
     $iii = 0;
     
     // iterate from 01U(1) to 0SU(10)
-    for ($dpmcode = 1; $dpmcode <= 10; $dpmcode++)
+    for ($dpmcode = 9; $dpmcode <= 9; $dpmcode++)
     {
         // query for department abbreviation
         $dpmrow = query("SELECT * FROM department WHERE id = ?", $dpmcode);
@@ -79,7 +79,7 @@
         $formS_set = ["", "1", "2", "3", "4"];
         
         // iterate from 000 to 999
-        for ($i = 5; $i <= 999; $i++)
+        for ($i = 200; $i <= 250; $i++)
         {
             // preping url components
             // preping courseCode
@@ -133,7 +133,7 @@
                 if ($chname === "null")
                 {
                     // course does not exist, checking other course group
-                    print("* Course name null, changing course group\n");
+                    print("* Course $course_code chname null, changing course group from $course_group\n");
                     if ($course_group_index < 7)
                     {
                         // check next course group
@@ -144,7 +144,7 @@
                     {
                         // reset course group index
                         $course_group_index = 0;
-                        print("*** Course does not exist, continuing\n");
+                        print("*** Course $course_code does not exist, continuing\n");
                         // check next course
                         continue;
                     }
@@ -193,16 +193,18 @@
                         print("# Instructor found: $ins\n");
 
                         // check if already has more than or equal to one instructor
-                        if ($dup["teacher"] != "")
+                        if ($dup[0]["teacher"] != "")
                         {
-                            // check if instrctor is duplicate
-                            if (strpos($dup["teacher"],$ins === false))
+                            // check if instrctor is not duplicate
+                            if (strpos($dup[0]["teacher"],$ins) === false)
                             {
-                                $ins = $dup["teacher"] . '、' . $ins;
+                                $ins = $dup[0]["teacher"] . '、' . $ins;
+                                print("* Instructor more than one updating to $ins\n");
                             }
                             // already inserted this instructor
                             else
                             {
+                                print("* Already inserted $ins, continuing\n");
                                 // check next course
                                 continue;
                             }
@@ -218,7 +220,7 @@
                         {
                             print("### $code inserted\n\n");
                             $jjj++;
-                            print("==> Course updated = $jjj\n");
+                            print("==> Course $course_code updated, total inserted = $iii, total updated = $jjj\n");
                     }
                         // check next course
                         continue;
@@ -256,7 +258,7 @@
                 {
                     print("### $code inserted\n\n");
                     $iii++;
-                    print("New courses inserted = $iii\n");
+                    print("New courses $course_code inserted, total inserted = $iii, total updated = $jjj\n");
                 }
             }
         }

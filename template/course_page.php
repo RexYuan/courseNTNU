@@ -14,6 +14,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8">
                 <h2><?= $course["chname"] ?></h2>
+                <h4>教師：  <?= $course["teacher"] ?></h4>
                 <h4>學分數：  <?= $course["credit"] ?></h4>
             </div>
             <div class="col-xs-12 col-sm-4">

@@ -1,8 +1,15 @@
 <?php
-    /*
-        ==> This scraper is under construction.
 
-        *** url GET request components ***
+    /*
+       ==> This scraper is intended for scraping standard courses page current info from 選課系統大綱.
+
+       *** NTNU Course Page(選課系統) URL GET Request Components Guide ***
+
+        A URL for a course page info from 選課系統大綱 will look something like this:
+        http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?year=103&term=2&courseCode=01UG025&courseGroup=&deptCode=GU&formS=&classes1=&deptGroup
+        The first part(http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl) is the controller of course page info GET request
+        , the second part seperated by the question mark is the actual GET request sent to that controller.
+        You will find below the detailed description for each and every part of the GET request.
 
        year:
         學年.
@@ -29,10 +36,9 @@
         , 4 chars for others is random shits(consult code column department.sql db).
        
        *formS:
-        I have no idea what random fuck is this shit
-        , appears that blank for general ed
-        , random number(usually 0~2) for others
-        , please contact me if you know what does this mean.
+        The grade is course is intended for
+        , blank for general ed or not restricted
+        , a number(1~4) for every grade(大一 => 1, 大二 => 2, 大三 => 3, 大四 => 4).
        
        classes1:
         indicator for different offers for different classes of a single department of a single course
@@ -45,14 +51,16 @@
         , blank if department has only one group
         , a char if department is divided into more than one group
         , a char being a letter(A~Z)
-        , currently only 美術系 is divided into 2 groups(A/B).
+        , currently only 美術系 is divided into 2 groups(A/B).  
     */
     
     // requirements
     require("functions.php");
+
+    $iii = 0;
     
-    // iterate from 01U(1) to VDU(42)
-    for ($dpmcode = 1; $dpmcode <= 42; $dpmcode++)
+    // iterate from 01U(1) to 0SU(10)
+    for ($dpmcode = ; $dpmcode <= ; $dpmcode++)
     {
         // query for department abbreviation
         $dpmrow = query("SELECT * FROM department WHERE id = ?", $dpmcode);
@@ -67,36 +75,48 @@
         $course_group_set = ["", "A", "B", "C", "D", "E", "F"];
 
         // formS set and index
-        $formS_set_index = 0;
-        $formS_set = ["", "1", "2"];
+        $formS_index = 0;
+        $formS_set = ["", "1", "2", "3", "4"];
+
+        // classes1 set and index
+        $classes1_index = 0;
+        $classes1_set = ["", "1", "2", "3"];
+
+        // TODO: 先測formS在測classes1如果=""再測group 不然就測="1"就夠了
         
-        // iterate from 000 to 999
-        for ($i = 1; $i <= 999; $i++)
+        // iterate from 0000 to 9999
+        for ($i = ; $i <= ; $i++)
         {
             // preping url components
             // preping courseCode
-            $n = sprintf('%03d', $i);
-            $course_code = $dpm['abbr'] . "G" . $n;
+            $n = sprintf('%04d', $i);
+            $course_code = $dpm['abbr'] . $n;
             $course_code_component = "&courseCode=" . $course_code;
+
             // preping courseGroup
             $course_group = $course_group_set[$course_group_index];
             $course_group_component = "&courseGroup=" . $course_group;
+
             // preping deptCode
-            $dept_code = "GU";
+            $dept_code = $dpm['code'];
             $dept_code_component = "&deptCode=" . $dept_code;
+
             // preping formS
-            $formS = "";
+            $formS = $formS_set[$formS_index];
             $formS_component = "&formS=" . $formS;
+
             // preping classes1
-            $classes1 = "";
+            $classes1 = $classes1_set[$classes1_index];
             $classes1_component = "&classes1=" . $classes1;
+
             // preping deptGroup
             $dept_group = "";
-            $dept_group_component = "&deptGroup" . $dept_group
+            $dept_group_component = "&deptGroup" . $dept_group;
+
             // preping url
             $course_url = "http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?" . $year_component . $term_component . $course_code_component . $course_group_component . $dept_code_component . $formS_component . $classes1_component . $dept_group_component;
 
-            print("Trying $course_code...\n");
+            print("=> Trying: $course_url\n");
             
             // html to xml
             if (!($tidy = tidy_parse_file($course_url, array("numeric-entities" => true, "output-xhtml" => true), "utf8")))
@@ -114,77 +134,170 @@
                 // retrieve Chinese name
                 $chnametd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='330']");
                 $chname = trim((string) $chnametd[0]);
-                // check if course group correct
+
+                // check if course exist
                 if ($chname === "null")
                 {
-                    print("Course name null, changing group\n");
-                    if ($course_group_index < 2)
+                    // other formS still possible
+                    if ($formS_index < 5)
                     {
-                        $course_group_index++;
+                        // other group still possible
+                        if ($course_group_index < 7)
+                        {
+                            // other classes still possible
+                            if ($classes1_index < 2)
+                            {
+                                // check next course group
+                                print("* Course $course_code chname null, changing classes1 from $classes1\n");
+                                $classes1_index++;
+                                // make the course code stay the same
+                                $i--;
+                                // recheck this course in another group
+                                continue;
+                            }
+                            // checked all classes1 in this group
+                            else
+                            {
+                                // check next course group
+                                print("* Course $course_code chname null, changing course group from $course_group\n");
+                                $course_group_index++;
+                                // make the course code stay the same
+                                $i--;
+                                // recheck this course in another group
+                                continue;
+                            }
+                        }
+                        // checked all groups in this formS
+                        else
+                        {
+                            // reset group index
+                            $course_group_index = 0;
+                            // check next formS
+                            print("* Course $course_code chname null, changing formS from $formS\n");
+                            $formS_index++;
+                            // make the course code stay the same
+                            $i--;
+                            // recheck this course in another group
+                            continue;
+                        }
                     }
                     else
                     {
-                        $course_group_index = 0;
-                        print("Course not available, continuing\n");
+                        // all possible combination of formS and group checked, none found
+                        print("*** Course $course_code does not exist, continuing\n");
                         continue;
                     }
-                    $i--;
-                    continue;
+
                 }
+                // course found
                 else
                 {
-                    $course_group_index = 0;
-                    print("Chinese name found: $chname\n");
+                    // if course only has one offer
+                    if ($course_group_index == 0)
+                    {
+                        // reset course group index
+                        $course_group_index = 0;    
+                    }
+                    // if other group possibly exist
+                    else if ($course_group_index < 7)
+                    {
+                        // check next course group
+                        $course_group_index++;
+                        // make the course code stay the same
+                        $i--;
+                    }
+                    print("# Chinese name found: $chname\n");
                 }
                 
                 // retrieve code
                 $codetd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='290']");
-                // check if code is found
+                // double checking if course exist
                 if (isset($codetd[0]))
                 {
                     $code = trim((string) $codetd[0]);
-                    print("Code found: $code\n");
+                    print("# Code found: $code\n");
                     // check if course already in database
                     $dup = query("SELECT * FROM course WHERE code = ?", $code);
+                    // course already exist
                     if (!empty($dup))
                     {
-                        print("*** Code $code is duplicate, continuing\n");
+                        print("=> Code $code is duplicate, checking current info\n");
+
+                        // retrieve instructor
+                        $instd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table[@id='table11']/xhtml:tr/xhtml:td[@width='750']");
+                        $ins = trim((string) $instd[0]);
+                        print("# Instructor found: $ins\n");
+
+                        // check if already has more than or equal to one instructor
+                        if ($dup[0]["teacher"] != "")
+                        {
+                            // check if instrctor is not duplicate
+                            if (strpos($dup[0]["teacher"],$ins) === false)
+                            {
+                                $ins = $dup[0]["teacher"] . '、' . $ins;
+                                print("* Instructor more than one updating to $ins\n");
+                            }
+                            // already inserted this instructor
+                            else
+                            {
+                                print("* Already inserted $ins, continuing\n");
+                                // check next course
+                                continue;
+                            }
+                        }
+
+                        // storing data
+                        /*$result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', '沒有限制', $ins, $code);
+                        if ($result === false)
+                        {
+                            print("*** Cannnot insert $code into database\n");
+                        }
+                        else
+                        {
+                            print("### $code inserted\n\n");
+                            $jjj++;
+                            print("==> Course $course_code updated, total inserted = $iii, total updated = $jjj\n");
+                        }*/
+                        // check next course
                         continue;
                     }
                 }
+                // course does not exist
                 else
                 {
                     print("*** Code $course_code not found, continuing\n");
                     continue;
                 }
-           
-                // retrieve English name
-                $egnametd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='820']");
-                $egname = trim((string) $egnametd[0]);
-                print("English name found: $egname\n");
             
                 // retrieve credit
                 $credittd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='370']");
                 $credit = trim((string) $credittd[1]);
-                print("Credit found: $credit\n");
+                print("# Credit found: $credit\n");
             
                 // retrieve description
                 $dscrptd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='820']");
                 $dscrp = trim((string) $dscrptd[3]);
-                print("Description found: $dscrp\n");
-            
-                // insert into database
-                $result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit) VALUES (?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit);
+                print("# Description found: $dscrp\n");
+
+                // retrieve instructor
+                $instd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table[@id='table11']/xhtml:tr/xhtml:td[@width='750']");
+                $ins = trim((string) $instd[0]);
+                print("# Instructor found: $ins\n");
+
+                // storing regular data
+                /*$result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', '沒有限制', $ins);
                 if ($result === false)
                 {
                     print("*** Cannnot insert $code into database\n");
                 }
                 else
                 {
-                    print("$code inserted\n\n");
-                }
+                    print("### $code inserted\n\n");
+                    $iii++;
+                    print("New courses $course_code inserted, total inserted = $iii, total updated = $jjj\n");
+                }*/
             }
         }
     }
-    
+
 ?>
