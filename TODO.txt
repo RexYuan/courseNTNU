@@ -12,7 +12,6 @@ TODO:
         Search Class:
         Sort Class:
         Feature Class:
-        Facebook login
         trading system:
             second-hand textbook
             notes
@@ -33,3 +32,5 @@ DONE:
         logic: done
     learn JQuery: done
     upgrade ratings system with Ajax: done
+    set up server and get it online: done
+    Facebook login: done
