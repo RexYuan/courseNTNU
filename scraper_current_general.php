@@ -79,7 +79,7 @@
         $formS_set = ["", "1", "2", "3", "4"];
         
         // iterate from 000 to 999
-        for ($i = 400; $i <= 420; $i++)
+        for ($i = 500; $i <= 550; $i++)
         {
             // preping url components
             // preping courseCode
