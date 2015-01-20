@@ -27,9 +27,12 @@
             $message = "根據 $total 個投票";
             $ratings = sprintf('%2d', ($like_percentage * 100));
         }
+
+        // prepare course page url for Facebook comment
+        $page_url = "\"" . $urlroot . "index.php?dpm=" . $course[0]["department"] . "&cod=" . $course[0]["code"] . "\"";
         
         // render course page
-        render("course_page.php", ["urlroot" => $urlroot, "course" => $course[0], "likes" => $like_bar, "dislikes" => $dislike_bar, "message" => $message, "ratings" => $ratings]);
+        render("course_page.php", ["urlroot" => $urlroot, "course" => $course[0], "likes" => $like_bar, "dislikes" => $dislike_bar, "message" => $message, "ratings" => $ratings, "purl" => $page_url]);
     }
     
     // if a department selected
@@ -48,16 +51,4 @@
         // render department list
         render("department.php", ["urlroot" => $urlroot]);
     }
-    
-    /*$_POST["code"] = 'ITU0004';
-    $_POST["fbid"] = '10203739867764562';
-    $voterow = query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]);
-    $vote = $voterow[0];
-    print_r(query("SELECT * FROM vote WHERE code = ? AND fbid = ?", $_POST["code"], $_POST["fbid"]));
-    print("\n");
-    print_r($voterow);
-    print("\n");
-    print_r($vote);
-    print("\n");
-    print($vote["vote"]);*/
 ?>

@@ -59,8 +59,8 @@
 
     $iii = 0;
     
-    // iterate from 01U(1) to 0SU(10)
-    for ($dpmcode = ; $dpmcode <= ; $dpmcode++)
+    // iterate from AEU(11) to VDU(42)
+    for ($dpmcode = 16; $dpmcode <= 16; $dpmcode++)
     {
         // query for department abbreviation
         $dpmrow = query("SELECT * FROM department WHERE id = ?", $dpmcode);
@@ -85,7 +85,7 @@
         // TODO: 先測formS在測classes1如果=""再測group 不然就測="1"就夠了
         
         // iterate from 0000 to 9999
-        for ($i = ; $i <= ; $i++)
+        for ($i = 70; $i <= 340; $i++)
         {
             // preping url components
             // preping courseCode
@@ -142,10 +142,10 @@
                     if ($formS_index < 5)
                     {
                         // other group still possible
-                        if ($course_group_index < 7)
+                        if ($course_group_index < 4)
                         {
                             // other classes still possible
-                            if ($classes1_index < 2)
+                            if ($classes1_index < 1)
                             {
                                 // check next course group
                                 print("* Course $course_code chname null, changing classes1 from $classes1\n");
@@ -158,6 +158,8 @@
                             // checked all classes1 in this group
                             else
                             {
+                                // reset classes1 index
+                                $classes1_index = 0;
                                 // check next course group
                                 print("* Course $course_code chname null, changing course group from $course_group\n");
                                 $course_group_index++;
@@ -183,6 +185,8 @@
                     }
                     else
                     {
+                        // reset formS index
+                        $formS_index = 0;
                         // all possible combination of formS and group checked, none found
                         print("*** Course $course_code does not exist, continuing\n");
                         continue;
@@ -247,17 +251,17 @@
                         }
 
                         // storing data
-                        /*$result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', '沒有限制', $ins, $code);
+                        $result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', '沒有限制', $ins, $code);
                         if ($result === false)
                         {
                             print("*** Cannnot insert $code into database\n");
                         }
                         else
                         {
-                            print("### $code inserted\n\n");
+                            print("### $code updated\n\n");
                             $jjj++;
                             print("==> Course $course_code updated, total inserted = $iii, total updated = $jjj\n");
-                        }*/
+                        }
                         // check next course
                         continue;
                     }
@@ -285,7 +289,7 @@
                 print("# Instructor found: $ins\n");
 
                 // storing regular data
-                /*$result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', '沒有限制', $ins);
+                $result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', '沒有限制', $ins);
                 if ($result === false)
                 {
                     print("*** Cannnot insert $code into database\n");
@@ -295,7 +299,7 @@
                     print("### $code inserted\n\n");
                     $iii++;
                     print("New courses $course_code inserted, total inserted = $iii, total updated = $jjj\n");
-                }*/
+                }
             }
         }
     }

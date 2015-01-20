@@ -26,7 +26,9 @@
         <div class="container-fluid" id="head">
             <div class="row">
                 <div class="col-xs-12">
-                    <h1 class="text-center"><a href="index.php">courseNTNU</a></h1>
+                    <h1 class="text-center">
+                        <strong><a href="index.php">courseNTNU</a></strong><small>Beta</small>
+                    </h1>
                 </div>
             </div>
         </div>

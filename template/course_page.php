@@ -42,18 +42,24 @@
     
     <div>
         <h4>選課沒地雷：  </h4>
-        <?php if ($course["fbreview"] === NULL): ?>
-            <div class="text-muted"><p>沒有評論</p></div>
-        <?php else: ?>
-            <p>
+        <p>
+            <?php if ($course["fbreview"] === NULL): ?>
+                <div class="text-muted">沒有評論</div>
+            <?php else: ?>
                 <?= $course["fbreview"] ?>
-            </p>
-        <?php endif ?>
+            <?php endif ?>
+        </p>
         
         <h4>課程簡介：  </h4>
         <p>
-            <?= $course["description"] ?>
+            <?php if ($course["description"] === ""): ?>
+                <div class="text-muted">沒有資料</div>
+            <?php else: ?>
+                <?= $course["description"] ?>
+            <?php endif ?>
         </p>
+
+        <div class="fb-comments" data-href=<?= $purl ?> data-width="100%" data-numposts="5" data-colorscheme="light"></div>
     </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
