@@ -60,7 +60,7 @@
     $iii = 0;
     
     // iterate from 01U(1) to 0SU(10)
-    for ($dpmcode = 10; $dpmcode <= 10; $dpmcode++)
+    for ($dpmcode = 1; $dpmcode <= 10; $dpmcode++)
     {
         // query for department abbreviation
         $dpmrow = query("SELECT * FROM department WHERE id = ?", $dpmcode);
@@ -79,7 +79,7 @@
         $formS_set = ["", "1", "2", "3", "4"];
         
         // iterate from 000 to 999
-        for ($i = 500; $i <= 550; $i++)
+        for ($i = 0; $i <= 999; $i++)
         {
             // preping url components
             // preping courseCode
