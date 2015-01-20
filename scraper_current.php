@@ -81,11 +81,9 @@
         // classes1 set and index
         $classes1_index = 0;
         $classes1_set = ["", "1", "2", "3"];
-
-        // TODO: 先測formS在測classes1如果=""再測group 不然就測="1"就夠了
         
         // iterate from 0000 to 9999
-        for ($i = 70; $i <= 340; $i++)
+        for ($i = 168; $i <= 340; $i++)
         {
             // preping url components
             // preping courseCode

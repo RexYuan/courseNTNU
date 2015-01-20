@@ -5,13 +5,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <link href="bootstrap.min.css" rel="stylesheet"/>
-        <link href="bootstrap-theme.min.css" rel="stylesheet"/>
-        <link href="styles.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
+        <link href="css/styles.css" rel="stylesheet"/>
         
-        <script src="jquery-1.10.2.min.js"></script>
-        <script src="bootstrap.min.js"></script>
-        <script src="scripts.js"></script>
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/scripts.js"></script>
         
         <?php if (isset($title)): ?>
             <title>courseNTNU: <?= htmlspecialchars($title) ?></title>
@@ -22,7 +22,7 @@
 
     <body>
         <div id="fb-root"></div>
-        <script src="fb.js"></script>
+        <script src="js/fb.js"></script>
         <div class="container-fluid" id="head">
             <div class="row">
                 <div class="col-xs-12">

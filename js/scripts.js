@@ -8,7 +8,7 @@ $(function() {
             var rat = $('#likebtn').val();
 
             // update database
-            $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbID})
+            $.post("../rate.php", {"code": cod, "rate": rat, "fbid": fbID})
                 .done(function( data ) {
                     // update html
                     var datum = jQuery.parseJSON(data);
@@ -44,7 +44,7 @@ $(function() {
         var rat = $('#dislikebtn').val();
 
         // update database
-        $.post("rate.php", {"code": cod, "rate": rat, "fbid": fbID})
+        $.post("../rate.php", {"code": cod, "rate": rat, "fbid": fbID})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
@@ -80,7 +80,7 @@ var initBtn = function() {
     var cod = $('#code').val();
     if (fbstatus == "connected")
     {
-        $.post("btn.php", {"code": cod, "fbid": fbID})
+        $.post("../btn.php", {"code": cod, "fbid": fbID})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);

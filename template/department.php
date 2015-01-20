@@ -38,6 +38,7 @@
         
         <h3 id="CGE">通識</h3>
         <ul class="list-group">
+            <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=0GU">一般通識</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=01U">藝術與美感</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=02U">哲學思維與道德推理</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=03U">公民素養與社會探究</a></h4></li>
