@@ -26,8 +26,9 @@ $(function() {
                         $("#dislikebtn").removeClass('active');
                     }
                 })
-                .fail(function() {
-                    alert("錯誤: 代碼0，請聯絡開發人員");
+                .fail(function( data ) {
+                    alert("錯誤: 代碼0，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                    console.log(data);
                 });
         }
         else
@@ -62,8 +63,9 @@ $(function() {
                     $("#likebtn").removeClass('active');
                 }
             })
-            .fail(function() {
-                alert("錯誤: 代碼1，請聯絡開發人員");
+            .fail(function( data ) {
+                alert("錯誤: 代碼1，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                console.log(data);
             });
         }
         else
@@ -78,7 +80,7 @@ var initBtn = function() {
     $("#likebtn").prop('disabled', false);
     $("#dislikebtn").prop('disabled', false);
     var cod = $('#code').val();
-    if (fbstatus == "connected")
+    if (fbstatus === "connected")
     {
         $.post("../btn.php", {"code": cod, "fbid": fbID})
             .done(function( data ) {
@@ -94,8 +96,9 @@ var initBtn = function() {
                     $("#dislikebtn").addClass('active');
                 }
             })
-            .fail(function() {
-                alert("錯誤: 代碼2，請聯絡開發人員");
+            .fail(function( data ) {
+                alert("錯誤: 代碼2，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                console.log(data);
             });
     }
 };

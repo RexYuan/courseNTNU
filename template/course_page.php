@@ -1,6 +1,10 @@
 <div class="container" id="middle">
 
     <h3>
+        <a href="<?= $urlroot ?>index.php">
+            首頁
+        </a>
+        >>
         <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>">
             <?= $course['chdepartment'] ?>
         </a>

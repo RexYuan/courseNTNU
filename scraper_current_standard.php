@@ -83,7 +83,7 @@
         $classes1_set = ["", "1", "2", "3"];
         
         // iterate from 0000 to 9999
-        for ($i = 168; $i <= 340; $i++)
+        for ($i = 3000; $i <= 3010; $i++)
         {
             // preping url components
             // preping courseCode

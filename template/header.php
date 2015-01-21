@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="fb:app_id" content="1423906917900490"/>
     
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
