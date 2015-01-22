@@ -93,6 +93,7 @@ $(function() {
                         $("#report_success_message").removeClass('hidden');
                         $("#report_blank_message").addClass('hidden');
                         $("#submit_report").prop('disabled', true);
+                        setTimeout(function(){parent.history.back()();}, 1000);
                     })
                     .fail(function( data ) {
                         alert("錯誤: 代碼3，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
