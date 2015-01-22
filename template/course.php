@@ -14,22 +14,25 @@
         <ul class="list-group">
         <?php foreach($courses as $course): ?>
 
-            <li class="list-group-item">
-                <?php if ($course["availability"] === '1'): ?>
+            <?php if ($course["availability"] === '1'): ?>
+                <li class="list-group-item">
                     <h4><span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span><a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
-                        <?= $course['code'] ?>
                         <?= $course['chname'] ?>
                     </a></h4>
-                    <h4><?= $course['teacher'] ?></h4>
-                <?php else: ?>
+                </li>
+            <?php endif ?>
+            
+        <?php endforeach ?>
+        <?php foreach($courses as $course): ?>
+
+            <?php if ($course["availability"] === '0'): ?>
+                <li class="list-group-item">
                     <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span><a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
-                        <?= $course['code'] ?>
                         <?= $course['chname'] ?>
-                        <?= $course['teacher'] ?>
                     </a></h4>
-                <?php endif ?>
-            </li>
-        
+                </li>
+            <?php endif ?>
+
         <?php endforeach ?>
         </ul>
         

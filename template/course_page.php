@@ -50,15 +50,6 @@
     </div>
     
     <div>
-        <h4>選課沒地雷：  </h4>
-        <p>
-            <?php if ($course["fbreview"] === NULL): ?>
-                <div class="text-muted">沒有評論</div>
-            <?php else: ?>
-                <?= $course["fbreview"] ?>
-            <?php endif ?>
-        </p>
-        
         <h4>課程簡介：  </h4>
         <p>
             <?php if ($course["description"] === ""): ?>

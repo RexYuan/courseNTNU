@@ -1,21 +1,16 @@
 TODO:
-    screen scrape
-        instructor:
-        available this semester:
-    instructor database:
-
-
     postponed:
-        time
+        extra info(time, prerequsites, class, grade, etc.)
     
     extra feature
-        Search Class:
-        Sort Class:
-        Feature Class:
-        trading system:
+        Search Class
+        Sort Class
+        Feature Class
+        instructor database
+        trading system
             second-hand textbook
             notes
-        upgrade:
+        upgrade
             rewrite with Ruby on Rails
 
 DONE:
@@ -34,3 +29,7 @@ DONE:
     upgrade ratings system with Ajax: done
     set up server and get it online: done
     Facebook login: done
+    report: done
+    screen scrape
+        instructor: done (Manually partially)
+        available this semester: done (Manually partially)

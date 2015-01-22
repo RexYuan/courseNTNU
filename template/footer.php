@@ -21,7 +21,7 @@
         	<div class="row">
             	<div class="col-xs-12">
        				<h6 class="text-center" id="report_entrance"><a href="<?= $urlroot ?>report.php">回報問題或提供意見</a></h6>
-                	<h6 class="text-center">courseNTNU version 0.0, by Yuan</h6>
+                	<h6 class="text-center">courseNTNU version 0.1, Made by Ry with JaidTW, </h6>
             	</div>
         	</div>
         </div>
