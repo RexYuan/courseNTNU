@@ -1,20 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.8.1
+-- version 4.2.10
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Dec 27, 2014 at 12:16 PM
--- Server version: 5.5.32-MariaDB
--- PHP Version: 5.5.3
+-- Host: localhost:7777
+-- Generation Time: Jan 21, 2015 at 11:28 PM
+-- Server version: 5.5.38
+-- PHP Version: 5.6.2
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `coursentnu`
@@ -26,15 +20,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `department`
 --
 
-CREATE TABLE IF NOT EXISTS `department` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `department` (
+`id` int(2) NOT NULL,
   `abbr` char(3) COLLATE utf8_unicode_ci NOT NULL,
   `code` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `abbr` (`abbr`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=43 ;
+  `name` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `department`
@@ -58,7 +49,7 @@ INSERT INTO `department` (`id`, `abbr`, `code`, `name`) VALUES
 (15, 'CEU', 'EU07', '公民教育與活動領導學系'),
 (16, 'CHU', 'LU20', '國文學系'),
 (17, 'CLU', 'IU84', '華語文教學系'),
-(18, 'CMC', 'SU42', '化學系'),
+(18, 'CMU', 'SU42', '化學系'),
 (19, 'CSU', 'SU47', '資訊工程學系'),
 (20, 'EAU', 'IU83', '東亞學系'),
 (21, 'EDU', 'EU00', '教育學系'),
@@ -84,6 +75,22 @@ INSERT INTO `department` (`id`, `abbr`, `code`, `name`) VALUES
 (41, 'TSU', 'IU85', '應用華語文學系'),
 (42, 'VDU', 'TU68', '設計學系');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `abbr` (`abbr`), ADD UNIQUE KEY `code` (`code`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;

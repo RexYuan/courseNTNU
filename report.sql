@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:7777
--- Generation Time: Jan 21, 2015 at 11:27 PM
+-- Generation Time: Jan 21, 2015 at 11:28 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -17,14 +17,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vote`
+-- Table structure for table `report`
 --
 
-CREATE TABLE `vote` (
-`id` int(30) NOT NULL,
-  `fbid` bigint(30) unsigned NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `vote` tinyint(1) NOT NULL COMMENT '1 for yay 0 for nay',
+CREATE TABLE `report` (
+`id` int(20) NOT NULL,
+  `report` text NOT NULL,
+  `fbID` bigint(30) NOT NULL,
+  `fbMail` varchar(20) NOT NULL,
   `fbName` varchar(10) NOT NULL,
   `fbLink` varchar(45) NOT NULL,
   `fbGender` varchar(10) NOT NULL
@@ -35,17 +35,17 @@ CREATE TABLE `vote` (
 --
 
 --
--- Indexes for table `vote`
+-- Indexes for table `report`
 --
-ALTER TABLE `vote`
- ADD PRIMARY KEY (`id`), ADD KEY `fbid` (`fbid`,`code`);
+ALTER TABLE `report`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `vote`
+-- AUTO_INCREMENT for table `report`
 --
-ALTER TABLE `vote`
-MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `report`
+MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;

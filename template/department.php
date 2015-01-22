@@ -80,7 +80,7 @@
         <ul class="list-group">
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=MAU">數學系</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=PHU">物理學系</a></h4></li>
-            <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=CMC">化學系</a></h4></li>
+            <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=CMU">化學系</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=BIU">生命科學系</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=ESU">地球科學系</a></h4></li>
             <li class="list-group-item"><h4><a href="<?= $urlroot ?>index.php?dpm=CSU">資訊工程學系</a></h4></li>

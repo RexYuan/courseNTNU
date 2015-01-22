@@ -1,65 +1,12 @@
 <?php
-
-    /*
-       ==> This scraper is intended for scraping general ed courses page current info from 選課系統大綱.
-
-       *** NTNU Course Page(選課系統) URL GET Request Components Guide ***
-
-        A URL for a course page info from 選課系統大綱 will look something like this:
-        http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?year=103&term=2&courseCode=01UG025&courseGroup=&deptCode=GU&formS=&classes1=&deptGroup
-        The first part(http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl) is the controller of course page info GET request
-        , the second part seperated by the question mark is the actual GET request sent to that controller.
-        You will find below the detailed description for each and every part of the GET request.
-
-       year:
-        學年.
-
-       term:
-        semester, '1' for the first and '2' for the second.
-
-       courseCode:
-        course code, same for the same course
-        , 7 chars total, with first 3 chars being the department code(consult abbr column in department.sql)
-        , the forth char being 'G' for general ed or a number(0~9) for others
-        , last 3 chars are all numbers(000~999).
-
-       courseGroup:
-        indicator for different offers of a single course
-        , blank if course has only one offer
-        , 1 char if course is offered differently depending on time or instructor
-        , 1 char being a letter(A~Z).
-
-       deptCode:
-        department code, same for courses under same department
-        , 2 chars for general ed and 4 chars for others total
-        , 2 chars for general ed being 'GU'
-        , 4 chars for others is random shits(consult code column department.sql db).
-       
-       *formS:
-        The grade is course is intended for
-        , blank for general ed or not restricted
-        , a number(1~4) for every grade(大一 => 1, 大二 => 2, 大三 => 3, 大四 => 4).
-       
-       classes1:
-        indicator for different offers for different classes of a single department of a single course
-        , blank if course has only offer or for general ed
-        , 1 char if course is offered to more that one class(班別)
-        , 1 char being a number(0~9) whichs corresponds to 天干地支(甲乙丙...).
-
-       deptGroup:
-        department group for which course is intended
-        , blank if department has only one group
-        , a char if department is divided into more than one group
-        , a char being a letter(A~Z)
-        , currently only 美術系 is divided into 2 groups(A/B).  
-    */
+    // ==> This scraper is intended for scraping general ed courses page current info from 選課系統大綱.
     
     // requirements
     require("functions.php");
 
     $iii = 0;
     
-    // iterate from 01U(1) to 0SU(10)
+    // iterate from 01U(1) to 0SU(10) *see p.s. 1 in guide
     for ($dpmcode = 1; $dpmcode <= 10; $dpmcode++)
     {
         // query for department abbreviation
@@ -78,7 +25,7 @@
         $formS_set_index = 0;
         $formS_set = ["", "1", "2", "3", "4"];
         
-        // iterate from 000 to 999
+        // iterate from 000 to 999 *see p.s. 1 in guide
         for ($i = 0; $i <= 999; $i++)
         {
             // preping url components

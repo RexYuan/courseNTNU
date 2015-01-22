@@ -1,7 +1,6 @@
 <?php
     // ==> This scraper is intended for scraping standard courses page static info from 課程地圖大綱.
 
-
     // requirements
     require("functions.php");
     

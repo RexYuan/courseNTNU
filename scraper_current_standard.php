@@ -1,66 +1,14 @@
 <?php
-
-    /*
-       ==> This scraper is intended for scraping standard courses page current info from 選課系統大綱.
-
-       *** NTNU Course Page(選課系統) URL GET Request Components Guide ***
-
-        A URL for a course page info from 選課系統大綱 will look something like this:
-        http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?year=103&term=2&courseCode=01UG025&courseGroup=&deptCode=GU&formS=&classes1=&deptGroup
-        The first part(http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl) is the controller of course page info GET request
-        , the second part seperated by the question mark is the actual GET request sent to that controller.
-        You will find below the detailed description for each and every part of the GET request.
-
-       year:
-        學年.
-
-       term:
-        semester, '1' for the first and '2' for the second.
-
-       courseCode:
-        course code, same for the same course
-        , 7 chars total, with first 3 chars being the department code(consult abbr column in department.sql)
-        , the forth char being 'G' for general ed or a number(0~9) for others
-        , last 3 chars are all numbers(000~999).
-
-       courseGroup:
-        indicator for different offers of a single course
-        , blank if course has only one offer
-        , 1 char if course is offered differently depending on time or instructor
-        , 1 char being a letter(A~Z).
-
-       deptCode:
-        department code, same for courses under same department
-        , 2 chars for general ed and 4 chars for others total
-        , 2 chars for general ed being 'GU'
-        , 4 chars for others is random shits(consult code column department.sql db).
-       
-       *formS:
-        The grade is course is intended for
-        , blank for general ed or not restricted
-        , a number(1~4) for every grade(大一 => 1, 大二 => 2, 大三 => 3, 大四 => 4).
-       
-       classes1:
-        indicator for different offers for different classes of a single department of a single course
-        , blank if course has only offer or for general ed
-        , 1 char if course is offered to more that one class(班別)
-        , 1 char being a number(0~9) whichs corresponds to 天干地支(甲乙丙...).
-
-       deptGroup:
-        department group for which course is intended
-        , blank if department has only one group
-        , a char if department is divided into more than one group
-        , a char being a letter(A~Z)
-        , currently only 美術系 is divided into 2 groups(A/B).  
-    */
+    // ==> This scraper is intended for scraping standard courses page current info from 選課系統大綱.    
     
     // requirements
     require("functions.php");
 
     $iii = 0;
+    $jjj = 0;
     
-    // iterate from AEU(11) to VDU(42)
-    for ($dpmcode = 16; $dpmcode <= 16; $dpmcode++)
+    // iterate from AEU(11) to VDU(42) *see p.s. 1 in guide
+    for ($dpmcode = 34; $dpmcode <= 34; $dpmcode++)
     {
         // query for department abbreviation
         $dpmrow = query("SELECT * FROM department WHERE id = ?", $dpmcode);
@@ -72,18 +20,23 @@
 
         // course group set and index
         $course_group_index = 0;
-        $course_group_set = ["", "A", "B", "C", "D", "E", "F"];
+        $course_group_set = ["", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"];
 
-        // formS set and index
+        // formS set and index (list item by probability)
         $formS_index = 0;
-        $formS_set = ["", "1", "2", "3", "4"];
+        $formS_set = ["1", "2", "", "3", "4"];
+        $formS_grade_set = ["一年級", "二年級", "沒有限制", "三年級", "四年級"];
 
         // classes1 set and index
         $classes1_index = 0;
         $classes1_set = ["", "1", "2", "3"];
+
+        // dept group set and index
+        $dept_group_index = 0;
+        $dept_group_set = ["", "1", "2", "3"];
         
-        // iterate from 0000 to 9999
-        for ($i = 3001; $i <= 3010; $i++)
+        // iterate from 0000 to 9999 *see p.s. 1 in guide
+        for ($i = $pp[$p]; $i <= $pp[$p]; $i++)
         {
             // preping url components
             // preping courseCode
@@ -114,7 +67,7 @@
             // preping url
             $course_url = "http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?" . $year_component . $term_component . $course_code_component . $course_group_component . $dept_code_component . $formS_component . $classes1_component . $dept_group_component;
 
-            print("=> Trying: $course_url\n");
+            print("=> Trying $course_code: $course_url\n");
             
             // html to xml
             if (!($tidy = tidy_parse_file($course_url, array("numeric-entities" => true, "output-xhtml" => true), "utf8")))
@@ -137,13 +90,13 @@
                 if ($chname === "null")
                 {
                     // other formS still possible
-                    if ($formS_index < 5)
+                    if ($formS_index < 4)
                     {
                         // other group still possible
-                        if ($course_group_index < 4)
+                        if ($course_group_index < 16)
                         {
                             // other classes still possible
-                            if ($classes1_index < 1)
+                            if ($classes1_index < 0)
                             {
                                 // check next course group
                                 print("* Course $course_code chname null, changing classes1 from $classes1\n");
@@ -236,7 +189,7 @@
                             // check if instrctor is not duplicate
                             if (strpos($dup[0]["teacher"],$ins) === false)
                             {
-                                $ins = $dup[0]["teacher"] . '、' . $ins;
+                                $ins = $dup[0]["teacher"] . '／' . $ins;
                                 print("* Instructor more than one updating to $ins\n");
                             }
                             // already inserted this instructor
@@ -249,7 +202,7 @@
                         }
 
                         // storing data
-                        $result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', '沒有限制', $ins, $code);
+                        $result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', $formS_grade_set[$formS_index], $ins, $code);
                         if ($result === false)
                         {
                             print("*** Cannnot insert $code into database\n");
@@ -287,7 +240,7 @@
                 print("# Instructor found: $ins\n");
 
                 // storing regular data
-                $result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', '沒有限制', $ins);
+                $result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', $formS_grade_set[$formS_index], $ins);
                 if ($result === false)
                 {
                     print("*** Cannnot insert $code into database\n");
@@ -301,5 +254,6 @@
             }
         }
     }
+    print("==> total inserted = $iii, total updated = $jjj\n");
 
 ?>

@@ -1,5 +1,10 @@
 var fbstatus;
 var fbID;
+var fbMail;
+var fbName;
+var fbLink;
+var fbTime;
+var fbGender;
 
 window.fbAsyncInit = function() {
     FB.init({
@@ -29,9 +34,14 @@ function statusChangeCallback(response) {
             // console.log(JSON.stringify(response));
             //document.getElementById('fbstatus').innerHTML = 'Hi, ' + response.name;
             fbID = response.id;
+            fbMail = response.email;
+            fbName = response.name;
+            fbLink = response.link;
+            fbGender = response.gender;
 
-            // initialize btn state
+            // initialize btns state
             initBtn();
+            initRepBtn();
         });
     }
     else if (fbstatus === 'not_authorized')
@@ -39,8 +49,9 @@ function statusChangeCallback(response) {
         // The person is logged into Facebook, but not your app.
         //document.getElementById('fbstatus').innerHTML = '尚未登入';
 
-        // initialize btn state
+        // initialize btns state
         initBtn();
+        initRepBtn();
     }
     else
     {
@@ -48,8 +59,9 @@ function statusChangeCallback(response) {
         // they are logged into this app or not.
         //document.getElementById('fbstatus').innerHTML = '';
 
-        // initialize btn state
-            initBtn();
+        // initialize btns state
+        initBtn();
+        initRepBtn();
     }
 }
 
