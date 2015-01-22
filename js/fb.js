@@ -36,7 +36,6 @@ function statusChangeCallback(response) {
             fbID = response.id;
             fbMail = response.email;
             fbName = response.name;
-            fbLink = response.link;
             fbGender = response.gender;
 
             // initialize btns state

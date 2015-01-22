@@ -8,7 +8,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // insert report into report
-        $result = query("INSERT INTO report (report, fbID, fbMail, fbName, fbLink, fbGender) VALUES (?, ?, ?, ?, ?, ?)", $_POST["report"], $_POST["fbid"], $_POST["fbmail"], $_POST["fbname"], $_POST["fblink"], $_POST["fbgender"]);
+        $result = query("INSERT INTO report (report, fbID, fbMail, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $_POST["report"], $_POST["fbid"], $_POST["fbmail"], $_POST["fbname"], $_POST["fbgender"]);
     }
     else
     {

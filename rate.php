@@ -16,7 +16,7 @@
             // update database
             if (empty($voterow))
             {
-                query("INSERT INTO vote (fbid, code, vote, fbName, fbLink, fbGender) VALUES (?, ?, ?, ?, ?, ?)", $_POST["fbid"], $_POST["code"], '1', $_POST["fbname"], $_POST["fblink"], $_POST["fbgender"]);
+                query("INSERT INTO vote (fbid, code, vote, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $_POST["fbid"], $_POST["code"], '1', $_POST["fbname"], $_POST["fbgender"]);
                 query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
             }
             else
@@ -41,7 +41,7 @@
             // update database
             if (empty($voterow))
             {
-                query("INSERT INTO vote (fbid, code, vote, fbName, fbLink, fbGender) VALUES (?, ?, ?, ?, ?, ?)", $_POST["fbid"], $_POST["code"], '0', $_POST["fbname"], $_POST["fblink"], $_POST["fbgender"]);
+                query("INSERT INTO vote (fbid, code, vote, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $_POST["fbid"], $_POST["code"], '0', $_POST["fbname"], $_POST["fbgender"]);
                 query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
             }
             else
