@@ -1,6 +1,6 @@
 <?php
 
-    //require("magic.php");
+    require("magic.php");
     
     /**
      * Executes SQL statement, possibly with parameters, returning
