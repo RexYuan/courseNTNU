@@ -1,5 +1,7 @@
 <?php
 
+    require("magic.php");
+    
     /**
      * Executes SQL statement, possibly with parameters, returning
      * an array of all rows in result set or false on (non-fatal) error.
@@ -19,8 +21,8 @@
             try
             {
                 // connect to database
-                $handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", "sqluser", "woohoo");
-                //$handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=7777", "sqluser", "woohoo");
+                $handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", $secret, $shhhhh);
+                //$handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", $secret, $shhhhh);
 
                 // ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
