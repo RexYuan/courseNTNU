@@ -8,10 +8,9 @@
     if (isset($_GET["word"]))
     {
         // query database
-        $searchrow = query("SELECT * FROM course WHERE code LIKE ?", $GET["word"]);
+        $searchrow = query("SELECT * FROM course WHERE chname LIKE ?", $_GET["word"]."%");
 
-        //render("search_form.php", ["urlroot" => $urlroot, "results" => $searchrow]);
-        print_r($searchrow);
+        render("search_form.php", ["urlroot" => $urlroot, "results" => $searchrow]);
     }
     else
     {
