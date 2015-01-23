@@ -37,10 +37,10 @@
             }
 
             // prepare course page url for Facebook comment
-            $page_url = "\"" . $urlroot . "index.php?dpm=" . $course[0]["department"] . "&cod=" . $course[0]["code"] . "\"";
+            $page_url = $urlroot . "index.php?dpm=" . $course[0]["department"] . "&cod=" . $course[0]["code"];
         
             // render course page
-            render("course_page.php", ["urlroot" => $urlroot, "course" => $course[0], "likes" => $like_bar, "dislikes" => $dislike_bar, "message" => $message, "ratings" => $ratings, "purl" => $page_url]);
+            render("course_page.php", ["title" => $course[0]["chname"], "urlroot" => $urlroot, "course" => $course[0], "likes" => $like_bar, "dislikes" => $dislike_bar, "message" => $message, "ratings" => $ratings, "purl" => $page_url]);
         }
     }
     
@@ -54,7 +54,7 @@
             $departs = query("SELECT * FROM department WHERE abbr = ? OR abbr = ? OR abbr = ? OR abbr = ?", '0AU', '0HU', '0NU', '0SU');
             $courses = query("SELECT * FROM course WHERE department = ? OR department = ? OR department = ? OR department = ?", $departs[0]["abbr"], $departs[1]["abbr"], $departs[2]["abbr"], $departs[3]["abbr"]);
             // render courses list
-            render("course.php", ["urlroot" => $urlroot, "courses" => $courses]);
+            render("course.php", ["title" => "一般通識", "urlroot" => $urlroot, "courses" => $courses]);
         }
         // checking other department
         else
@@ -72,7 +72,7 @@
             else
             {
                 // render courses list
-                render("course.php", ["urlroot" => $urlroot, "courses" => $courses]);
+                render("course.php", ["title" => $courses[0]["chdepartment"], "urlroot" => $urlroot, "courses" => $courses]);
             }
         }
     }

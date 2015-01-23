@@ -15,7 +15,7 @@
         <script src="js/scripts.js"></script>
         
         <?php if (isset($title)): ?>
-            <title>courseNTNU: <?= htmlspecialchars($title) ?></title>
+            <title>courseNTNU：<?= htmlspecialchars($title) ?></title>
         <?php else: ?>
             <title>courseNTNU</title>
         <?php endif ?>

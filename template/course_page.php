@@ -59,7 +59,7 @@
             <?php endif ?>
         </p>
 
-        <div class="fb-comments" data-href=<?= $purl ?> data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-comments" data-href=<?= htmlspecialchars($purl) ?> data-width="100%" data-numposts="5" data-colorscheme="light"></div>
     </div>
     
 </div>
