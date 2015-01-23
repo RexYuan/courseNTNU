@@ -1,8 +1,14 @@
+Requested:
+    seperate page for same course but different instructor
+    add the rest of the course(普通科、共同體育...)
+
 TODO:
     postponed:
         extra info(time, prerequsites, class, grade, etc.)
     
-    extra feature
+    extra feature?
+        甜 or 涼... etc extra tag
+        hot, good... etc extra label
         Search Class
         Sort Class
         Feature Class
