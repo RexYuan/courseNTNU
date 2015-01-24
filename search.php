@@ -4,13 +4,18 @@
     require("functions.php");
     require("constants.php");
     
-    // if rated
     if (isset($_GET["word"]))
     {
-        // query database
-        $searchrow = query("SELECT * FROM course WHERE chname LIKE ?", $_GET["word"]."%");
+        if ($_GET["word"] === "" || $_GET["word"] === "（" || $_GET["word"] === "）" || $_GET["word"] == " " || $_GET["word"] == "  " || $_GET["word"] == "／")
+        {
+            render("search_form.php", ["urlroot" => $urlroot]);
+        }
+        else
+        {
+            $searchrow = query("SELECT * FROM course WHERE chname LIKE ? OR teacher LIKE ?", "%".$_GET["word"]."%", "%".$_GET["word"]."%");
 
-        render("search_form.php", ["urlroot" => $urlroot, "results" => $searchrow]);
+            render("search_form.php", ["urlroot" => $urlroot, "results" => $searchrow, "word" => $_GET["word"]]);
+        }
     }
     else
     {

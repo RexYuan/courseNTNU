@@ -1,15 +1,22 @@
 <div class="container" id="middle">
 
-
+    <h3>搜尋</h3>
+    <div class="alert alert-warning hidden" id="search_blank_message" role="alert">欄位空白</div>
     <form class="form-inline" action="../search.php" method="GET">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="想找什麼課？" name="word">
+            <input autofocus type="text" class="form-control" placeholder="想找什麼？" name="word">
         </div>
         <button type="submit" class="btn btn-default">搜尋</button>
     </form>
     
+    <?php if (empty($results)): ?>
+        <h4>沒有結果</h4>
+    <?php else: ?>
+        <h4>搜尋「<?= $word ?>」結果：</h4>
+    <?php endif ?>
+
     <ul class="list-group">
-        <?php foreach($results as $result): ?>
+        <?php foreach ($results as $result): ?>
 
             <?php if ($result["availability"] === '1'): ?>
                 <li class="list-group-item">
@@ -20,7 +27,7 @@
             <?php endif ?>
             
         <?php endforeach ?>
-        <?php foreach($results as $result): ?>
+        <?php foreach ($results as $result): ?>
 
             <?php if ($result["availability"] === '0'): ?>
                 <li class="list-group-item">
@@ -31,6 +38,6 @@
             <?php endif ?>
 
         <?php endforeach ?>
-        </ul>
+    </ul>
     
 </div>
