@@ -35,7 +35,7 @@
 
 <div class="container" id="middle">
     <form action="http://localhost/index.php" method="get" role="form">
-        
+        <div class="col-xs-4">
         <h3 id="CGE">通識</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=0GU"><li class="list-group-item"><h4>一般通識</h4></li></a>
@@ -46,7 +46,8 @@
             <a href="<?= $urlroot ?>index.php?dpm=05U"><li class="list-group-item"><h4>數學與科學思維</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=06U"><li class="list-group-item"><h4>科學與生命</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="COT">科技學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=IEU"><li class="list-group-item"><h4>工業教育學系</h4></li></a>
@@ -55,7 +56,8 @@
             <a href="<?= $urlroot ?>index.php?dpm=MTU"><li class="list-group-item"><h4>機電科技學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=AEU"><li class="list-group-item"><h4>電機工程學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="COE">教育學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=EDU"><li class="list-group-item"><h4>教育學系</h4></li></a>
@@ -66,7 +68,8 @@
             <a href="<?= $urlroot ?>index.php?dpm=CEU"><li class="list-group-item"><h4>公民教育與活動領導學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=SPU"><li class="list-group-item"><h4>特殊教育學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="CLA">文學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=CHU"><li class="list-group-item"><h4>國文學系</h4></li></a>
@@ -75,7 +78,8 @@
             <a href="<?= $urlroot ?>index.php?dpm=GEU"><li class="list-group-item"><h4>地理學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=TCU"><li class="list-group-item"><h4>臺灣語文學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="COS">理學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=MAU"><li class="list-group-item"><h4>數學系</h4></li></a>
@@ -85,35 +89,40 @@
             <a href="<?= $urlroot ?>index.php?dpm=ESU"><li class="list-group-item"><h4>地球科學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=CSU"><li class="list-group-item"><h4>資訊工程學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="COM">音樂學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=MUU"><li class="list-group-item"><h4>音樂學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="COB">管理學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=BAU"><li class="list-group-item"><h4>企業管理學士學位學程</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="COA">藝術學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=ATU"><li class="list-group-item"><h4>美術學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=VDU"><li class="list-group-item"><h4>設計學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="CIS">國際與僑教學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=EAU"><li class="list-group-item"><h4>東亞學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=CLU"><li class="list-group-item"><h4>華語文教學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=TSU"><li class="list-group-item"><h4>應用華語文學系</h4></li></a>
         </ul>
-        
+      </div>
+        <div class="col-xs-4">
         <h3 id="CSR">運動與休閒學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=PEU"><li class="list-group-item"><h4>體育學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=FPU"><li class="list-group-item"><h4>運動競技學系</h4></li></a>
         </ul>
-    
+      </div>
     </form>
 </div>
