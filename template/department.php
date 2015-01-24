@@ -1,35 +1,35 @@
 <div class="container-fluid" id="nav">
     <div class="row">
-        <div class="col-xs-6 col-sm-4 col-md-1 col-md-offset-1">
-            <h3 class="text-center"><a href="#CGE">通識</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#COT">科技</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#COE">教育</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#CLA">文學</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#COS">理學</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#COM">音樂</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#COB">管理</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#COA">藝術</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#CIS">國際</a></h3>
-        </div>
-        <div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center"><a href="#CSR">運動</a></h3>
-        </div>
+        <a href="#CGE"><div class="col-xs-6 col-sm-4 col-md-1 col-md-offset-1">
+            <h3 class="text-center">通識</a>
+        </div></h3>
+        <a href="#COT"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">科技</a></h3>
+        </div></h3>
+        <a href="#COE"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">教育</a></h3>
+        </div></h3>
+        <a href="#CLA"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">文學</a></h3>
+        </div></h3>
+        <a href="#COS"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">理學</a></h3>
+        </div></h3>
+        <a href="#COM"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">音樂</a></h3>
+        </div></h3>
+        <a href="#COB"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">管理</a></h3>
+        </div></h3>
+        <a href="#COA"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">藝術</a></h3>
+        </div></h3>
+        <a href="#CIS"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">國際</a></h3>
+        </div></h3>
+        <a href="#CSR"><div class="col-xs-6 col-sm-4 col-md-1">
+            <h3 class="text-center">運動</a></h3>
+        </div></h3>
     </div>
 </div>
 
