@@ -3,12 +3,17 @@
     background-color: #BD7A22;
 }
 
-#head a
+#head strong a
 {
     color: #FFFFCC;
 }
 
 #head small
+{
+    color: #240F03;
+}
+
+#head small a
 {
     color: #240F03;
 }

@@ -19,11 +19,21 @@
         <?php foreach ($results as $result): ?>
 
             <?php if ($result["availability"] === '1'): ?>
-                <li class="list-group-item">
-                    <h4><span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span><a href="<?= $urlroot ?>index.php?dpm=<?= $result['department'] ?>&amp;cod=<?= $result['code'] ?>">
-                        <?= $result['chname'] ?>
-                    </a></h4>
-                </li>
+                <a href="<?= $urlroot ?>index.php?dpm=<?= $result['department'] ?>&amp;cod=<?= $result['code'] ?>">
+                    <li class="list-group-item">
+                        <h4><span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
+                            <?= $result['chname'] ?>
+                        </h4>
+                        <h5>
+                            <?= $result['chdepartment'] ?>：
+                            <?php if ($result['teacher'] === ""): ?>
+                                沒有資料
+                            <?php else: ?>
+                                <?= $result['teacher'] ?>
+                            <?php endif ?>
+                        </h5>
+                    </li>
+                </a>
             <?php endif ?>
             
         <?php endforeach ?>
