@@ -15,22 +15,26 @@
         <?php foreach($courses as $course): ?>
 
             <?php if ($course["availability"] === '1'): ?>
+            <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
                 <li class="list-group-item">
-                    <h4><span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span><a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
+                    <h4><span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
                             <?= $course['chname'] ?>
-                    </a></h4>
+                    </h4>
                 </li>
+            </a>
             <?php endif ?>
             
         <?php endforeach ?>
         <?php foreach($courses as $course): ?>
 
             <?php if ($course["availability"] === '0'): ?>
+            <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
                 <li class="list-group-item">
-                    <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span><a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
+                    <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
                         <?= $course['chname'] ?>
-                    </a></h4>
+                    </h4>
                 </li>
+            </a>
             <?php endif ?>
 
         <?php endforeach ?>
