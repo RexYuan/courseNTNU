@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-xs-1">
                     <h1>
-                        <small><a href="search.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a><small>
+                        <small><a href="search.php"><span class="glyphicon glyphicon-search hidden-xs" aria-hidden="true"></span></a><small>
                     </h1>
                 </div>
             </div>
