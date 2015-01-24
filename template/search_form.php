@@ -9,11 +9,15 @@
         <button type="submit" class="btn btn-default">搜尋</button>
     </form>
     
-    <?php if (empty($results)): ?>
-        <h4>沒有結果</h4>
+    <h4>
+    <?php if (empty($results) && $home !== true): ?>
+        沒有結果
+    <?php elseif ($home === true): ?>
+        輸入課程名稱或老師名字
     <?php else: ?>
-        <h4>搜尋「<?= $word ?>」結果：</h4>
+        搜尋「<?= $word ?>」結果：
     <?php endif ?>
+    </h4>
 
     <ul class="list-group">
         <?php foreach ($results as $result): ?>
@@ -40,11 +44,21 @@
         <?php foreach ($results as $result): ?>
 
             <?php if ($result["availability"] === '0'): ?>
-                <li class="list-group-item">
-                    <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span><a href="<?= $urlroot ?>index.php?dpm=<?= $result['department'] ?>&amp;cod=<?= $result['code'] ?>">
-                        <?= $result['chname'] ?>
-                    </a></h4>
-                </li>
+                <a href="<?= $urlroot ?>index.php?dpm=<?= $result['department'] ?>&amp;cod=<?= $result['code'] ?>">
+                    <li class="list-group-item">
+                        <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
+                            <?= $result['chname'] ?>
+                        </h4>
+                        <h5>
+                            <?= $result['chdepartment'] ?>：
+                            <?php if ($result['teacher'] === ""): ?>
+                                沒有資料
+                            <?php else: ?>
+                                <?= $result['teacher'] ?>
+                            <?php endif ?>
+                        </h5>
+                    </li>
+                </a>
             <?php endif ?>
 
         <?php endforeach ?>

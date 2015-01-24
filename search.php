@@ -19,7 +19,7 @@
     }
     else
     {
-        render("search_form.php", ["urlroot" => $urlroot]);
+        render("search_form.php", ["urlroot" => $urlroot, "home" => true]);
     }
 
 ?>
