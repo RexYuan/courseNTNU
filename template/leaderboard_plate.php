@@ -30,7 +30,7 @@
             <ul class="list-group"> 
                 <?php foreach ($otherleaders as $otherleader): ?>
 
-                    <a href="<?= $urlroot ?>index.php?dpm=<?= $geleader['department'] ?>&amp;cod=<?= $geleader['code'] ?>">
+                    <a href="<?= $urlroot ?>index.php?dpm=<?= $otherleader['department'] ?>&amp;cod=<?= $otherleader['code'] ?>">
                         <li class="list-group-item">
                             <h4><span class="label label-primary"><?= floor($otherleader['ratings'] * 100) ?></span>
                                 <?= $otherleader['chname'] ?>
