@@ -26,19 +26,19 @@
         <script src="js/fb.js"></script>
         <div class="container-fluid" id="head">
             <div class="row">
-                <div class="col-xs-1">
+                <div class="col-xs-2 col-sm-1">
                     <h2>
-                        <a href="leaderboard.php"><span class="label label-warning hidden-xs"><small><span class="glyphicon glyphicon-stats hidden-xs" aria-hidden="true"></span><small></span></a>
+                        <a href="leaderboard.php"><span class="label label-warning"><small><span class="glyphicon glyphicon-stats" aria-hidden="true"></span><small></span></a>
                     </h2>
                 </div>
-                <div class="col-xs-10">
+                <div class="col-xs-8 col-sm-10">
                     <h1 class="text-center">
                         <strong id="title"><a href="index.php">courseNTNU</a></strong><small>Beta</small>
                     </h1>
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-2 col-sm-1">
                     <h2>
-                        <a href="search.php"><span class="label label-warning hidden-xs"><small><span class="glyphicon glyphicon-search hidden-xs" aria-hidden="true"></span><small></span></a>
+                        <a href="search.php"><span class="label label-warning"><small><span class="glyphicon glyphicon-search" aria-hidden="true"></span><small></span></a>
                     </h2>
                 </div>
             </div>
