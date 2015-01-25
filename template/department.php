@@ -53,7 +53,7 @@
             <a href="<?= $urlroot ?>index.php?dpm=IEU"><li class="list-group-item"><h4>工業教育學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=ITU"><li class="list-group-item"><h4>科技應用與人力資源發展學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=GCU"><li class="list-group-item"><h4>圖文傳播學系</h4></li></a>
-            <a href="<?= $urlroot ?>index.php?dpm=MTU"><li class="list-group-item"><h4>機電科技學系</h4></li></a>
+            <a href="<?= $urlroot ?>index.php?dpm=MTU"><li class="list-group-item"><h4>機電工程學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=AEU"><li class="list-group-item"><h4>電機工程學系</h4></li></a>
         </ul>
       </div>
@@ -110,7 +110,7 @@
         </ul>
       </div>
         <div class="col-md-4 col-sm-6 col-xs-12">
-        <h3 id="CIS">國際與僑教學院</h3>
+        <h3 id="CIS">國際與社會科學學院</h3>
         <ul class="list-group">
             <a href="<?= $urlroot ?>index.php?dpm=EAU"><li class="list-group-item"><h4>東亞學系</h4></li></a>
             <a href="<?= $urlroot ?>index.php?dpm=CLU"><li class="list-group-item"><h4>華語文教學系</h4></li></a>
