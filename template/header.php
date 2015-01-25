@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-2 col-sm-1">
                     <h2>
-                        <a href="leaderboard.php"><span class="label label-warning"><small><span class="glyphicon glyphicon-stats" aria-hidden="true"></span><small></span></a>
+                        <a href="leaderboard.php"><span class="label label-warning"><small><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></small></span></a>
                     </h2>
                 </div>
                 <div class="col-xs-8 col-sm-10">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-xs-2 col-sm-1">
                     <h2>
-                        <a href="search.php"><span class="label label-warning"><small><span class="glyphicon glyphicon-search" aria-hidden="true"></span><small></span></a>
+                        <a href="search.php"><span class="label label-warning"><small><span class="glyphicon glyphicon-search" aria-hidden="true"></span></small></span></a>
                     </h2>
                 </div>
             </div>

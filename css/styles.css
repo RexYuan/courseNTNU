@@ -3,7 +3,7 @@
     background-color: #BD7A22;
 }
 
-#head strong a
+#head h1 strong a
 {
     color: #FFFFCC;
 }
@@ -13,9 +13,9 @@
     color: #240F03;
 }
 
-#head small a
+#head h2 a small
 {
-    color: #240F03;
+    color: #FFFFCC;
 }
 
 #middle a
