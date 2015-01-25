@@ -26,15 +26,20 @@
         <script src="js/fb.js"></script>
         <div class="container-fluid" id="head">
             <div class="row">
-                <div class="col-xs-10 col-xs-offset-1">
+                <div class="col-xs-1">
+                    <h2>
+                        <a href="leaderboard.php"><span class="label label-warning hidden-xs"><small><span class="glyphicon glyphicon-stats hidden-xs" aria-hidden="true"></span><small></span></a>
+                    </h2>
+                </div>
+                <div class="col-xs-10">
                     <h1 class="text-center">
                         <strong id="title"><a href="index.php">courseNTNU</a></strong><small>Beta</small>
                     </h1>
                 </div>
                 <div class="col-xs-1">
-                    <h1>
-                        <small><a href="search.php"><span class="glyphicon glyphicon-search hidden-xs" aria-hidden="true"></span></a><small>
-                    </h1>
+                    <h2>
+                        <a href="search.php"><span class="label label-warning hidden-xs"><small><span class="glyphicon glyphicon-search hidden-xs" aria-hidden="true"></span><small></span></a>
+                    </h2>
                 </div>
             </div>
         </div>

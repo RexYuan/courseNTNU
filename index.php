@@ -51,7 +51,7 @@
         if ($_GET["dpm"] === "0GU")
         {
             // query courses for all corresponding courses of 一般通識
-            $departs = query("SELECT * FROM department WHERE abbr = ? OR abbr = ? OR abbr = ? OR abbr = ?", '0AU', '0HU', '0NU', '0SU');
+            $departs = query("SELECT * FROM department WHERE abbr IN (?, ?, ?, ?)", '0AU', '0HU', '0NU', '0SU');
             $courses = query("SELECT * FROM course WHERE department = ? OR department = ? OR department = ? OR department = ?", $departs[0]["abbr"], $departs[1]["abbr"], $departs[2]["abbr"], $departs[3]["abbr"]);
             // render courses list
             render("course.php", ["title" => "一般通識", "urlroot" => $urlroot, "courses" => $courses]);
