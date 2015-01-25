@@ -50,5 +50,8 @@
             </ul>
         </div>
     </div>
+    <div class="text-center">
+        <h6>僅列出達到一定總投票數的課程</h6>
+    </div>
     
 </div>
