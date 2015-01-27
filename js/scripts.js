@@ -8,7 +8,7 @@ $(function() {
             var rat = $('#likebtn').val();
 
             // update database
-            $.post("../rate.php", {"code": cod, "rate": rat, "fbid": fbID, "fbname": fbName, "fblink": fbLink, "fbgender": fbGender})
+            $.post("../rate.php", {"token": token, "rate": rat, "code": cod})
                 .done(function( data ) {
                     // update html
                     var datum = jQuery.parseJSON(data);
@@ -27,7 +27,7 @@ $(function() {
                     }
                 })
                 .fail(function( data ) {
-                    alert("錯誤: 代碼0，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                    alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
                     console.log(data);
                 });
         }
@@ -45,7 +45,7 @@ $(function() {
         var rat = $('#dislikebtn').val();
 
         // update database
-        $.post("../rate.php", {"code": cod, "rate": rat, "fbid": fbID, "fbname": fbName, "fblink": fbLink, "fbgender": fbGender})
+        $.post("../rate.php", {"token": token, "rate": rat, "code": cod})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
@@ -64,7 +64,7 @@ $(function() {
                 }
             })
             .fail(function( data ) {
-                alert("錯誤: 代碼1，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                alert("錯誤: 1\n(" + data.status + ": " + data.statusText + ")");
                 console.log(data);
             });
         }
@@ -87,7 +87,7 @@ $(function() {
             else
             {
                 // update database
-                $.post("../report.php", {"report": report, "fbid": fbID, "fbmail": fbMail, "fbname": fbName, "fblink": fbLink, "fbgender": fbGender})
+                $.post("../report.php", {"report": report, "token": token})
                     .done(function( data ) {
                         // update html
                         $("#report_success_message").removeClass('hidden');
@@ -96,7 +96,7 @@ $(function() {
                         setTimeout(function(){parent.history.back()();}, 1000);
                     })
                     .fail(function( data ) {
-                        alert("錯誤: 代碼3，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                        alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
                         console.log(data);
                     });
             }
@@ -130,7 +130,7 @@ var initBtn = function() {
                 }
             })
             .fail(function( data ) {
-                alert("錯誤: 代碼2，請聯絡開發人員\n(" + data.status + ": " + data.statusText + ")");
+                alert("錯誤: 2\n(" + data.status + ": " + data.statusText + ")");
                 console.log(data);
             });
     }

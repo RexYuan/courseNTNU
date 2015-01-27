@@ -1,11 +1,5 @@
 var fbstatus;
-var fbID;
-var fbMail;
-var fbName;
-var fbLink;
-var fbTime;
-var fbGender;
-
+var token;
 window.fbAsyncInit = function() {
     FB.init({
         appId      : '1423906917900490',
@@ -29,14 +23,16 @@ function statusChangeCallback(response) {
     if (fbstatus === 'connected')
     {
         // Logged into your app and Facebook.
-        // console.log(response);
+        //console.log(response.authResponse.accessToken);
+        token = response.authResponse.accessToken;
         FB.api('/me', function(response) {
             // console.log(JSON.stringify(response));
             //document.getElementById('fbstatus').innerHTML = 'Hi, ' + response.name;
             fbID = response.id;
-            fbMail = response.email;
-            fbName = response.name;
-            fbGender = response.gender;
+            //fbMail = response.email;
+            //fbName = response.name;
+            //fbGender = response.gender;
+          //  console.log(response);
 
             // initialize btns state
             initBtn();

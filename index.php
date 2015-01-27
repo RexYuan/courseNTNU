@@ -3,6 +3,8 @@
     // requirements
     require("functions.php");
     require("constants.php");
+    require("magic.php");
+    require_once 'vendor/autoload.php';
 
     // if a course selected
     if (isset($_GET["dpm"]) && isset($_GET["cod"]))

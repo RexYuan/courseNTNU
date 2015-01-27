@@ -7,8 +7,10 @@
     // if rated
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        $profile = lookup($_POST["token"]);
+
         // check if voted
-        $voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $_POST["fbid"], $_POST["code"]);
+        $voterow = query("SELECT * FROM vote WHERE fbid = ? AND code = ?", $profile["id"], $_POST["code"]);
 
         // if liked
         if ($_POST["rate"] == "推")
@@ -16,19 +18,19 @@
             // update database
             if (empty($voterow))
             {
-                query("INSERT INTO vote (fbid, code, vote, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $_POST["fbid"], $_POST["code"], '1', $_POST["fbname"], $_POST["fbgender"]);
+                query("INSERT INTO vote (fbid, code, vote, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $profile["id"], $_POST["code"], '1', $profile["name"], $profile["gender"]);
                 query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
             }
             else
             {
                 if ($voterow[0]["vote"] == "1")
                 {
-                    query("DELETE FROM vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
+                    query("DELETE FROM vote WHERE fbid = ? AND code = ? AND vote = ?", $profile["id"], $_POST["code"], '1');
                     query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
                 }
                 else
                 {
-                    query("UPDATE vote SET vote = 1 WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '0');
+                    query("UPDATE vote SET vote = 1 WHERE fbid = ? AND code = ? AND vote = ?", $profile["id"], $_POST["code"], '0');
                     query("UPDATE course SET likeit = likeit + 1 WHERE code = ?", $_POST["code"]);
                     query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
                 }
@@ -41,19 +43,19 @@
             // update database
             if (empty($voterow))
             {
-                query("INSERT INTO vote (fbid, code, vote, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $_POST["fbid"], $_POST["code"], '0', $_POST["fbname"], $_POST["fbgender"]);
+                query("INSERT INTO vote (fbid, code, vote, fbName, fbGender) VALUES (?, ?, ?, ?, ?)", $profile["id"], $_POST["code"], '0', $profile["name"], $profile["gender"]);
                 query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
             }
             else
             {
                 if ($voterow[0]["vote"] == '0')
                 {
-                    query("DELETE FROM vote WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '0');
+                    query("DELETE FROM vote WHERE fbid = ? AND code = ? AND vote = ?", $profile["id"], $_POST["code"], '0');
                     query("UPDATE course SET dislikeit = dislikeit - 1 WHERE code = ?", $_POST["code"]);
                 }
                 else
                 {
-                    query("UPDATE vote SET vote = 0 WHERE fbid = ? AND code = ? AND vote = ?", $_POST["fbid"], $_POST["code"], '1');
+                    query("UPDATE vote SET vote = 0 WHERE fbid = ? AND code = ? AND vote = ?", $profile["id"], $_POST["code"], '1');
                     query("UPDATE course SET dislikeit = dislikeit + 1 WHERE code = ?", $_POST["code"]);
                     query("UPDATE course SET likeit = likeit - 1 WHERE code = ?", $_POST["code"]);
                 }

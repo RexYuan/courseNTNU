@@ -122,5 +122,19 @@
         // exit immediately since we're redirecting anyway
         exit;
     }
+
+    function lookup($token)
+    {
+        $url_with_token = "https://graph.facebook.com/me?access_token=" . $token;
+        $result = json_decode(file_get_contents($url_with_token), true);
+        if (isset($result["id"]))
+        {
+            return $result;
+        }
+        else
+        {
+            return false;
+        }
+    }
     
 ?>
