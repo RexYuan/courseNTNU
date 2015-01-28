@@ -1,4 +1,3 @@
-var fbstatus;
 var token;
 window.fbAsyncInit = function() {
     FB.init({
@@ -19,7 +18,7 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 function statusChangeCallback(response) {
-    fbstatus = response.status;
+    var fbstatus = response.status;
     if (fbstatus === 'connected')
     {
         // Logged into your app and Facebook.

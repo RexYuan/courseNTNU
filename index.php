@@ -6,6 +6,8 @@
     require("magic.php");
     require_once 'vendor/autoload.php';
 
+    session_start();
+
     // if a course selected
     if (isset($_GET["dpm"]) && isset($_GET["cod"]))
     {

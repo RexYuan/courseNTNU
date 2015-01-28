@@ -2,6 +2,8 @@ $(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
         event.preventDefault();
+        FB.getLoginStatus(function(response) {
+        var fbstatus = response.status;
         if (fbstatus == "connected")
         {
             var cod = $('#code').val();
@@ -35,11 +37,14 @@ $(function() {
         {
             $('#fbModal').modal('show');
         }
+        });
     });
     
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
         event.preventDefault();
+        FB.getLoginStatus(function(response) {
+        var fbstatus = response.status;
         if (fbstatus == "connected"){
         var cod= $('#code').val();
         var rat = $('#dislikebtn').val();
@@ -72,11 +77,14 @@ $(function() {
         {
             $('#fbModal').modal('show');
         }
+        });
     });
 
     // when report btn clicked
     $('#submit_report').click(function(event) {
         event.preventDefault();
+        FB.getLoginStatus(function(response) {
+        var fbstatus = response.status;
         if (fbstatus == "connected"){
         var report = $('#report').val();
 
@@ -105,6 +113,7 @@ $(function() {
         {
             $('#fbModal').modal('show');
         }
+        });
     });
 });
 
@@ -113,6 +122,8 @@ var initBtn = function() {
     $("#likebtn").prop('disabled', false);
     $("#dislikebtn").prop('disabled', false);
     var cod = $('#code').val();
+    FB.getLoginStatus(function(response) {
+    var fbstatus = response.status;
     if (fbstatus === "connected")
     {
         $.post("../btn.php", {"code": cod, "fbid": fbID})
@@ -134,6 +145,7 @@ var initBtn = function() {
                 console.log(data);
             });
     }
+    });
 };
 
 // initialize report btn state
