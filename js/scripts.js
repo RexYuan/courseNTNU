@@ -29,7 +29,7 @@ $(function() {
                     }
                 })
                 .fail(function( data ) {
-                    alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
+                    //alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
                     console.log(data);
                 });
         }
@@ -69,7 +69,7 @@ $(function() {
                 }
             })
             .fail(function( data ) {
-                alert("錯誤: 1\n(" + data.status + ": " + data.statusText + ")");
+                //alert("錯誤: 1\n(" + data.status + ": " + data.statusText + ")");
                 console.log(data);
             });
         }
@@ -104,7 +104,7 @@ $(function() {
                         setTimeout(function(){parent.history.back()();}, 1000);
                     })
                     .fail(function( data ) {
-                        alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
+                        //alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
                         console.log(data);
                     });
             }
@@ -141,7 +141,7 @@ var initBtn = function() {
                 }
             })
             .fail(function( data ) {
-                alert("錯誤: 2\n(" + data.status + ": " + data.statusText + ")");
+                //alert("錯誤: 2\n(" + data.status + ": " + data.statusText + ")");
                 console.log(data);
             });
     }
