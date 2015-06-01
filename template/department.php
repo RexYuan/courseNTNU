@@ -1,5 +1,9 @@
 <div class="container-fluid" id="nav">
-    <div class="row">
+    <input type="checkbox" id="nav-trigger" />
+	<label for="nav-trigger">
+        <img src="/images/menu_icon.svg"/ style="height:30px;width:30px;">
+    </label>
+    <div class="row" id="navigation">
         <a href="#CGE"><div class="col-xs-6 col-sm-4 col-md-1 col-md-offset-1">
             <h3 class="text-center">通識</a>
         </div></h3>

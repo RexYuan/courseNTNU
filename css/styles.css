@@ -32,3 +32,33 @@
 {
     color: #240F03;
 }
+
+#nav-trigger {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+    #nav > label {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    body > #nav #navigation {
+        display: none;
+    }
+    body > #nav {
+        min-height: 2.5em;
+        width: 100%;
+    }
+    body > #nav label {
+        display: block;
+        text-align: right;
+    }
+    body > #nav label img {
+        margin: .5em;
+    }
+    body > #nav input:checked ~ div#navigation {
+        display: block;
+    }
+}
