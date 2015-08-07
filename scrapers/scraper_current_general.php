@@ -1,11 +1,11 @@
 <?php
     // ==> This scraper is intended for scraping general ed courses page current info from 選課系統大綱.
-    
+
     // requirements
     require("functions.php");
 
     $iii = 0;
-    
+
     // iterate from 01U(1) to 0SU(10) *see p.s. 1 in guide
     for ($dpmcode = 1; $dpmcode <= 10; $dpmcode++)
     {
@@ -24,7 +24,7 @@
         // formS set and index
         $formS_set_index = 0;
         $formS_set = ["", "1", "2", "3", "4"];
-        
+
         // iterate from 000 to 999 *see p.s. 1 in guide
         for ($i = 0; $i <= 999; $i++)
         {
@@ -58,7 +58,7 @@
             $course_url = "http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?" . $year_component . $term_component . $course_code_component . $course_group_component . $dept_code_component . $formS_component . $classes1_component . $dept_group_component;
 
             print("=> Trying: $course_url\n");
-            
+
             // html to xml
             if (!($tidy = tidy_parse_file($course_url, array("numeric-entities" => true, "output-xhtml" => true), "utf8")))
             {
@@ -71,7 +71,7 @@
                 $xhtml = (string) $tidy;
                 $dom = simplexml_load_string($xhtml);
                 $dom->registerXPathNamespace("xhtml", "http://www.w3.org/1999/xhtml");
-                
+
                 // retrieve Chinese name
                 $chnametd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='330']");
                 $chname = trim((string) $chnametd[0]);
@@ -107,7 +107,7 @@
                     if ($course_group_index == 0)
                     {
                         // reset course group index
-                        $course_group_index = 0;    
+                        $course_group_index = 0;
                     }
                     // if other group possibly exist
                     else if ($course_group_index < 7)
@@ -119,7 +119,7 @@
                     }
                     print("# Chinese name found: $chname\n");
                 }
-                
+
                 // retrieve code
                 $codetd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='290']");
                 // double checking if course exist
@@ -179,12 +179,12 @@
                     print("*** Code $course_code not found, continuing\n");
                     continue;
                 }
-            
+
                 // retrieve credit
                 $credittd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='370']");
                 $credit = trim((string) $credittd[1]);
                 print("# Credit found: $credit\n");
-            
+
                 // retrieve description
                 $dscrptd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='820']");
                 $dscrp = trim((string) $dscrptd[3]);

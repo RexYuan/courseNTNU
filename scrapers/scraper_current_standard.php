@@ -1,12 +1,12 @@
 <?php
-    // ==> This scraper is intended for scraping standard courses page current info from 選課系統大綱.    
-    
+    // ==> This scraper is intended for scraping standard courses page current info from 選課系統大綱.
+
     // requirements
     require("functions.php");
 
     $iii = 0;
     $jjj = 0;
-    
+
     // iterate from AEU(11) to VDU(42) *see p.s. 1 in guide
     for ($dpmcode = 34; $dpmcode <= 34; $dpmcode++)
     {
@@ -34,7 +34,7 @@
         // dept group set and index
         $dept_group_index = 0;
         $dept_group_set = ["", "1", "2", "3"];
-        
+
         // iterate from 0000 to 9999 *see p.s. 1 in guide
         for ($i = $pp[$p]; $i <= $pp[$p]; $i++)
         {
@@ -68,7 +68,7 @@
             $course_url = "http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?" . $year_component . $term_component . $course_code_component . $course_group_component . $dept_code_component . $formS_component . $classes1_component . $dept_group_component;
 
             print("=> Trying $course_code: $course_url\n");
-            
+
             // html to xml
             if (!($tidy = tidy_parse_file($course_url, array("numeric-entities" => true, "output-xhtml" => true), "utf8")))
             {
@@ -81,7 +81,7 @@
                 $xhtml = (string) $tidy;
                 $dom = simplexml_load_string($xhtml);
                 $dom->registerXPathNamespace("xhtml", "http://www.w3.org/1999/xhtml");
-                
+
                 // retrieve Chinese name
                 $chnametd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='330']");
                 $chname = trim((string) $chnametd[0]);
@@ -151,7 +151,7 @@
                     if ($course_group_index == 0)
                     {
                         // reset course group index
-                        $course_group_index = 0;    
+                        $course_group_index = 0;
                     }
                     // if other group possibly exist
                     else if ($course_group_index < 7)
@@ -163,7 +163,7 @@
                     }
                     print("# Chinese name found: $chname\n");
                 }
-                
+
                 // retrieve code
                 $codetd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='290']");
                 // double checking if course exist
@@ -202,7 +202,7 @@
                         }
 
                         // storing data
-                        $result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', $formS_grade_set[$formS_index], $ins, $code);
+                        //$result = query("UPDATE course SET availability = ?, grade = ?, teacher = ? WHERE code = ?", '1', $formS_grade_set[$formS_index], $ins, $code);
                         if ($result === false)
                         {
                             print("*** Cannnot insert $code into database\n");
@@ -223,12 +223,12 @@
                     print("*** Code $course_code not found, continuing\n");
                     continue;
                 }
-            
+
                 // retrieve credit
                 $credittd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='370']");
                 $credit = trim((string) $credittd[1]);
                 print("# Credit found: $credit\n");
-            
+
                 // retrieve description
                 $dscrptd = $dom->xpath("//xhtml:body/xhtml:center/xhtml:table/xhtml:tr/xhtml:td[@width='820']");
                 $dscrp = trim((string) $dscrptd[3]);
@@ -240,7 +240,7 @@
                 print("# Instructor found: $ins\n");
 
                 // storing regular data
-                $result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', $formS_grade_set[$formS_index], $ins);
+                //$result = query("INSERT INTO course (department, chdepartment, code, chname, description, credit, availability, grade, teacher) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", $dpm['abbr'], $dpm['name'], $code, $chname, $dscrp, $credit, '1', $formS_grade_set[$formS_index], $ins);
                 if ($result === false)
                 {
                     print("*** Cannnot insert $code into database\n");

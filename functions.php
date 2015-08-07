@@ -1,7 +1,7 @@
 <?php
 
     require("magic.php");
-    
+
     /**
      * Executes SQL statement, possibly with parameters, returning
      * an array of all rows in result set or false on (non-fatal) error.
@@ -21,8 +21,8 @@
             try
             {
                 // connect to database
-                $handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
-                //$handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
+                //$handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
+                $handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
 
                 // ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -57,7 +57,7 @@
             return false;
         }
     }
-    
+
     /**
      * Renders template, passing in values.
      */
@@ -85,7 +85,7 @@
             trigger_error("Invalid template: $template", E_USER_ERROR);
         }
     }
-    
+
     /**
      * Redirects user to destination, which can be
      * a URL or a relative path on the local host.
@@ -136,5 +136,5 @@
             return false;
         }
     }
-    
+
 ?>
