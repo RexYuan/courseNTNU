@@ -222,4 +222,52 @@
     'limit'        => '99999',
     'page'         => '1'
   ];
+
+  /**
+   * Parse the given time_inf value and return an array of arrays,
+   * which contains four arguments, representing the day, time, campus, and location
+   * of the course. Returns NULL if time_inf is an empty string.
+   * For time_inf "三 8-9 公館 理圖807,五 7 公館 理圖807,", it returns
+   * Array
+   * (
+   *     [0] => Array
+   *         (
+   *             [0] => 三
+   *             [1] => 8-9
+   *             [2] => 公館
+   *             [3] => 理圖807
+   *         )
+   *     [1] => Array
+   *         (
+   *             [0] => 五
+   *             [1] => 7
+   *             [2] => 公館
+   *             [3] => 理圖807
+   *         )
+   * )
+   */
+  function parse_time_inf($str)
+  {
+    // check if there's time_inf
+    if (!empty($str))
+    {
+      // to be returned
+      $result = [];
+      // check if there's more than one time
+      $sub_strs = array_slice(explode(",", $str), 0, $length = -1);
+      // parse every time
+      foreach ($sub_strs as $sub_str)
+      {
+
+        list($day, $time, $campus, $location) = explode(" ", $sub_str);
+        $result[] = [$day, $time, $campus, $location];
+      }
+      // return an array of arrays of info
+      return $result;
+    }
+    else
+    {
+      return NULL;
+    }
+  }
  ?>
