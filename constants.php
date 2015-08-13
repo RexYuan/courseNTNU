@@ -2,6 +2,6 @@
 
     //$urlroot = "http://coursentnu.com/";
 	  //$urlroot = "http://localhost/";
-    $urlroot = "http://".$_SERVER['SERVER_NAME']."/";
+    $urlroot = "http://".$_SERVER['HTTP_HOST']."/";
 
 ?>
