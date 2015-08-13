@@ -3,7 +3,7 @@
     // requirements
     require("functions.php");
     require("constants.php");
-    
+
     if (isset($_GET["word"]))
     {
         if ($_GET["word"] === "" || $_GET["word"] === "（" || $_GET["word"] === "）" || $_GET["word"] == " " || $_GET["word"] == "  " || $_GET["word"] == "／")
