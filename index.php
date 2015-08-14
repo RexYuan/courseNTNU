@@ -42,12 +42,12 @@
 
             // prepare course page url for Facebook comment
             $page_url = $urlroot . "index.php?dpm=" . $course[0]["department"] . "&cod=" . $course[0]["code"];
-        
+
             // render course page
             render("course_page.php", ["title" => $course[0]["chname"], "urlroot" => $urlroot, "course" => $course[0], "likes" => $like_bar, "dislikes" => $dislike_bar, "message" => $message, "ratings" => $ratings, "purl" => $page_url]);
         }
     }
-    
+
     // if a department selected
     else if (isset($_GET["dpm"]))
     {
@@ -80,7 +80,7 @@
             }
         }
     }
-    
+
     // if nothing selected
     else
     {

@@ -110,11 +110,11 @@
         if (!empty($duplicate_result))
         {
           // update availability
-          //query("UPDATE course SET availability = ? WHERE code = ?", '1', $stick["code"]);
+          query("UPDATE course SET availability = ? WHERE code = ?", '1', $stick["code"]);
           // if no instructor recorded yet
           if ($duplicate_result[0]["teacher"] == "")
           {
-            //query("UPDATE course SET teacher = ? WHERE code = ?", $stick["instructor"], $stick["code"]);
+            query("UPDATE course SET teacher = ? WHERE code = ?", $stick["instructor"], $stick["code"]);
             echo "[updated]: $component_courseCode / $target_url\n";
             $courseGroup_set_index++;
             $courseCode_number--;
@@ -126,7 +126,7 @@
             // if this instructor not yet recorded
             if (strpos($duplicate_result[0]["teacher"], $stick["instructor"]) === false)
             {
-              //query("UPDATE course SET teacher = ? WHERE code =?", $duplicate_result[0]["teacher"].'／'.$stick["instructor"], $stick["code"]);
+              query("UPDATE course SET teacher = ? WHERE code =?", $duplicate_result[0]["teacher"].'／'.$stick["instructor"], $stick["code"]);
               echo "[updated]: $component_courseCode / $target_url\n";
             }
             // this instructor is duplicate
@@ -140,7 +140,7 @@
         else
         {
           // store it up
-          /*query("INSERT INTO course (department,
+          query("INSERT INTO course (department,
                                      chdepartment,
                                      code,
                                      chname,
@@ -158,7 +158,7 @@
                                      $stick['description'],
                                      $stick['credit'],
                                      $formS_grade_set[$formS_set_index],
-                                     '1');*/
+                                     '1');
           echo "[inserted]: $component_courseCode / $target_url\n";
         }
       }

@@ -3,7 +3,7 @@
         		<div class="modal-dialog modal-sm">
             		<div class="modal-content">
                 		<div class="modal-header">
-                    		<h3 class="modal-title text-center" id="myModalLabel">請登入以繼續</h3>
+                    		<h3 class="modal-title text-center" id="fbModalLabel">請登入以繼續</h3>
                 		</div>
                 		<div class="modal-body">
                     		<div class="text-center">
@@ -22,12 +22,12 @@
         		<div class="modal-dialog modal-sm">
             		<div class="modal-content">
                 		<div class="modal-header">
-                    		<h3 class="modal-title text-center" id="myModalLabel">驚喜！</h3>
+                    		<h3 class="modal-title text-center" id="easterEggModal">驚喜！</h3>
                 		</div>
                 		<div class="modal-body">
                     		<div class="text-center">
                           覺得選課系統的倒數計時很煩嗎？把這個<a href="javascript:window.dispalyTime = function(){};">彩蛋</a>加進書籤，然後在使用選課系統時點我！
-                        </br><small>注意：請勿在公用電腦使用，後果自行負責</small>
+                        <br><small>注意：請勿在公用電腦使用，後果自行負責</small>
                     		</div>
                 		</div>
                 		<div class="modal-footer">

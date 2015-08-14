@@ -1,39 +1,39 @@
 <div class="container-fluid" id="nav">
-    <input type="checkbox" id="nav-trigger" />
+    <input type="checkbox" id="nav-trigger"/>
 	<label for="nav-trigger">
-        <img src="/images/menu_icon.svg"/ style="height:30px;width:30px;">
+        <img src="/images/menu_icon.svg" style="height:30px;width:30px;">
     </label>
     <div class="row" id="navigation">
         <a href="#CGE"><div class="col-xs-6 col-sm-4 col-md-1 col-md-offset-1">
-            <h3 class="text-center">通識</a>
-        </div></h3>
+            <h3 class="text-center">通識</h3>
+        </div></a>
         <a href="#COT"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">科技</a></h3>
-        </div></h3>
+            <h3 class="text-center">科技</h3>
+        </div></a>
         <a href="#COE"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">教育</a></h3>
-        </div></h3>
+            <h3 class="text-center">教育</h3>
+        </div></a>
         <a href="#CLA"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">文學</a></h3>
-        </div></h3>
+            <h3 class="text-center">文學</h3>
+        </div></a>
         <a href="#COS"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">理學</a></h3>
-        </div></h3>
+            <h3 class="text-center">理學</h3>
+        </div></a>
         <a href="#COM"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">音樂</a></h3>
-        </div></h3>
+            <h3 class="text-center">音樂</h3>
+        </div></a>
         <a href="#COB"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">管理</a></h3>
-        </div></h3>
+            <h3 class="text-center">管理</h3>
+        </div></a>
         <a href="#COA"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">藝術</a></h3>
-        </div></h3>
+            <h3 class="text-center">藝術</h3>
+        </div></a>
         <a href="#CIS"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">國際</a></h3>
-        </div></h3>
+            <h3 class="text-center">國際</h3>
+        </div></a>
         <a href="#CSR"><div class="col-xs-6 col-sm-4 col-md-1">
-            <h3 class="text-center">運動</a></h3>
-        </div></h3>
+            <h3 class="text-center">運動</h3>
+        </div></a>
     </div>
 </div>
 
