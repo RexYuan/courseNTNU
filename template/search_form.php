@@ -8,7 +8,7 @@
         </div>
         <button type="submit" class="btn btn-default">搜尋</button>
     </form>
-    
+
     <h4>
     <?php if (empty($results) && $home !== true): ?>
         沒有結果
@@ -22,7 +22,7 @@
     <ul class="list-group">
         <?php foreach ($results as $result): ?>
 
-            <?php if ($result["availability"] === '1'): ?>
+            <?php if ($result["availability"] == '1'): ?>
                 <a href="<?= $urlroot ?>index.php?dpm=<?= $result['department'] ?>&amp;cod=<?= $result['code'] ?>">
                     <li class="list-group-item">
                         <h4><span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></span>
@@ -39,11 +39,11 @@
                     </li>
                 </a>
             <?php endif ?>
-            
+
         <?php endforeach ?>
         <?php foreach ($results as $result): ?>
 
-            <?php if ($result["availability"] === '0'): ?>
+            <?php if ($result["availability"] == '0'): ?>
                 <a href="<?= $urlroot ?>index.php?dpm=<?= $result['department'] ?>&amp;cod=<?= $result['code'] ?>">
                     <li class="list-group-item">
                         <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
@@ -63,5 +63,5 @@
 
         <?php endforeach ?>
     </ul>
-    
+
 </div>
