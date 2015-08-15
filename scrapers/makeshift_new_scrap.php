@@ -16,9 +16,24 @@
     {
       $course_teacher                = $course['teacher'];         // 教師
       $course_code                   = $course['course_code'];     // 課程代碼
+      $eng_name = $course['eng_name'];
+
+      $counter_exceptAuth = (int)$course['counter_exceptAuth'];
+      $limit_count_h = (int)$course['limit_count_h'];
+      $moocs_teach = ($course['moocs_teach'] == "是" ? TRUE : FALSE);
+      $eng_teach = ($course['eng_teach'] == "是" ? TRUE : FALSE);
+      $serial_no = (int)$course['serial_no'];
+
       // store data
       echo "storing $course_code\n";
-      query("UPDATE course SET teacher = ?, availability = ? WHERE code = ?", $course_teacher, '1', $course_code);
+      query("UPDATE course SET teacher = ?, availability = ?,
+                               eng_name = ?,
+                               counter_exceptAuth = ?,
+                               limit_count_h = ?,
+                               moocs_teach = ?,
+                               eng_teach = ?,
+                               serial_no = ? WHERE code = ?", $course_teacher, '1',
+                              $eng_name,$counter_exceptAuth,$limit_count_h,$moocs_teach,$eng_teach,$serial_no,  $course_code);
     }
   }
  ?>

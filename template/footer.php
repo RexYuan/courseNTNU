@@ -22,7 +22,7 @@
         		<div class="modal-dialog modal-sm">
             		<div class="modal-content">
                 		<div class="modal-header">
-                    		<h3 class="modal-title text-center" id="easterEggModal">驚喜！</h3>
+                    		<h3 class="modal-title text-center" id="easterEggModalLabel">驚喜！</h3>
                 		</div>
                 		<div class="modal-body">
                     		<div class="text-center">

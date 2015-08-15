@@ -15,8 +15,6 @@
         <script src="js/scripts.js"></script>
         <script src="js/konami.js"></script>
 
-        </script>
-
         <?php if (isset($title)): ?>
             <title>courseNTNU：<?= htmlspecialchars($title) ?></title>
         <?php else: ?>

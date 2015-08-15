@@ -15,16 +15,21 @@
         <?php if ($course["availability"] === '1'): ?>
             <span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 本學期有開課</span>
         <?php else: ?>
-            <h3><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 本學期未開課</span></h3>
+            <span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 本學期未開課</span>
         <?php endif ?>
     </h3>
-    
+
     <div class="jumbotron">
         <div class="row">
             <div class="col-xs-12 col-sm-8">
-                <h2><?= $course["chname"] ?></h2>
+                <h1><?= $course["chname"] ?></h1>
+                <h2><?= $course["eng_name"] ?></h2>
+                <h3>開課序號：  <?= $course["serial_no"] ?></h3>
                 <h4>教師：  <?= $course["teacher"] ?></h4>
                 <h4>學分數：  <?= $course["credit"] ?></h4>
+                <?php if ($course["availability"] === '1'): ?>
+                  <h4>選課人數／限修人數：  <?= $course["counter_exceptAuth"]."／".$course["limit_count_h"] ?>
+                <?php endif ?>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <h1 id="rating_score" class="text-center"><?= $ratings ?></h1>
@@ -48,7 +53,7 @@
         </div>
         <div class="clearfix visible-xs"></div>
     </div>
-    
+
     <div>
         <h4>課程簡介：  </h4>
         <p>
@@ -59,7 +64,7 @@
             <?php endif ?>
         </p>
 
-        <div class="fb-comments" data-href=<?= htmlspecialchars($purl) ?> data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-comments" data-href="<?= htmlspecialchars($purl) ?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
     </div>
-    
+
 </div>

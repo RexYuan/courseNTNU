@@ -38,7 +38,6 @@
 </div>
 
 <div class="container" id="middle">
-    <form action="http://localhost/index.php" method="get" role="form">
         <div class="col-md-4 col-sm-6 col-xs-12">
         <h3 id="CGE">通識</h3>
         <ul class="list-group">
@@ -128,5 +127,4 @@
             <a href="<?= $urlroot ?>index.php?dpm=FPU"><li class="list-group-item"><h4>運動競技學系</h4></li></a>
         </ul>
       </div>
-    </form>
 </div>
