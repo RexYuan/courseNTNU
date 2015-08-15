@@ -45,6 +45,7 @@
         $statement = $handle->prepare($sql);
         if ($statement === false)
         {
+          echo "error";
             // trigger (big, orange) error
             trigger_error($handle->errorInfo()[2], E_USER_ERROR);
             exit;

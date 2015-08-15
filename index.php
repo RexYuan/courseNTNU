@@ -65,12 +65,13 @@
         {
             // query courses for corresponding courses
             $courses = query("SELECT * FROM course WHERE department = ?", $_GET["dpm"]);
+            //print_r($courses);
 
             // if query some random shit
             if (empty($courses))
             {
                 // back to front page
-                redirect("index.php");
+                //redirect("index.php");
             }
             // query good
             else
