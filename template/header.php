@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta property="fb:app_id" content="1423906917900490"/>
 
-        <meta property="og:image" content="images/og_logo.png"/>
+        <meta property="og:url" content="http://www.coursentnu.com/"/>
+        <meta property="og:image" content="http://www.coursentnu.com/images/og_logo.png"/>
         <meta property="og:title" content="Course NTNU"/>
         <meta property="og:description" content="評價和查詢師大課程"/>
         <link rel="shortcut icon" href="images/16x16course.ico" type="image/x-icon"/>
