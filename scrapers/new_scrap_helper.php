@@ -5,7 +5,7 @@ $DEPT_LANGUAGE = "chn";
 $YEAR = 104;
 $TERM = 1;
 $DEPT_URL_GET_BASE = "http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/CofnameCtrl?";
-$DEPARTMENT_CODE_LIST = parse_dept_code(file_get_contents($DEPT_URL_GET_BASE . "type=" .$DEPT_LANGUAGE . "&year=" . $YEAR ."&term=" . $TERM));
+$DEPARTMENT_CODE_LIST = parse_dept_code(file_get_contents($DEPT_URL_GET_BASE . "type=" . $DEPT_LANGUAGE . "&year=" . $YEAR ."&term=" . $TERM));
 
 $URL_GET_BASE = 'http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/CofopdlCtrl?';
 
