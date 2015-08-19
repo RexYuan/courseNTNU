@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="fb:app_id" content="1423906917900490"/>
 
+        <link rel="shortcut icon" href="images/16x16course.ico" type="image/x-icon">
+		    <link rel="icon" href="images/16x16course.ico" type="image/x-icon">
+
         <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
         <link href="css/styles.css" rel="stylesheet"/>
