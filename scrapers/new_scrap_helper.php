@@ -82,10 +82,10 @@ function parse_dept_code($dept_str) {
     $tok = strtok($dept_str , "]");
 
     while($tok !== false) {
-      $tok = substr($tok, strpos($tok, "[") + 1);
-      sscanf($tok, "'%*[^']','%[^ ]%[^'']'", $code, $name);
-      $dept_list[$code] = $name;
-      $tok = strtok("]");
+        $tok = substr($tok, strpos($tok, "[") + 1);
+        sscanf($tok, "'%*[^']','%[^ ]%[^'']'", $code, $name);
+        $dept_list[$code] = $name;
+        $tok = strtok("]");
     }
   
     return $dept_list;
