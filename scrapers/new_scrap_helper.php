@@ -1,5 +1,52 @@
 <?php
 
+/**
+ * Executes SQL statement, possibly with parameters, returning
+ * an array of all rows in result set or FALSE on (non-fatal) error.
+ */
+ require("../magic.php");
+ function query($sql, ...$parameters)
+ {
+  // try to connect to database
+  static $handle;
+  if (!isset($handle))
+  {
+    try
+    {
+      // connect to database
+      $handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
+      //$handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
+      // ensure that PDO::prepare returns FALSE when passed invalid SQL
+      $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
+    }
+    catch (Exception $e)
+    {
+      // trigger (big, orange) error
+      trigger_error($e->getMessage(), E_USER_ERROR);
+       exit;
+    }
+  }
+  // prepare SQL statement
+  $statement = $handle->prepare($sql);
+  if ($statement === FALSE)
+  {
+    // trigger (big, orange) error
+    trigger_error($handle->errorInfo()[2], E_USER_ERROR);
+    exit;
+  }
+  // execute SQL statement
+  $results = $statement->execute($parameters);
+  // return result set's rows, if any
+  if ($results !== FALSE)
+  {
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+  else
+  {
+     return FALSE;
+  }
+ }
+
 // get departments inf
 $DEPT_LANGUAGE = "chn";
 $YEAR = 104;
@@ -81,13 +128,13 @@ function parse_dept_code($dept_str) {
     $dept_str = substr($dept_str, 1, strlen($dept_str) - 2);
     $tok = strtok($dept_str , "]");
 
-    while($tok !== false) {
+    while($tok !== FALSE) {
       $tok = substr($tok, strpos($tok, "[") + 1);
       sscanf($tok, "'%*[^']','%[^ ]%[^'']'", $code, $name);
       $dept_list[$code] = $name;
       $tok = strtok("]");
     }
-  
+
     return $dept_list;
 }
 ?>
