@@ -117,7 +117,7 @@ function parse_time_inf($str)
     }
     else
     {
-        return NULL;
+        return ["TimeInfo"=>"", "ChLocation"=>""];
     }
 }
 
