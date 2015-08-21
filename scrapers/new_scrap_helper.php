@@ -100,7 +100,7 @@ function parse_time_inf($str)
         // to be returned
         //$result = [];
         //temporarily changing this output format because course simulation is not yet ready
-        $result = ["ChLocation"=>"","TimeInfo"=>""];
+        $result = ["TimeInfo"=>"", "ChLocation"=>""];
         // check if there's more than one time
         $sub_strs = array_slice(explode(",", $str), 0, $length = -1);
         // parse every time
@@ -109,8 +109,8 @@ function parse_time_inf($str)
             list($day, $time, $campus, $location) = explode(" ", $sub_str);
             //$result[] = [$day, $time, $campus, $location];
             //temporarily changing this output format because course simulation is not yet ready
-            $result["ChLocation"] = $result["ChLocation"].$day.$time;
-            $result["TimeInfo"] = $result["TimeInfo"].$campus.$location;
+            $result["TimeInfo"] = $result["TimeInfo"].$day.$time;
+            $result["ChLocation"] = $result["ChLocation"].$campus.$location;
         }
         // return an array of arrays of info
         return $result;

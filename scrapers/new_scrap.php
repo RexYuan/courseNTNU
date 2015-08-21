@@ -3,7 +3,7 @@
   require("new_scrap_helper.php");
 
   // departments
-  foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
+  /*foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
   {
     // checking if already in database
     $result = query("SELECT ChName FROM Departments WHERE DeptCode = ?", $dept_code);
@@ -20,7 +20,7 @@
     {
       query("INSERT INTO Departments (DeptCode, ChName) VALUES (?, ?)", $dept_code, $dept_name);
     }
-  }
+  }*/
 
   // courses
   foreach (array_keys($DEPARTMENT_CODE_LIST) as $dept_code)
@@ -69,15 +69,57 @@
       // 判斷資訊
       $DeptId = lookup_dept_id_by_code($course['dept_code']); // 開課系所識別碼
       $TeacherId = lookup_teacher_id_by_name($DeptId, $course['teacher']); // 教師
-      list($ChLocation, $TimeInfo) = array_values(parse_time_inf($course['time_inf'])); // 中文上課地點, 上課時間
+      list($TimeInfo, $ChLocation) = array_values(parse_time_inf($course['time_inf'])); // 中文上課地點, 上課時間
       // 課綱資訊
-      list($Hour, $Description) = lookup_course_page($course['course_code'], $course['course_group'], $course['dept_code'], $course['form_s'], $course['classes'], $course['dept_group']);
+      list($Hour, $Description) = lookup_course_page($course['course_code'], $course['course_group'], $course['dept_code'], $course['form_s'], $course['classes'], $course['dept_group']); // 上課時數, 課程簡介
       // 選課系統資訊
       $FreshReserve = Null;
       $Distributed = Null;
-      //TODO:1. test all values 2. store them up 3. deal with records
+      //TODO:1. test all values(done) 2. store them up 3. deal with records
       // store data
-      print_r([$number_of_course,$EnName,(int)$IsElective,$TeacherId,$ChLocation,$Hour]);;
+      echo '$SerialNo = ';var_dump($SerialNo);
+      echo '$CourseGroup = ';var_dump($CourseGroup);
+      echo '$EnLocation = ';var_dump($EnLocation);
+      echo '$IsMOOC = ';var_dump($IsMOOC);
+      echo <<<HEREDOC
+開課序號       SerialNo       = $SerialNo
+課程代碼       CourseCode     = $CourseCode
+學年          AcadmYear      = $AcadmYear
+學期          AcadmTerm      = $AcadmTerm
+課程中文名稱    ChName         = $ChName
+課程英文名稱    EnName         = $EnName
+組別          CourseGroup    = $CourseGroup
+開課班級代碼    ClassCode      = $ClassCode
+學分數         Credit         = $Credit
+開課組別       DeptGroup      = $DeptGroup
+開課年級       Grade          = $Grade
+限制           RestrictInfo   = $RestrictInfo
+正課實驗親授    selfTeachName  = $selfTeachName
+英文上課地點    EnLocation     = $EnLocation
+是否停開       StatusInfo     = $StatusInfo
+中文註解       ChComment      = $ChComment
+英文註解       EnComment      = $EnComment
+修課總人數      CourseSize     = $CourseSize
+授權碼名額      AuthMaxSize    = $AuthMaxSize
+授權碼比例      AuthRate       = $AuthRate
+授權碼使用人數   AuthUsed       = $AuthUsed
+台大聯盟限修人數 NTAMaxSize     = $NTAMaxSize
+限修人數        TotalMaxSize   = $TotalMaxSize
+全/半學期       Duration       = $Duration
+全英語授課      IsEngTeach     = $IsEngTeach
+性別限制        GenderRestrict = $GenderRestrict
+MOOCs         IsMOOC         = $IsMOOC
+必／選修       IsElective      = $IsElective
+遠距授課        RemoteTeach    = $RemoteTeach
+開課系所識別碼   DeptId         = $DeptId
+教師           TeacherId      = $TeacherId
+中文上課地點    ChLocation     = $ChLocation
+上課時間        TimeInfo      = $TimeInfo
+上課時數       Hour           = $Hour
+課程簡介       Description    = $Description
+====================================================
+
+HEREDOC;
     }
   }
  ?>
