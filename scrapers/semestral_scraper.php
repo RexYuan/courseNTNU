@@ -1,6 +1,9 @@
 <?php
   // requirements
-  require("new_scrap_helper.php");
+  require("semestral_scraper_helper.php");
+
+  // debugging mode
+  $DEBUG = False;
 
   // get departments
   /*foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
@@ -53,10 +56,10 @@
       $StatusInfo    = False; // *是否停開
       $ChComment     = (string)$course['comment']; // 中文註解
       $EnComment     = Null; // 英文註解
-      $CourseSize    = (int)$course['counter_exceptAuth']; // 修課總人數
+
       $AuthMaxSize   = (int)$course['authorize_p']; // 授權碼名額
       $AuthRate      = (float)$course['authorize_r']; // 授權碼比例
-      $AuthUsed      = (int)$course['authorize_using']; // 授權碼使用人數
+
       $NTAMaxSize    = (int)$course['limit']; // 台大聯盟限修人數
       $TotalMaxSize  = (int)$course['limit_count_h']; // 限修人數
       // 簡單處理資訊
@@ -75,9 +78,13 @@
       // 選課系統資訊
       $FreshReserve = Null;
       $Distributed  = Null;
-      // 測試 => uncomment the following for testing: require("new_scrap_test.php");
-      // 儲存至資料庫
-      // Courses
+      // debugging mode
+      if ($DEBUG)
+      {
+        // output retrieved data
+        require("semestral_scraper_tester.php");
+      }
+      // 儲存至資料庫 Courses
       query("INSERT INTO Courses (SerialNo,CourseCode,AcadmYear,AcadmTerm,ChName,
              EnName,CourseGroup,ClassCode,Credit,DeptGroup,Grade,RestrictInfo,
              selfTeachName,EnLocation,StatusInfo,ChComment,EnComment,CourseSize,
@@ -95,7 +102,7 @@
                           WHERE SerialNo = ? AND CourseCode = ?
                           AND AcadmYear = ? AND AcadmTerm =?",
                           $SerialNo,$CourseCode,$AcadmYear,$AcadmTerm)[0]['CourseId'];
-      // CourseRecords
+      // 儲存至資料庫 CourseRecords
       $c_record_result = query("SELECT * FROM CourseRecords WHERE CourseCode = ?", $CourseCode);
       if($c_record_result)
       {
@@ -105,7 +112,7 @@
       {
         query("INSERT INTO CourseRecords (CourseCode, CourseIdRecord) VALUES (?, ?)", $CourseCode, $CourseId);
       }
-      // DepartmentRecords
+      // 儲存至資料庫 DepartmentRecords
       $d_record_result = query("SELECT * FROM DepartmentRecords WHERE DeptId = ?", $DeptId);
       if($d_record_result)
       {
@@ -115,7 +122,7 @@
       {
         query("INSERT INTO DepartmentRecords (DeptId, DeptCourseNameRecord, DeptCourseCodeRecord) VALUES (?, ?, ?)", $DeptId, $ChName, $CourseCode);
       }
-      echo "$EnName\n";
+      //echo "$EnName\n";
     }
   }
  ?>

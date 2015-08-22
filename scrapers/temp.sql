@@ -23,6 +23,7 @@ CREATE TABLE Departments
 	EnName VARCHAR(255),
 	PRIMARY KEY (DeptId)
 );
+CREATE INDEX SearchDeptCode ON Departments(DeptCode);
 CREATE TABLE Teachers
 (
   TeacherId INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -76,6 +77,18 @@ CREATE TABLE Courses
 	PRIMARY KEY (CourseId),
 	FOREIGN KEY (TeacherId) REFERENCES Teachers(TeacherId),
 	FOREIGN KEY (DeptId) REFERENCES Departments(DeptId)
+);
+CREATE INDEX SearchCode ON Courses(CourseCode);
+CREATE INDEX SearchSerial ON Courses(SerialNo);
+CREATE INDEX SearchYear ON Courses(AcadmYear);
+CREATE INDEX SearchTerm ON Courses(AcadmTerm);
+CREATE TABLE CourseStates
+(
+	StateId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+# UPDATE Courses to remove duplicate data
+# Finish this one and do the leaderboard
+
+	PRIMARY KEY (StatesId)
 );
 CREATE TABLE Users
 (
