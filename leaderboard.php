@@ -1,9 +1,14 @@
 <?php
 
     // requirements
-    require("functions.php");
-    require("constants.php");
-    
+    require_once("functions.php");
+    require_once("constants.php");
+
+    // session
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+
     // query for 10 class with highest ratings
     $geleaderrows = query("SELECT *, (likeit/(likeit+dislikeit)) AS ratings FROM course WHERE (likeit+dislikeit) >= 10 AND (likeit/(likeit+dislikeit)) IS NOT NULL AND department IN ('01U', '02U', '03U', '04U', '05U', '06U', '0AU', '0HU', '0NU', '0SU') ORDER BY ratings DESC LIMIT 10");
     $otherleaderrows = query("SELECT *, (likeit/(likeit+dislikeit)) AS ratings FROM course WHERE (likeit+dislikeit) >= 5 AND (likeit/(likeit+dislikeit)) IS NOT NULL AND department NOT IN ('01U', '02U', '03U', '04U', '05U', '06U', '0AU', '0HU', '0NU', '0SU') ORDER BY ratings DESC LIMIT 10");

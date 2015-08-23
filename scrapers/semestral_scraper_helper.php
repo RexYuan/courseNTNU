@@ -1,4 +1,7 @@
 <?php
+$YEAR = 104;
+$TERM = 1;
+
  require("../magic.php");
  /* For more info on this, read functions.php
   * The return value of this function is
@@ -44,8 +47,6 @@
 
 // get departments inf
 $DEPT_LANGUAGE = "chn";
-$YEAR = 104;
-$TERM = 1;
 $DEPT_URL_GET_BASE = "http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/CofnameCtrl?";
 $DEPARTMENT_CODE_LIST = parse_dept_code(file_get_contents($DEPT_URL_GET_BASE . "type=" . $DEPT_LANGUAGE . "&year=" . $YEAR ."&term=" . $TERM));
 
@@ -195,4 +196,134 @@ function lookup_course_page($courseCode, $courseGroup, $deptCode, $formS, $class
   $dom->registerXPathNamespace("xhtml", "http://www.w3.org/1999/xhtml");
   return [parse_hour(trim((string)$dom->xpath("/xhtml:html/xhtml:body/xhtml:div/xhtml:table[4]/xhtml:tr[4]/xhtml:td[4]")[0])), trim((string)$dom->xpath("/xhtml:html/xhtml:body/xhtml:div/xhtml:table[4]/xhtml:tr[7]/xhtml:td[2]")[0])];
 }
+
+// 以下是抓選課系統用
+// URL List
+$URL = array(
+    "GET_ID" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/LoginCheckCtrl",
+    "SET_CAPTCHA" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/RandImage",
+    "GET_CAPTCHA" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/ImageBoxFromIndexCtrl",
+    "LOGIN" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/LoginCheckCtrl?action=login&id=",
+    "LOGIN2" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/LoginCtrl",
+    "QUERY" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/CourseQueryCtrl?action=query",
+    "QUERY_BASE" => "http://cos1.ntnu.edu.tw/AasEnrollStudent/CourseQueryCtrl?action=showGrid&deptCode=",
+);
+// Cookies File Path
+$COOKIES_PATH = "./cookies.txt";
+// Debug features are not implemented yet
+$DEBUG = False;
+// 學號
+$ACCOUNT = CUSERNAME;
+// 密碼
+$PASSWORD = CPASSWORD;
+// 中文姓名
+$NAME = "";
+function get_data($dept_code)
+{
+    $ch = curl_init();
+    $id = get_id($ch);
+    set_captcha($ch);
+    $captcha = get_captcha($ch);
+    login($ch, $captcha, $id);
+    login2($ch);
+
+    query_request($ch);
+    course_query($ch, "");
+
+    //Course query starts here
+    $result = course_query($ch, $dept_code);
+    //end here
+    curl_close($ch);
+
+    return json_decode($result, $assoc = True)['List'];
+}
+function get_id($ch) {
+    global $URL, $COOKIES_PATH, $DEBUG;
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $URL["GET_ID"],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_COOKIESESSION => false,
+        CURLOPT_COOKIEJAR => $COOKIES_PATH
+    ));
+    $lines = explode(PHP_EOL, curl_exec($ch));
+    sscanf($lines[264], "%*s %*s '%[^']", $id);
+    return $id;
+}
+function set_captcha($ch) {
+    global $URL, $COOKIES_PATH, $DEBUG;
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $URL["SET_CAPTCHA"],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_COOKIEFILE => $COOKIES_PATH
+    ));
+    curl_exec($ch);
+}
+function get_captcha($ch) {
+    global $URL, $COOKIES_PATH, $DEBUG;
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $URL["GET_CAPTCHA"],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_COOKIEFILE => $COOKIES_PATH
+    ));
+    sscanf(curl_exec($ch), "{success:true,msg:\"%[^\"]", $captcha);
+    return $captcha;
+}
+function login($ch, $captcha, $id) {
+    global $URL, $COOKIES_PATH, $DEBUG, $ACCOUNT, $PASSWORD;
+    curl_setopt_array($ch, array(
+            CURLOPT_URL => $URL["LOGIN"] . $id,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query(array(
+                "userid" => $ACCOUNT,
+                "password" => $PASSWORD,
+                "validateCode" => $captcha
+            )),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_COOKIEFILE => $COOKIES_PATH,
+    ));
+    curl_exec($ch);
+}
+function login2($ch) {
+    global $URL, $COOKIES_PATH, $DEBUG, $ACCOUNT, $NAME;
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $URL["LOGIN2"],
+        CURLOPT_POST => true,
+        CURLOPT_POSTFIELDS => http_build_query(array(
+            "userid" => $ACCOUNT,
+            "stdName" => $NAME
+        )),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_COOKIEFILE => $COOKIES_PATH
+    ));
+    curl_exec($ch);
+}
+function query_request($ch) {
+    global $URL, $COOKIES_PATH, $DEBUG;
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $URL["QUERY"],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_COOKIEFILE => $COOKIES_PATH,
+    ));
+    $response = curl_exec($ch);
+}
+function course_query($ch, $deptCode) {
+    global $URL, $COOKIES_PATH, $DEBUG;
+    curl_setopt_array($ch, array(
+        CURLOPT_URL => $URL["QUERY_BASE"] . $deptCode,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_COOKIEFILE => $COOKIES_PATH,
+    ));
+    $response = curl_exec($ch);
+    return $response;
+}
+function dump_curl($ch) {
+    echo "*****************CURL DUMP****************" . "</br>";
+    echo "<pre>";
+    print_r(curl_getinfo($ch));
+    echo "\n\ncURL error number:" .curl_errno($ch);
+    echo "\n\ncURL error:" . curl_error($ch);
+    echo "</pre><br/>";
+    echo "*********************************************" . "</br>";
+}
+
 ?>

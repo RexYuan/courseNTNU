@@ -23,10 +23,8 @@ echo <<<HEREDOC
 是否停開       StatusInfo     = $StatusInfo
 中文註解       ChComment      = $ChComment
 英文註解       EnComment      = $EnComment
-修課總人數      CourseSize     = $CourseSize
 授權碼名額      AuthMaxSize    = $AuthMaxSize
 授權碼比例      AuthRate       = $AuthRate
-授權碼使用人數   AuthUsed       = $AuthUsed
 台大聯盟限修人數 NTAMaxSize     = $NTAMaxSize
 限修人數        TotalMaxSize   = $TotalMaxSize
 全/半學期       Duration       = $Duration

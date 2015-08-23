@@ -6,7 +6,7 @@
   $DEBUG = False;
 
   // get departments
-  /*foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
+  foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
   {
     // checking if already in database
     $result = query("SELECT ChName FROM Departments WHERE DeptCode = ?", $dept_code);
@@ -23,10 +23,10 @@
     {
       query("INSERT INTO Departments (DeptCode, ChName) VALUES (?, ?)", $dept_code, $dept_name);
     }
-  }*/
+  }
 
   // get courses
-  foreach (array_keys(array_slice($DEPARTMENT_CODE_LIST,6,1)) as $dept_code)
+  foreach (array_keys(array_slice($DEPARTMENT_CODE_LIST,98,1)) as $dept_code)
   {
     // build URL
     $URL_GET_LIST['deptCode'] = $dept_code;
@@ -56,10 +56,8 @@
       $StatusInfo    = False; // *是否停開
       $ChComment     = (string)$course['comment']; // 中文註解
       $EnComment     = Null; // 英文註解
-
       $AuthMaxSize   = (int)$course['authorize_p']; // 授權碼名額
       $AuthRate      = (float)$course['authorize_r']; // 授權碼比例
-
       $NTAMaxSize    = (int)$course['limit']; // 台大聯盟限修人數
       $TotalMaxSize  = (int)$course['limit_count_h']; // 限修人數
       // 簡單處理資訊
@@ -75,9 +73,6 @@
       list($TimeInfo, $ChLocation) = array_values(parse_time_inf($course['time_inf'])); // 中文上課地點, 上課時間
       // 課綱資訊
       list($Hour, $Description) = lookup_course_page($course['course_code'], $course['course_group'], $course['dept_code'], $course['form_s'], $course['classes'], $course['dept_group']); // 上課時數, 課程簡介
-      // 選課系統資訊
-      $FreshReserve = Null;
-      $Distributed  = Null;
       // debugging mode
       if ($DEBUG)
       {
@@ -87,17 +82,17 @@
       // 儲存至資料庫 Courses
       query("INSERT INTO Courses (SerialNo,CourseCode,AcadmYear,AcadmTerm,ChName,
              EnName,CourseGroup,ClassCode,Credit,DeptGroup,Grade,RestrictInfo,
-             selfTeachName,EnLocation,StatusInfo,ChComment,EnComment,CourseSize,
-             AuthMaxSize,AuthRate,AuthUsed,NTAMaxSize,TotalMaxSize,Duration,IsEngTeach,
+             selfTeachName,EnLocation,StatusInfo,ChComment,EnComment,
+             AuthMaxSize,AuthRate,NTAMaxSize,TotalMaxSize,Duration,IsEngTeach,
              GenderRestrict,IsMOOC,IsElective,RemoteTeach,DeptId,TeacherId,TimeInfo,
-             ChLocation,Hour,Description,FreshReserve,Distributed)
-             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+             ChLocation,Hour,Description)
+             VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
              $SerialNo,$CourseCode,$AcadmYear,$AcadmTerm,$ChName,$EnName,$CourseGroup,
              $ClassCode,$Credit,$DeptGroup,$Grade,$RestrictInfo,$selfTeachName,
-             $EnLocation,$StatusInfo,$ChComment,$EnComment,$CourseSize,$AuthMaxSize,
-             $AuthRate,$AuthUsed,$NTAMaxSize,$TotalMaxSize,$Duration,$IsEngTeach,
+             $EnLocation,$StatusInfo,$ChComment,$EnComment,$AuthMaxSize,
+             $AuthRate,$NTAMaxSize,$TotalMaxSize,$Duration,$IsEngTeach,
              $GenderRestrict,$IsMOOC,$IsElective,$RemoteTeach,$DeptId,$TeacherId,
-             $TimeInfo,$ChLocation,$Hour,$Description,$FreshReserve,$Distributed);
+             $TimeInfo,$ChLocation,$Hour,$Description);
       $CourseId = query("SELECT CourseId FROM Courses
                           WHERE SerialNo = ? AND CourseCode = ?
                           AND AcadmYear = ? AND AcadmTerm =?",
@@ -122,7 +117,7 @@
       {
         query("INSERT INTO DepartmentRecords (DeptId, DeptCourseNameRecord, DeptCourseCodeRecord) VALUES (?, ?, ?)", $DeptId, $ChName, $CourseCode);
       }
-      //echo "$EnName\n";
+      echo "$EnName\n";
     }
   }
  ?>

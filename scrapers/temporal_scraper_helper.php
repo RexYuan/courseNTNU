@@ -1,4 +1,7 @@
 <?php
+$YEAR = 104;
+$TERM = 1;
+
 require("../magic.php");
 /* For more info on this, read functions.php
  * The return value of this function is

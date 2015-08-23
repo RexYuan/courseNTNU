@@ -64,16 +64,22 @@ CREATE TABLE Courses
 	StatusInfo BOOL DEFAULT 0 NOT NULL,
 	ChComment VARCHAR(255) CHARSET utf8,
 	EnComment  VARCHAR(255),
-	CourseSize TINYINT UNSIGNED NOT NULL,
 	AuthMaxSize TINYINT UNSIGNED NOT NULL,
 	AuthRate FLOAT NOT NULL,
-	AuthUsed TINYINT NOT NULL,
 	NTAMaxSize TINYINT UNSIGNED NOT NULL,
 	TotalMaxSize TINYINT UNSIGNED NOT NULL,
+
 	Hour TINYINT UNSIGNED,
 	Description TEXT,
-	FreshReserve TINYINT UNSIGNED,
-	Distributed TINYINT UNSIGNED,
+
+	FmReserve TINYINT UNSIGNED,
+	Enrolled TINYINT UNSIGNED,
+	Assigned TINYINT UNSIGNED,
+	Unassigned TINYINT UNSIGNED,
+	AuthAssigned TINYINT UNSIGNED,
+	ExAssigned TINYINT UNSIGNED,
+	PtAssigned TINYINT UNSIGNED,
+
 	PRIMARY KEY (CourseId),
 	FOREIGN KEY (TeacherId) REFERENCES Teachers(TeacherId),
 	FOREIGN KEY (DeptId) REFERENCES Departments(DeptId)
@@ -82,14 +88,6 @@ CREATE INDEX SearchCode ON Courses(CourseCode);
 CREATE INDEX SearchSerial ON Courses(SerialNo);
 CREATE INDEX SearchYear ON Courses(AcadmYear);
 CREATE INDEX SearchTerm ON Courses(AcadmTerm);
-CREATE TABLE CourseStates
-(
-	StateId INT UNSIGNED AUTO_INCREMENT NOT NULL,
-# UPDATE Courses to remove duplicate data
-# Finish this one and do the leaderboard
-
-	PRIMARY KEY (StatesId)
-);
 CREATE TABLE Users
 (
   UserId INT UNSIGNED AUTO_INCREMENT NOT NULL,

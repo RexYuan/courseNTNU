@@ -1,12 +1,15 @@
 <?php
 
     // requirements
-    require("functions.php");
-    require("constants.php");
-    require("magic.php");
+    require_once("functions.php");
+    require_once("constants.php");
+    require_once("magic.php");
     require_once 'vendor/autoload.php';
 
-    session_start();
+    // session
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
 
     // if a course selected
     if (isset($_GET["dpm"]) && isset($_GET["cod"]))

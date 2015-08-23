@@ -1,8 +1,13 @@
 <?php
 
     // requirements
-    require("functions.php");
-    require("constants.php");
+    require_once("functions.php");
+    require_once("constants.php");
+
+    // session
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
 
     if (isset($_GET["word"]))
     {
