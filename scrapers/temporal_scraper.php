@@ -3,7 +3,7 @@
 require("temporal_scraper_helper.php");
 
 // debugging mode
-$DEBUG = True;
+$DEBUG = False;
 
 foreach (array_slice($DEPARTMENT_CODE_LIST,98,1) as $dept_code)
 {
@@ -28,7 +28,7 @@ foreach (array_slice($DEPARTMENT_CODE_LIST,98,1) as $dept_code)
                                AuthAssigned = ?, ExAssigned = ?, PtAssigned = ?
                                WHERE CourseId = ?",$FmReserve,$Enrolled,$Assigned,
                                $Unassigned,$AuthAssigned,$ExAssigned,$PtAssigned,$CourseId);
-    echo $course['chnName'];
+    echo $course['chnName']."\n";
   }
 }
 

@@ -4,91 +4,73 @@
     require_once("functions.php");
     require_once("constants.php");
     require_once("magic.php");
-    require_once 'vendor/autoload.php';
 
     // session
-    if (session_status() == PHP_SESSION_NONE) {
+    if (session_status() == PHP_SESSION_NONE)
+    {
       session_start();
     }
 
-    // if a course selected
-    if (isset($_GET["dpm"]) && isset($_GET["cod"]))
+    // 課程資訊頁
+    if (count($_GET) === 2 AND isset($_GET["dpm"]) AND isset($_GET["cod"]))
     {
-        // query courses for corresponding course
-        $course = query("SELECT * FROM course WHERE code = ?", $_GET["cod"]);
-
-        // if query some random shit
-        if (empty($course))
+      // 以 CourseCode 到 CourseRecords 搜尋 CourseIdRecord
+      $ids = explode("/",query("SELECT CourseIdRecord FROM CourseRecords WHERE CourseCode = ?", $_GET["cod"])[0]["CourseIdRecord"]);
+      // 搜尋不成功
+      if (empty($ids))
+      {
+        // 回首頁
+        redirect("index.php");
+      }
+      // 搜尋成功
+      else
+      {
+        // 每期的課
+        $crecords = [];
+        // 以 CourseId 到 Courses 搜尋每個版本的課
+        foreach ($ids as $id)
         {
-            // back to front page
-            redirect("index.php");
+          $crecords[] = query("SELECT * FROM Courses WHERE CourseId = ?", $id)[0];
         }
-        else
-        {
-            // calculates ratings
-            if ($course[0]["likeit"] == 0 && $course[0]["dislikeit"] == 0)
-            {
-                $like_bar = "0%";
-                $dislike_bar = "0%";
-                $message = "沒有資料";
-                $ratings = "N/A";
-            }
-            else
-            {
-                $total = $course[0]["likeit"] + $course[0]["dislikeit"];
-                $like_percentage = $course[0]["likeit"] / ($total);
-                $like_bar = ((string) ($like_percentage * 100)) . "%";
-                $dislike_bar = ((string) ((1 - $like_percentage) * 100)) . "%";
-                $message = "根據 $total 個投票";
-                $ratings = sprintf('%2d', ($like_percentage * 100));
-            }
-
-            // prepare course page url for Facebook comment
-            $page_url = $urlroot . "index.php?dpm=" . $course[0]["department"] . "&cod=" . $course[0]["code"];
-
-            // render course page
-            render("course_page.php", ["title" => $course[0]["chname"], "urlroot" => $urlroot, "course" => $course[0], "likes" => $like_bar, "dislikes" => $dislike_bar, "message" => $message, "ratings" => $ratings, "purl" => $page_url]);
-        }
+        // 輸出課程資訊頁
+        render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
+      }
     }
 
-    // if a department selected
-    else if (isset($_GET["dpm"]))
+    // 系所課程列表
+    else if (count($_GET) === 1 AND isset($_GET["dpm"]))
     {
-        // if checking 一般通識
-        if ($_GET["dpm"] === "0GU")
-        {
-            // query courses for all corresponding courses of 一般通識
-            $departs = query("SELECT * FROM department WHERE abbr IN (?, ?, ?, ?)", '0AU', '0HU', '0NU', '0SU');
-            $courses = query("SELECT * FROM course WHERE department = ? OR department = ? OR department = ? OR department = ?", $departs[0]["abbr"], $departs[1]["abbr"], $departs[2]["abbr"], $departs[3]["abbr"]);
-            // render courses list
-            render("course.php", ["title" => "一般通識", "urlroot" => $urlroot, "courses" => $courses]);
-        }
-        // checking other department
-        else
-        {
-            // query courses for corresponding courses
-            $courses = query("SELECT * FROM course WHERE department = ?", $_GET["dpm"]);
-            //print_r($courses);
-
-            // if query some random shit
-            if (empty($courses))
-            {
-                // back to front page
-                //redirect("index.php");
-            }
-            // query good
-            else
-            {
-                // render courses list
-                render("course.php", ["title" => $courses[0]["chdepartment"], "urlroot" => $urlroot, "courses" => $courses]);
-            }
-        }
+      // 以 DeptId 去 DepartmentRecords 搜尋 DeptCourseNameRecord 和 DeptCourseCodeRecord
+      $record = query("SELECT DeptCourseNameRecord, DeptCourseCodeRecord FROM DepartmentRecords WHERE DeptCode = ?", $_GET["dpm"])[0];
+      // 搜尋不成功
+      if (empty($record))
+      {
+        // 回首頁
+        redirect("index.php");
+      }
+      // 搜尋成功
+      else
+      {
+        // 搜尋系所名稱
+        $dpm_name = query("SELECT ChName FROM Departments WHERE DeptCode = ?", $_GET["dpm"])[0]["ChName"];
+        // 解析 DeptCourseNameRecord 和 DeptCourseCodeRecord
+        $drecords = array_map(function($n,$c){return ["name"=>$n,"code"=>$c];}, explode("/", $record["DeptCourseNameRecord"]), explode("/", $record["DeptCourseCodeRecord"]));
+        // 輸出課程列表
+        render("crs_lst.php", ["title" => $dpm_name, "urlroot" => $urlroot, "drecords" => $drecords]);
+      }
     }
 
-    // if nothing selected
+    // 首頁
+    else if (count($_GET) === 0)
+    {
+      // 輸出系所列表
+      render("dpm_lst.php", ["urlroot" => $urlroot, "dpms" => query("SELECT * FROM Departments")]);
+    }
+
+    // 亂來
     else
     {
-        // render department list
-        render("department.php", ["urlroot" => $urlroot]);
+      // 回首頁
+      redirect("index.php");
     }
 ?>

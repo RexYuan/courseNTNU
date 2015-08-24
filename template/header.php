@@ -23,9 +23,9 @@
         <script src="js/konami.js"></script>
 
         <?php if (isset($title)): ?>
-            <title>courseNTNU：<?= htmlspecialchars($title) ?></title>
+            <title>Course NTNU：<?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>courseNTNU</title>
+            <title>Course NTNU</title>
         <?php endif ?>
     </head>
 

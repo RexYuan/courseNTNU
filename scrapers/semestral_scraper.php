@@ -115,7 +115,7 @@
       }
       else
       {
-        query("INSERT INTO DepartmentRecords (DeptId, DeptCourseNameRecord, DeptCourseCodeRecord) VALUES (?, ?, ?)", $DeptId, $ChName, $CourseCode);
+        query("INSERT INTO DepartmentRecords (DeptId, DeptCode, DeptCourseNameRecord, DeptCourseCodeRecord) VALUES (?, ?, ?, ?)", $DeptId, $course['dept_code'], $ChName, $CourseCode);
       }
       echo "$EnName\n";
     }
