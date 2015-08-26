@@ -5,10 +5,10 @@ require("temporal_scraper_helper.php");
 // debugging mode
 $DEBUG = False;
 
-foreach (array_slice($DEPARTMENT_CODE_LIST,98,1) as $dept_code)
+// 從選課系統拿資料
+foreach(get_data(98,1) as $courses)
 {
-  // 從選課系統拿資料
-  foreach (json_decode(get_data($dept_code), $assoc = True)['List'] as $course)
+  foreach ($courses as $course)
   {
     $CourseId = query("SELECT CourseId FROM Courses WHERE AcadmYear = ?
                        AND AcadmTerm = ? AND SerialNo = ?", $YEAR,
@@ -31,5 +31,6 @@ foreach (array_slice($DEPARTMENT_CODE_LIST,98,1) as $dept_code)
     echo $course['chnName']."\n";
   }
 }
+
 
 ?>
