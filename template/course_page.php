@@ -4,11 +4,11 @@
         <a href="<?= $urlroot ?>index.php">
             首頁
         </a>
-        >>
+        &gt;&gt;
         <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>">
             <?= $course['chdepartment'] ?>
         </a>
-        >>
+        &gt;&gt;
         <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
             <?= $course['chname'] ?>
         </a>
@@ -55,7 +55,7 @@
     </div>
 
     <div>
-        <h4>課程簡介：  </h4>
+        <h4>課程簡介：</h4>
         <p>
             <?php if ($course["description"] === ""): ?>
                 <div class="text-muted">沒有資料</div>
