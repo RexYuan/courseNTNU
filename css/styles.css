@@ -1,36 +1,86 @@
-#head
-{
+a {
+    transition-duration: .25s;
+}
+
+#head {
     background-color: #BD7A22;
 }
 
-#head h1 strong a
-{
+#head h1 strong a {
     color: #FFFFCC;
 }
 
-#head small
-{
+#head small {
     color: #240F03;
 }
 
-#head h2 a small
-{
+#head h2 a small {
     color: #FFFFCC;
 }
 
-#middle a
-{
+@media screen and (max-device-width: 480px) {
+    h1 {
+        margin-top: 1rem;
+        margin-left: -.5rem;
+    }
+    h1 strong {
+        font-size: 2.75rem;
+    }
+    h1 small {
+        font-size: 1.5rem;
+    }
+    h2 {
+        margin-top: 1rem;
+    }
+    h2 .label.label-warning {
+        margin-left: -.5rem;
+        padding: 0 1rem;
+    }
+    h2 .label.label-warning small {
+        line-height: 15px;
+    }
+
+}
+
+#middle a {
     color: #240F03;
 }
 
-#nav
-{
+#nav {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 2px #ccc;
+}
+
+#nav ul {
     background-color: #E79022;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-#nav a
-{
-    color: #240F03;
+#nav ul li {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+#nav ul li a {
+    display: block;
+    margin: .5rem auto;
+    color: #FFC;
+    font-size: 2.25rem;
+}
+
+.list-group {
+    list-style-type: none;
+}
+
+.list-group-item {
+    padding: 1.75rem 1.5rem;
+    color: #777;
+    font-size: 1.75rem;
 }
 
 #nav-trigger {
@@ -38,27 +88,40 @@
 }
 
 @media screen and (min-width: 992px) {
-    #nav > label {
+    #nav > label  {
         display: none;
     }
 }
 
 @media screen and (max-width: 992px) {
-    body > #nav #navigation {
-        display: none;
-    }
-    body > #nav {
-        min-height: 2.5em;
-        width: 100%;
-    }
-    body > #nav label {
+
+    #nav > label {
         display: block;
         text-align: right;
     }
-    body > #nav label img {
-        margin: .5em;
+
+    #nav > label svg {
+        margin: 1em 1em .25rem;
     }
-    body > #nav input:checked ~ div#navigation {
+
+    #nav > label svg {
+        fill: #ffc;
+    }
+
+    #nav {
+        height:auto;
+        min-height: 2.5em;
+        width: 100%;
+        background: #E79022;
+    }
+
+    #navigation {
+        display: none;
+    }
+
+    #nav input:checked ~ ul#navigation {
         display: block;
+        padding-bottom: 1rem;
     }
+
 }
