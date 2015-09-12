@@ -21,18 +21,22 @@
             try
             {
                 // connect to database
-                if ($_SERVER['HTTP_HOST']=="localhost")
-                {
-                  //$handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
-                  $handle = new PDO("mysql:dbname=testing;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
-                }
-                else if ($_SERVER['HTTP_HOST']=="www.coursentnu.com")
+                // 可能會在非 80 port 開發，若 server 不是 www.coursentnu.com 的話，就直接進 else
+                if ($_SERVER['HTTP_HOST']=="www.coursentnu.com")
                 {
                   $handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
+                }
+                else
+                {
+                  //$handle = new PDO("mysql:dbname=coursentnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
+                  // 記得更改 unix_socket，可以進 mySQL 後用 show variables like '%sock%'; 來看
+                  $handle = new PDO("mysql:dbname=testing;host=localhost;unix_socket=/var/lib/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
                 }
 
                 // ensure that PDO::prepare returns false when passed invalid SQL
                 $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                // 避免撈出來的中文字變成問號
+                $handle->exec("set names utf8");
             }
             catch (Exception $e)
             {
