@@ -30,7 +30,7 @@
         // 以 CourseId 到 Courses 搜尋每個版本的課
         foreach ($ids as $id)
         {
-          $crecords[] = query("SELECT * FROM Courses WHERE CourseId = ?", $id)[0];
+          $crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
         }
         // 輸出課程資訊頁
         render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);

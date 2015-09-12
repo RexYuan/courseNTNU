@@ -42,6 +42,14 @@
     <h2><?= $crecord["AuthAssigned"] ?></h2> <!-- 授權碼選課人數 -->
     <h2><?= $crecord["ExAssigned"] ?></h2> <!-- 交換生選課人數 -->
     <h2><?= $crecord["PtAssigned"] ?></h2> <!-- 不佔名額生人數 -->
+
+    <h2><?= $crecord["Abbr"] ?></h2> <!-- 開課代碼前綴 -->
+    <h2><?= $crecord["DeptCode"] ?></h2> <!-- 系所代碼 -->
+    <h2><?= $crecord["DeptChName"] ?></h2> <!-- 系所中文名稱 -->
+    <h2><?= $crecord["DeptEnName"] ?></h2> <!-- 系所英文名稱 -->
+    <h2><?= $crecord["TeChName"] ?></h2> <!-- 中文名字 -->
+    <h2><?= $crecord["TeEnName"] ?></h2> <!-- 英文名字 -->
+    <h2><?= $crecord["TeDescription"] ?></h2> <!-- 簡短描述 -->
 <?php endforeach ?>
 <!-- 還要規劃評論跟投票區，以及一個「追蹤（subscribe）」按鈕 -->
 <div class="fb-comments" data-href="<?= $urlroot.$_SERVER["REQUEST_URI"] ?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div></div>
