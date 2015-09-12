@@ -9,7 +9,7 @@
       <div id="dlst<?php echo $lsc; $lsc++; ?>">
         <ul class="list">
           <?php foreach (array_slice($dpms, $anchor, $g[1]) as $dpm): ?>
-            <li><a class="dname" href="$urlroot"index.php?dpm="<?= $dpm["DeptCode"] ?>"><?= $dpm["ChName"] ?></a></li>
+            <li><a class="dname" href="<?= $urlroot ?>index.php?dpm=<?= $dpm["DeptCode"] ?>"><?= $dpm["ChName"] ?></a></li>
           <?php endforeach; $anchor = $anchor+$g[1]; ?>
         </ul>
       </div>
