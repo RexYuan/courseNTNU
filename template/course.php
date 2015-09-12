@@ -13,8 +13,7 @@
 
         <ul class="list-group">
         <?php foreach($courses as $course): ?>
-
-            <?php if ($course["availability"] === '1'): ?>
+            <?php if ($course["availability"] == '1'): ?>
             <li>
                 <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>" class="list-group-item">
                     <h4>
@@ -30,7 +29,7 @@
         <?php endforeach ?>
         <?php foreach($courses as $course): ?>
 
-            <?php if ($course["availability"] === '0'): ?>
+            <?php if ($course["availability"] == '0'): ?>
             <li><a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>" class="list-group-item">
                     <h4><span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
                         <?= $course['chname'] ?>

@@ -12,7 +12,7 @@
         <a href="<?= $urlroot ?>index.php?dpm=<?= $course['department'] ?>&amp;cod=<?= $course['code'] ?>">
             <?= $course['chname'] ?>
         </a>
-        <?php if ($course["availability"] === '1'): ?>
+        <?php if ($course["availability"] == '1'): ?>
             <span class="label label-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 本學期有開課</span>
         <?php else: ?>
             <span class="label label-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 本學期未開課</span>
