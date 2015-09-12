@@ -2,3 +2,5 @@ testfile.php
 test.php
 .DS_Store
 magic.php
+.sass-cache
+*.css.map

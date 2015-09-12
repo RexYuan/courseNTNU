@@ -1,64 +1,137 @@
-#head
-{
-    background-color: #BD7A22;
-}
+#head {
+  background-color: #BD7A22; }
+  #head h1 strong a {
+    color: #FFFFCC; }
+  #head small {
+    color: #240F03; }
+  #head h2 a small {
+    color: #FFFFCC; }
 
-#head h1 strong a
-{
-    color: #FFFFCC;
-}
+#middle a {
+  color: #240F03; }
 
-#head small
-{
-    color: #240F03;
-}
-
-#head h2 a small
-{
-    color: #FFFFCC;
-}
-
-#middle a
-{
-    color: #240F03;
-}
-
-#nav
-{
-    background-color: #E79022;
-}
-
-#nav a
-{
-    color: #240F03;
-}
+#nav {
+  background-color: #E79022; }
+  #nav a {
+    color: #240F03; }
 
 #nav-trigger {
-    display: none;
-}
+  display: none; }
 
 @media screen and (min-width: 992px) {
-    #nav > label {
-        display: none;
-    }
-}
-
+  #nav > label {
+    display: none; } }
 @media screen and (max-width: 992px) {
+  body > #nav {
+    min-height: 2.5em;
+    width: 100%; }
     body > #nav #navigation {
-        display: none;
-    }
-    body > #nav {
-        min-height: 2.5em;
-        width: 100%;
-    }
+      display: none; }
     body > #nav label {
-        display: block;
-        text-align: right;
-    }
-    body > #nav label img {
-        margin: .5em;
-    }
+      display: block;
+      text-align: right; }
+      body > #nav label img {
+        margin: .5em; }
     body > #nav input:checked ~ div#navigation {
+      display: block; } }
+.outer {
+  text-align: center;
+  padding: 2rem 3rem; }
+
+.tip {
+  display: inline-block;
+  margin: 1rem auto 0;
+  padding: 1rem;
+  border: 1px solid #E79022;
+  background-color: #ffc;
+  color: #E79022;
+  text-align: center;
+  box-shadow: 7px 7px 0 #ddd; }
+  .tip h2 {
+    display: inline-block;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    width: 90%;
+    border-bottom: 1px solid #ccc; }
+    .tip h2 a {
+      color: #BD7A22; }
+    .tip h2::before {
+      content: "# ";
+      color: #aaa; }
+  .tip pre {
+    display: inline;
+    padding: .25rem;
+    margin: 0 .25rem; }
+
+.deps {
+  text-align: left; }
+  .deps ul {
+    margin: 2rem 0;
+    max-width: 90%;
+    list-style-type: none; }
+    .deps ul li {
+      display: inline-block;
+      margin: 1rem;
+      border: 2px solid #E79022;
+      box-shadow: 7px 7px 0 #aaa; }
+      .deps ul li a {
         display: block;
-    }
-}
+        padding: 1rem 2rem;
+        background-color: #E79022;
+        color: #ffc;
+        font-size: 2rem; }
+        .deps ul li a:hover {
+          background-color: #ffc;
+          color: #E79022;
+          text-decoration: none;
+          transition-duration: .2s; }
+
+.course h2 {
+  display: inline-block;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
+  width: 95%;
+  text-align: left;
+  border-bottom: 1px solid #ccc; }
+  .course h2 a {
+    color: #BD7A22; }
+  .course h2::before {
+    content: "# ";
+    color: #aaa; }
+.course ul {
+  padding: 0;
+  margin: 0; }
+  .course ul li {
+    display: inline-block;
+    margin: 1rem;
+    width: 16%;
+    vertical-align: top;
+    border: 2px solid #E79022;
+    box-shadow: 7px 7px 0 #ddd; }
+    .course ul li a {
+      display: block;
+      padding: 2rem;
+      height: 14rem;
+      background-color: #ffc;
+      color: #E79022;
+      font-size: 1.75rem; }
+      .course ul li a .teacherName {
+        display: block;
+        margin-bottom: 1rem;
+        padding: .5rem;
+        border: 1px solid #E79022;
+        background-color: #E79022;
+        color: #ffc;
+        text-align: center; }
+      .course ul li a .courseName {
+        font-size: 2rem; }
+      .course ul li a:hover {
+        background-color: #E79022;
+        color: #ffc;
+        transition-duration: .2s;
+        text-decoration: none; }
+        .course ul li a:hover .teacherName {
+          background-color: #ffc;
+          color: #E79022; }
+
+/*# sourceMappingURL=styles.css.map */

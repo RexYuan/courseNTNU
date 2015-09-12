@@ -1,5 +1,4 @@
-courseNTNU
-====
+# courseNTNU
 
 `Beta v0.1`
 
@@ -7,8 +6,9 @@ courseNTNU
 
 
 
-Developement
-----
+## Development
+
+### Deployment
 
 1. Clone the Repo
 2. Import `.sql`
@@ -18,6 +18,12 @@ Developement
 	const USERNAME = "your_username";
 	const PASSWORD = "your_password";
 ?>
+```
+
+### Style
+- use Scss
+```
+scss --watch ./
 ```
 
 <!--
