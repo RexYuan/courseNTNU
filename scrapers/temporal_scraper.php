@@ -6,7 +6,7 @@ require("temporal_scraper_helper.php");
 $DEBUG = False;
 
 // 從選課系統拿資料
-foreach(get_data(98,1) as $courses)
+foreach(get_data() as $courses)
 {
   foreach ($courses as $course)
   {

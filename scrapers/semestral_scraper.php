@@ -26,7 +26,8 @@
   }
 
   // get courses
-  foreach (array_keys(array_slice($DEPARTMENT_CODE_LIST,98,1)) as $dept_code)
+  // for testing: $lst = array_slice($DEPARTMENT_CODE_LIST,98,1);
+  foreach (array_keys($DEPARTMENT_CODE_LIST) as $dept_code)
   {
     // build URL
     $URL_GET_LIST['deptCode'] = $dept_code;
