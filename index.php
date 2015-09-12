@@ -63,8 +63,12 @@
     // 首頁
     else if (count($_GET) === 0)
     {
+      // 前面是組名 後面是該組有幾個系
+      $group_name_count = [["通用", 6], ["校際", 6], ["教育學院", 38], ["文學院", 23], ["理學院", 32],
+                           ["藝術學院", 8], ["科技學院", 15], ["運休學院", 8], ["國社學院", 14],
+                           ["音樂學院", 8], ["管理學院", 4], ["學程", 37], ["其他",1]];
       // 輸出系所列表
-      render("dpm_lst.php", ["urlroot" => $urlroot, "dpms" => query("SELECT * FROM Departments")]);
+      render("dpm_lst.php", ["urlroot" => $urlroot, "dpms" => query("SELECT * FROM Departments"), "gnc"=>$group_name_count]);
     }
 
     // 亂來

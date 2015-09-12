@@ -21,6 +21,7 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/konami.js"></script>
+        <script src="js/list.js"></script>
 
         <?php if (isset($title)): ?>
             <title>Course NTNU：<?= htmlspecialchars($title) ?></title>
