@@ -32,20 +32,26 @@
         {
           $crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
         }
-        // 合併相同老師，目前只將投票數合併，時段尚未。
+        
         $te_name_lst = [];
+        $remove_lst = [];
+        // 合併相同老師，目前只將投票數合併，時段尚未。
         for($idx = 0; $idx < count($crecords); $idx++)
         {
           if(isset($te_name_lst[$crecords[$idx]["TeChName"]]))
           {
             $crecords[$te_name_lst[$crecords[$idx]["TeChName"]]]["LikeIt"] += $crecords[$idx]["LikeIt"];
             $crecords[$te_name_lst[$crecords[$idx]["TeChName"]]]["DislikeIt"] += $crecords[$idx]["DislikeIt"];
-            unset($crecords[$idx]);
+            $remove_lst[] = $idx;
           }
           else
           {
             $te_name_lst[$crecords[$idx]["TeChName"]] = $idx;
           }
+        }
+        foreach ($remove_lst as $remove_idx)
+        {
+          unset($crecords[$remove_idx]);
         }
         // 輸出課程資訊頁
         render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
