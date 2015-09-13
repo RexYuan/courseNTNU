@@ -9,19 +9,19 @@
   foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
   {
     // checking if already in database
-    $result = query("SELECT ChName FROM Departments WHERE DeptCode = ?", $dept_code);
+    $result = query("SELECT DeptChName FROM Departments WHERE DeptCode = ?", $dept_code);
     if ($result)
     {
       // if name was changed
       if ($result[0]['ChName'] != $dept_name)
       {
-        query("UPDATE Departments SET ChName = ? WHERE DeptCode = ?", $dept_name, $dept_code);
+        query("UPDATE Departments SET DeptChName = ? WHERE DeptCode = ?", $dept_name, $dept_code);
       }
     }
     // new dept
     else
     {
-      query("INSERT INTO Departments (DeptCode, ChName) VALUES (?, ?)", $dept_code, $dept_name);
+      query("INSERT INTO Departments (DeptCode, DeptChName) VALUES (?, ?)", $dept_code, $dept_name);
     }
   }
 
