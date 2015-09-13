@@ -230,7 +230,7 @@
   .allThisCourse .tabs {
     position: relative;
     margin: 3rem 0;
-    height: 80rem; }
+    height: 90rem; }
     .allThisCourse .tabs::before, .allThisCourse .tabs::after {
       content: "";
       display: table; }
