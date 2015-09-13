@@ -231,6 +231,7 @@
       display: none; }
     .allThisCourse .tabs .tab-content {
       padding: 1rem 4rem 4rem;
+      width: 100%;
       background: #ffc;
       color: #2c3e50;
       position: absolute;
