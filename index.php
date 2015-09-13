@@ -32,6 +32,16 @@
         {
           $crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
         }
+        foreach ($crecords as $i=>$c)
+        {
+          foreach (array_slice($crecords,$i+1) as $ii=>$cc)
+          {
+            if ($c["CourseCode"]==$cc["CourseCode"] AND $c["TeacherId"]==$cc["TeacherId"])
+            {
+              unset($crecords[$i+1+$ii]);
+            }
+          }
+        }
         // 輸出課程資訊頁
         render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
       }
