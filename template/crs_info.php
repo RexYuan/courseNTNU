@@ -42,7 +42,7 @@
                     <div class="info">
                         <h3>選課情形</h3>
                         <ul>
-                            <li>選課人數：<?= $crecord["Enrolled"] ?></li>
+                            <li>修課情況：<?= $crecord["Enrolled"] ?>/<?= $crecord["TotalMaxSize"] ?></li>
                             <li>已分發人數：<?= $crecord["Assigned"] ?></li>
                             <li>未分發人數：<?= $crecord["Unassigned"] ?></li>
                         </ul>
@@ -52,7 +52,6 @@
                         <ul>
                             <li>全英語授課：<?php echo $crecord["IsEngTeach"] == "N"?"No":"Yes" ?></li>
                             <li>MOOCs：<?php echo $crecord["IsMOOC"] == "N"?"No":"Yes" ?></li>
-                            <li>限修人數：<?= $crecord["TotalMaxSize"] ?></li>
                         </ul>
                     </div>
 
