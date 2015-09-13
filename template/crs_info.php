@@ -23,10 +23,6 @@
                     }
                     ?>
                 </h3>
-                <div class="intro">
-                    <h3>課程簡介</h3>
-                    <p><?= $crecord["Description"] ?></p>
-                </div>
                 <div class="appraisal">
                     <h3>課程評價</h3>
                     <ul>
@@ -49,6 +45,10 @@
                             <input type="button" name="name" value="不推">
                         </li>
                     </ul>
+                </div>
+                <div class="intro">
+                    <h3>課程簡介</h3>
+                    <p><?= $crecord["Description"] ?></p>
                 </div>
                 <div class="details">
                     <div class="info">
