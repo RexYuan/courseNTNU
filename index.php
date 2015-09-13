@@ -52,7 +52,7 @@
       else
       {
         // 搜尋系所名稱
-        $dpm_name = query("SELECT ChName FROM Departments WHERE DeptCode = ?", $_GET["dpm"])[0]["ChName"];
+        $dpm_name = query("SELECT DeptChName FROM Departments WHERE DeptCode = ?", $_GET["dpm"])[0]["DeptChName"];
         // 解析 DeptCourseNameRecord 和 DeptCourseCodeRecord
         $drecords = array_map(function($n,$c){return ["name"=>$n,"code"=>$c];}, explode("/", $record["DeptCourseNameRecord"]), explode("/", $record["DeptCourseCodeRecord"]));
         // 輸出課程列表
