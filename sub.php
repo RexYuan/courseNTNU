@@ -1,5 +1,5 @@
 <?php
-// 處理要求列出所有追蹤的頁面 參考 master 上的實驗作法
+// 處理要求列出所有追蹤的頁面
 // requirements
 require_once("functions.php");
 require_once("constants.php");
@@ -7,16 +7,27 @@ require_once("constants.php");
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
-
-if (!isset($_SESSION["profile"]))
+if ($_SERVER["REQUEST_METHOD"] == "GET" AND isset($_GET["u"]))
 {
-    $_SESSION["profile"] = lookup($_POST["token"]);
+  $sublst = query("SELECT * FROM Subs WHERE UserId = ?", $_GET["u"])[0]["SubLst"];
+  if ($sublst)
+  {
+    $nlst = explode("/", $sublst);
+    $clst = [];
+    foreach ($nlst as $n)
+    {
+      $clst[] = query("SELECT * FROM Courses WHERE SerialNo = ?", $n)[0];
+    }
+    render("subs_lst.php", ["title" => "追蹤課程", "urlroot" => $urlroot, "clst" => $clst]);
+  }
+  else
+  {
+    redirect($urlroot."index.php");
+  }
 }
-$uid = query("SELECT UserId FROM Users WHERE FBId = ?", $_SESSION["profile"]["id"])[0]["UserId"];
-$subs = query("SELECT * FROM Subs WHERE UserId = ?", $uid);
-
-// 處理去拿各個「當期」開課的資料 參閱 index.php 裡輸出處理 crs_info.php 的部分
-
-// 輸出 sub_lst.php
+else
+{
+  redirect($urlroot."index.php");
+}
 
 ?>

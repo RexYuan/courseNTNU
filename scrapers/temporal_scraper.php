@@ -31,6 +31,4 @@ foreach(get_data() as $courses)
     echo $course['chnName']."\n";
   }
 }
-
-
 ?>
