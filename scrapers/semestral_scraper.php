@@ -112,7 +112,10 @@
       $d_record_result = query("SELECT * FROM DepartmentRecords WHERE DeptId = ?", $DeptId);
       if($d_record_result)
       {
-        query("UPDATE DepartmentRecords SET DeptCourseNameRecord = ?, DeptCourseCodeRecord = ? WHERE DeptId = ?", $d_record_result[0]['DeptCourseNameRecord'].'/'.$ChName, $d_record_result[0]['DeptCourseCodeRecord'].'/'.$CourseCode, $DeptId);
+        if (strpos($d_record_result[0]['DeptCourseCodeRecord'], $CourseCode) === false)
+        {
+          query("UPDATE DepartmentRecords SET DeptCourseNameRecord = ?, DeptCourseCodeRecord = ? WHERE DeptId = ?", $d_record_result[0]['DeptCourseNameRecord'].'/'.$ChName, $d_record_result[0]['DeptCourseCodeRecord'].'/'.$CourseCode, $DeptId);
+        }
       }
       else
       {
