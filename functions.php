@@ -29,7 +29,6 @@
                 else
                 {
                   // 記得更改 unix_socket，可以進 mySQL 後用 show variables like '%sock%'; 來看
-                  // $usocket = "/Applications/MAMP/tmp/mysql/mysql.sock";
                   $handle = new PDO("mysql:dbname=testing;host=localhost;unix_socket=".USOCKET.";port=3306", USERNAME, PASSWORD);
                 }
 

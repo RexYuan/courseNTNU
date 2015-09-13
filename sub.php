@@ -1,5 +1,5 @@
 <?php
-// 處理要求列出所有追蹤的頁面
+// 處理要求列出所有追蹤的頁面 參考 master 上的實驗作法
 // requirements
 require_once("functions.php");
 require_once("constants.php");

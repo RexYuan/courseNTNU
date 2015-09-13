@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
     // when like clicked
     $('#likebtn').click(function(event) {
         event.preventDefault();
@@ -39,7 +39,7 @@ $(function() {
         }
         });
     });
-    
+
     // when dislike clicked
     $('#dislikebtn').click(function(event) {
         event.preventDefault();
@@ -80,45 +80,33 @@ $(function() {
         });
     });
 
-    // when report btn clicked
-    $('#submit_report').click(function(event) {
-        event.preventDefault();
-        FB.getLoginStatus(function(response) {
+    // 按下追蹤
+    $('#subscribe').click(function(event) {
+      event.preventDefault();
+      FB.getLoginStatus(function(response) {
         var fbstatus = response.status;
         if (fbstatus == "connected"){
-        var report = $('#report').val();
-
-            if (report === "")
-            {
-                $("#report_blank_message").removeClass('hidden');
-            }
-            else
-            {
-                // update database
-                $.post("../report.php", {"report": report, "token": token})
-                    .done(function( data ) {
-                        // update html
-                        $("#report_success_message").removeClass('hidden');
-                        $("#report_blank_message").addClass('hidden');
-                        $("#submit_report").prop('disabled', true);
-                        setTimeout(function(){parent.history.back()();}, 1000);
-                    })
-                    .fail(function( data ) {
-                        //alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
-                        console.log(data);
-                    });
-            }
+          // 拿 token, CourseCode Ajax 更新資料庫
+          $.post("../sub_btn.php", {"code": , "token": token})
+            .done(function( data ) {
+              // 更新前端
+            })
+            .fail(function( data ) {
+              //alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
+              console.log(data);
+            });
         }
         else
         {
-            $('#fbModal').modal('show');
+          $('#fbModal').modal('show');
         }
-        });
+      });
     });
-});
+});*/
 
 // initialize btn state
-var initBtn = function() {
+/*var initBtn = function() {
+  // 初始追蹤按鈕
     $("#likebtn").prop('disabled', false);
     $("#dislikebtn").prop('disabled', false);
     var cod = $('#code').val();
@@ -126,7 +114,7 @@ var initBtn = function() {
     var fbstatus = response.status;
     if (fbstatus === "connected")
     {
-        $.post("../btn.php", {"code": cod, "fbid": fbID})
+        $.post("../rate_btn.php", {"code": cod, "fbid": fbID})
             .done(function( data ) {
                 // update html
                 var datum = jQuery.parseJSON(data);
@@ -146,18 +134,11 @@ var initBtn = function() {
             });
     }
     });
-};
-
-// initialize report btn state
-var initRepBtn = function() {
-    // update html
-    $("#submit_report").prop('disabled', false);
-};
+};*/
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
 ga('create', 'UA-58924606-1', 'auto');
 ga('send', 'pageview');
