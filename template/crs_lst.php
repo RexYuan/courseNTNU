@@ -16,9 +16,9 @@
                         <?php
                             $last_code = $dr["code"];
                             $tmp = $dr["name"];
-                            if (strlen($tmp) > 11 * 3)
+                            if (strlen($tmp) > 9 * 3)
                             {
-                                $tmp = substr($tmp, 0, 11 * 3)."…";
+                                $tmp = substr($tmp, 0, 9 * 3)."…";
                             }
                             echo $tmp
                         ?>
