@@ -101,7 +101,26 @@
 }
 
 .deps {
+    padding-left: 3rem;
     text-align: left;
+
+    h2 {
+        display: inline-block;
+        margin-left: 1rem;
+        padding-bottom: 1rem;
+        width: 95%;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+
+        a {
+            color: #BD7A22;
+        }
+
+        &::before {
+            content: "# ";
+            color: #aaa;
+        }
+    }
 
     ul {
         margin: 2rem 0;

@@ -64,7 +64,20 @@
     margin: 0 .25rem; }
 
 .deps {
+  padding-left: 3rem;
   text-align: left; }
+  .deps h2 {
+    display: inline-block;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    width: 95%;
+    text-align: left;
+    border-bottom: 1px solid #ccc; }
+    .deps h2 a {
+      color: #BD7A22; }
+    .deps h2::before {
+      content: "# ";
+      color: #aaa; }
   .deps ul {
     margin: 2rem 0;
     max-width: 90%;
