@@ -160,14 +160,44 @@
     font-weight: 400;
     background-color: #E79022;
     color: #ffc; }
-  .allThisCourse .intro {
+  .allThisCourse .intro, .allThisCourse .appraisal {
     margin-bottom: 3rem;
+    padding-bottom: 3rem;
     border-bottom: 3px dashed #E79022; }
-    .allThisCourse .intro h3 {
+    .allThisCourse .intro h3, .allThisCourse .appraisal h3 {
       display: inline-block;
       padding: 1rem;
       background-color: #E79022;
       color: #ffc; }
+  .allThisCourse .appraisal ul {
+    padding: 0;
+    list-style-type: none; }
+    .allThisCourse .appraisal ul li {
+      padding: 2.5%;
+      width: 24%;
+      display: inline-block;
+      vertical-align: top; }
+      .allThisCourse .appraisal ul li .app-info {
+        padding-top: 1rem;
+        min-height: 4.5rem;
+        font-size: 1.5rem; }
+      .allThisCourse .appraisal ul li input {
+        width: 75%;
+        padding: 1rem;
+        font-size: 1.5rem; }
+        .allThisCourse .appraisal ul li input[type="number"], .allThisCourse .appraisal ul li input[type="submit"] {
+          display: inline-block;
+          width: 45%; }
+        .allThisCourse .appraisal ul li input[type="button"], .allThisCourse .appraisal ul li input[type="submit"] {
+          background-color: #ffc;
+          color: #E79022;
+          border: 2px solid #E79022;
+          border-radius: 5px;
+          box-shadow: 0 2px #ccc; }
+          .allThisCourse .appraisal ul li input[type="button"]:hover, .allThisCourse .appraisal ul li input[type="submit"]:hover {
+            background-color: #E79022;
+            color: #ffc;
+            transition-duration: .2s; }
   .allThisCourse .details .info {
     display: inline-block;
     padding: 0 5% 2rem;
@@ -187,7 +217,7 @@
   .allThisCourse .tabs {
     position: relative;
     margin: 3rem 0;
-    height: 60rem; }
+    height: 80rem; }
     .allThisCourse .tabs::before, .allThisCourse .tabs::after {
       content: "";
       display: table; }

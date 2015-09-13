@@ -27,6 +27,37 @@
                     <h3>課程簡介</h3>
                     <p><?= $crecord["Description"] ?></p>
                 </div>
+                <div class="appraisal">
+                    <h3>課程評價</h3>
+
+                    <ul>
+                        <li class="score">
+                            <div class="app-info">
+                                平均分數：<span>99</span>分
+                            </div>
+                            <input type="number" name="name" placeholder="分數">
+                            <input type="submit" name="name" value="送出">
+                        </li>
+                        <li class="recom">
+                            <div class="app-info">
+                                <span>10</span>人推薦
+                            </div>
+                            <input type="button" name="name" value="推">
+                        </li>
+                        <li class="unrecom">
+                            <div class=" app-info">
+                                <span>143</span>人不建議
+                            </div>
+                            <input type="button" name="name" value="不推">
+                        </li>
+                        <li class="bookmark">
+                            <div class="app-info">
+
+                            </div>
+                            <input type="button" name="name" value="追蹤">
+                        </li>
+                    </ul>
+                </div>
                 <div class="details">
                     <div class="info">
                         <h3>基本資訊</h3>
