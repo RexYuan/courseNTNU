@@ -275,19 +275,34 @@
             list-style-type: none;
 
             li {
-                padding: 2.5%;
-                width: 24%;
+                padding: 2.5% 5% 2.5% 0;
+                width: 30%;
                 display: inline-block;
                 vertical-align: top;
 
                 .app-info {
                     padding-top: 1rem;
-                    min-height: 4.5rem;
+                    min-height: 5rem;
                     font-size: 1.5rem;
+
+                    span {
+                        padding: 0 1rem;
+                        font-size: 2.5rem;
+                        color: #fff;
+                        border-radius: 5px;
+
+                        &.good {
+                            background-color: #5CB85C;
+                        }
+
+                        &.bad {
+                            background-color: #D9534F;
+                        }
+                    }
                 }
 
                 input {
-                    width: 75%;
+                    width: 95%;
                     padding: 1rem;
                     font-size: 1.5rem;
 

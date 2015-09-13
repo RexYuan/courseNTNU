@@ -186,16 +186,25 @@
     padding: 0;
     list-style-type: none; }
     .allThisCourse .appraisal ul li {
-      padding: 2.5%;
-      width: 24%;
+      padding: 2.5% 5% 2.5% 0;
+      width: 30%;
       display: inline-block;
       vertical-align: top; }
       .allThisCourse .appraisal ul li .app-info {
         padding-top: 1rem;
-        min-height: 4.5rem;
+        min-height: 5rem;
         font-size: 1.5rem; }
+        .allThisCourse .appraisal ul li .app-info span {
+          padding: 0 1rem;
+          font-size: 2.5rem;
+          color: #fff;
+          border-radius: 5px; }
+          .allThisCourse .appraisal ul li .app-info span.good {
+            background-color: #5CB85C; }
+          .allThisCourse .appraisal ul li .app-info span.bad {
+            background-color: #D9534F; }
       .allThisCourse .appraisal ul li input {
-        width: 75%;
+        width: 95%;
         padding: 1rem;
         font-size: 1.5rem; }
         .allThisCourse .appraisal ul li input[type="number"], .allThisCourse .appraisal ul li input[type="submit"] {

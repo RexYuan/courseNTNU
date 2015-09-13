@@ -32,19 +32,19 @@
                     <ul>
                         <li class="score">
                             <div class="app-info">
-                                推薦分數：<span>-</span>分
+                                推薦分數：<span>-</span> 分
                             </div>
                             <input type="button" name="name" value="追蹤">
                         </li>
                         <li class="recom">
                             <div class="app-info">
-                                <span>120</span>人推薦
+                                <span class="good">120</span> 人推薦
                             </div>
                             <input type="button" name="name" value="推">
                         </li>
                         <li class="unrecom">
-                            <div class=" app-info">
-                                <span>143</span>人不建議
+                            <div class="app-info">
+                                <span class="bad">143</span> 人不建議
                             </div>
                             <input type="button" name="name" value="不推">
                         </li>
@@ -94,7 +94,15 @@
 <script type="text/javascript">
     var re = document.querySelector(".recom span") && document.querySelector(".recom span").innerHTML;
     var unre = document.querySelector(".unrecom span") && document.querySelector(".unrecom span").innerHTML;
-    document.querySelector(".score span") && (document.querySelector(".score span").innerHTML = re - unre);
+    if (document.querySelector(".score span")) {
+        document.querySelector(".score span").innerHTML = re - unre;
+        if (re - unre > 0) {
+            document.querySelector(".score span").classList.add("good");
+        }
+        else {
+            document.querySelector(".score span").classList.add("bad");
+        }
+    }
 </script>
 <!-- <h2><?= $crecord["TeacherId"] ?></h2> 教師識別碼 -->
 <!-- <h2><?= $crecord["CourseGroup"] ?></h2> 組別 -->
