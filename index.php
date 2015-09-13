@@ -37,7 +37,6 @@
         // 合併相同老師，目前只將投票數合併，時段尚未。
         for($idx = 0; $idx < count($crecords); $idx++)
         {
-          print($crecords[$idx]["TeChName"]);
           if(isset($te_name_lst[$crecords[$idx]["TeChName"]]))
           {
             $crecords[$te_name_lst[$crecords[$idx]["TeChName"]]]["LikeIt"] += $crecords[$idx]["LikeIt"];
