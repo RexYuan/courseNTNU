@@ -28,19 +28,25 @@
                     <ul>
                         <li class="score">
                             <div class="app-info">
-                                推薦分數：<span>-</span> 分
+                              <?php $rat = $crecord["LikeIt"]+$crecord["DislikeIt"] > 0 ? sprintf("%2d", 100*($crecord["LikeIt"]/($crecord["LikeIt"]+$crecord["DislikeIt"]))) : 0; ?>
+                              <?php if ($rat >= 50): ?>
+                                推薦分數：<span class="good"><?= $rat ?></span> 分
+                              <?php else: ?>
+                                推薦分數：<span class="bad"><?= $rat ?></span> 分
+                              <?php endif ?>
+
                             </div>
-                            <input type="button" name="name" value="追蹤">
+                            <input class="subscribe" type="button" name="name" value="追蹤" data-serial="<?= $crecord["SerialNo"] ?>">
                         </li>
                         <li class="recom">
                             <div class="app-info">
-                                <span class="good">120</span> 人推薦
+                                <span class="good"><?= $crecord["LikeIt"] ?></span> 人推薦
                             </div>
                             <input type="button" name="name" value="推">
                         </li>
                         <li class="unrecom">
                             <div class="app-info">
-                                <span class="bad">143</span> 人不建議
+                                <span class="bad"><?= $crecord["DislikeIt"] ?></span> 人不建議
                             </div>
                             <input type="button" name="name" value="不推">
                         </li>

@@ -9,19 +9,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
   if (!isset($_SESSION["u"]))
   {
-    $d = lookup($tok);
+    $d = lookup($_POST["t"]);
     query("INSERT INTO Users (FBId, UserName, Gender, Locale) VALUES (?, ?, ?, ?)",
           $d["id"], $d["name"], $d["locale"], $d["gender"]);
     $_SESSION["u"] = query("SELECT UserId FROM Users WHERE FBId = ?", $d["id"])[0]["UserId"];
   }
   $sublst = query("SELECT * FROM Subs WHERE UserId = ?", $_SESSION["u"])[0]["SubLst"];
-  // 還沒追蹤任一堂課
-  if ($sublst)
-  {
-    query("INSERT INTO Subs (UserId, SubLst) VALUES (?, ?)", $_SESSION["u"], $_POST["n"]);
-  }
   // 有追蹤過課
-  else
+  if ($sublst)
   {
     $sublst = explode("/", $sublst);
     // 已經追蹤此課
@@ -35,6 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
       query("UPDATE Subs SET SubLst = ?", implode("/", $sublst)."/".$_POST["n"]);
     }
+  }
+  // 還沒追蹤任一堂課
+  else
+  {
+    query("INSERT INTO Subs (UserId, SubLst) VALUES (?, ?)", $_SESSION["u"], $_POST["n"]);
   }
 }
 ?>

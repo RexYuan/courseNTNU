@@ -1,5 +1,5 @@
-/*$(function() {
-    // when like clicked
+$(function() {
+    /*// when like clicked
     $('#likebtn').click(function(event) {
         event.preventDefault();
         FB.getLoginStatus(function(response) {
@@ -78,21 +78,23 @@
             $('#fbModal').modal('show');
         }
         });
-    });
+    });*/
 
     // 按下追蹤
-    $('#subscribe').click(function(event) {
+    $('.subscribe').click(function(event) {
+      var n = $(this).data("serial");
       event.preventDefault();
       FB.getLoginStatus(function(response) {
         var fbstatus = response.status;
         if (fbstatus == "connected"){
           // 拿 token, CourseCode Ajax 更新資料庫
-          $.post("../sub_btn.php", {"code": , "token": token})
+          $.post("../sub_handle.php", {"n": n, "t": token})
             .done(function( data ) {
               // 更新前端
+              alert(n);
             })
             .fail(function( data ) {
-              //alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
+              alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
               console.log(data);
             });
         }
@@ -102,7 +104,7 @@
         }
       });
     });
-});*/
+});
 
 // initialize btn state
 /*var initBtn = function() {
