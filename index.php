@@ -26,11 +26,16 @@
       else
       {
         // 每期的課
+        $raw_crecords = [];
         $crecords = [];
         // 以 CourseId 到 Courses 搜尋每個版本的課
         foreach ($ids as $id)
         {
-          $crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
+          $raw_crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
+        }
+        foreach ($raw_crecords as $crecord)
+        {
+        	$crecords[$crecord["TeChName"]][] = $crecord;
         }
         // 合併相同老師，目前只將投票數合併，時段尚未。
         $te_name_lst = [];
