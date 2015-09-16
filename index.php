@@ -38,7 +38,8 @@
           $crecords[$crecord["TeChName"]][] = $crecord;
         }
         // 輸出課程資訊頁
-        render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
+        //render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
+        echo "<pre>";print_r($crecords);echo "</pre>";
       }
     }
 

@@ -1,37 +1,35 @@
 $(function() {
-    /*// when like clicked
-    $('#likebtn').click(function(event) {
-        event.preventDefault();
-        FB.getLoginStatus(function(response) {
-        var fbstatus = response.status;
-        if (fbstatus == "connected")
-        {
-            var cod = $('#code').val();
-            var rat = $('#likebtn').val();
-
-            // update database
-            $.post("../rate.php", {"token": token, "rate": rat, "code": cod})
-                .done(function( data ) {
-                    // update html
-                    var datum = jQuery.parseJSON(data);
-                    $('#rating_score').html(datum["ratings"]);
-                    $('#like_bar').css("width", datum["like_bar"]);
-                    $('#dislike_bar').css("width", datum["dislike_bar"]);
-                    $('#message').html(datum["message"]);
-                    if ($("#likebtn").hasClass("active"))
-                    {
-                        $("#likebtn").removeClass('active');
-                    }
-                    else
-                    {
-                        $("#likebtn").addClass('active');
-                        $("#dislikebtn").removeClass('active');
-                    }
-                })
-                .fail(function( data ) {
-                    //alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
-                    console.log(data);
-                });
+  // TODO: 改 crs_info.php
+  // 按下推
+  $('.likebtn').click(function(event) {
+    var code = $(this).data("code");
+    var rate = $(this).data("rate")
+    event.preventDefault();
+    FB.getLoginStatus(function(response) {
+      var fbstatus = response.status;
+      if (fbstatus == "connected")
+      {
+        $.post("../rate_handle.php", {"token": token, "rate": rat, "code": cod})
+          .done(function( data ) {
+            var datum = jQuery.parseJSON(data);
+            $('#rating_score').html(datum["ratings"]);
+            $('#like_bar').css("width", datum["like_bar"]);
+            $('#dislike_bar').css("width", datum["dislike_bar"]);
+            $('#message').html(datum["message"]);
+            if ($("#likebtn").hasClass("active"))
+            {
+              $("#likebtn").removeClass('active');
+            }
+            else
+            {
+              $("#likebtn").addClass('active');
+              $("#dislikebtn").removeClass('active');
+            }
+          })
+          .fail(function( data ) {
+            alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
+            console.log(data);
+          });
         }
         else
         {
@@ -40,8 +38,8 @@ $(function() {
         });
     });
 
-    // when dislike clicked
-    $('#dislikebtn').click(function(event) {
+    // 按下不推
+    $('.dislikebtn').click(function(event) {
         event.preventDefault();
         FB.getLoginStatus(function(response) {
         var fbstatus = response.status;
@@ -78,7 +76,7 @@ $(function() {
             $('#fbModal').modal('show');
         }
         });
-    });*/
+    });
 
     // 按下追蹤
     $('.subscribe').click(function(event) {
