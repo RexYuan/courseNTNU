@@ -31,15 +31,28 @@
         // 以 CourseId 到 Courses 搜尋每個版本的課
         foreach ($ids as $id)
         {
-          $raw_crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
+          $crecords[] = query("SELECT Courses.*, Departments.*, Teachers.* FROM Courses INNER JOIN Departments, Teachers WHERE Courses.CourseId = ? AND Departments.DeptId = Courses.DeptId AND Courses.TeacherId = Teachers.TeacherId", $id)[0];
         }
-        foreach ($raw_crecords as $crecord)
+        // 計算分數
+        $scores = [];
+        foreach ($crecords as $i => $crecord)
         {
-          $crecords[$crecord["TeChName"]][] = $crecord;
+          $scores[$crecord["TeacherId"]]["LikeIt"] += $crecord["LikeIt"];
+          $scores[$crecord["TeacherId"]]["DislikeIt"] += $crecord["DislikeIt"];
+          $scores[$crecord["TeacherId"]]["is"][] = $i;
         }
+        foreach ($scores as $score)
+        {
+          foreach ($score["is"] as $i)
+          {
+            $crecords[$i]["LikeIt"] = $score["LikeIt"];
+            $crecords[$i]["DislikeIt"] = $score["DislikeIt"];
+          }
+        }
+
         // 輸出課程資訊頁
-        //render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
-        echo "<pre>";print_r($crecords);echo "</pre>";
+        render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
+        //echo "<pre>";print_r($crecords);echo "</pre>";
       }
     }
 

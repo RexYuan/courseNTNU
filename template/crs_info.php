@@ -5,7 +5,7 @@
             <?php $x=1; foreach ($crecords as $crecord): ?>
             <li class="tab">
             <input type='radio' class='tab-switch' id='tab-<?= $x ?>' name='teacher-tabs' value='' style='<?= ($x==1) ? "checked" : ""; ?>'>
-            <label class='tab-label' for='tab-<?= $x ?>'><?= $crecord["TeChName"].(($crecord["TeEnName"] != "") ? "(".$crecord["TeEnName"].")" : "") ?></label>
+            <label class='tab-label' for='tab-<?= $x ?>'><?= $crecord["TeChName"].(($crecord["TeEnName"] != "") ? "(".$crecord["TeEnName"].")" : "") ?><br><?= $crecord["TimeInfo"] ?></label>
                 <div class="course tab-content">
                 <h3>
                     開課教師：<?= $crecord["TeChName"] ?>
