@@ -35,51 +35,8 @@
         }
         foreach ($raw_crecords as $crecord)
         {
-        	$crecords[$crecord["TeChName"]][] = $crecord;
+          $crecords[$crecord["TeChName"]][] = $crecord;
         }
-        // 合併相同老師，目前只將投票數合併，時段尚未。
-        $te_name_lst = [];
-        $remove_lst = [];
-        for($idx = 0; $idx < count($crecords); $idx++)
-        {
-          if(isset($te_name_lst[$crecords[$idx]["TeChName"]]))
-          {
-            $crecords[$te_name_lst[$crecords[$idx]["TeChName"]]]["LikeIt"] += $crecords[$idx]["LikeIt"];
-            $crecords[$te_name_lst[$crecords[$idx]["TeChName"]]]["DislikeIt"] += $crecords[$idx]["DislikeIt"];
-            $remove_lst[] = $idx;
-          }
-          else
-          {
-            $te_name_lst[$crecords[$idx]["TeChName"]] = $idx;
-          }
-        }
-        foreach ($remove_lst as $remove_idx)
-        {
-          unset($crecords[$remove_idx]);
-        }
-        // 合併時間與人數
-        /*foreach ($crecords as $i=>$c)
-        {
-          foreach (array_slice($crecords,$i+1) as $ii=>$cc)
-          {
-            if ($c["CourseCode"]==$cc["CourseCode"] AND $c["TeacherId"]==$cc["TeacherId"])
-            {
-              $crecords[$i]["CourseGroup"] = $crecords[$i]["CourseGroup"]."/".$crecords[$i+1+$ii]["CourseGroup"];
-              $crecords[$i]["SerialNo"] = $crecords[$i]["SerialNo"]."/".$crecords[$i+1+$ii]["SerialNo"];
-              $crecords[$i]["ChLocation"] = $crecords[$i]["ChLocation"]."/".$crecords[$i+1+$ii]["ChLocation"];
-              $crecords[$i]["TimeInfo"] = $crecords[$i]["TimeInfo"]."/".$crecords[$i+1+$ii]["TimeInfo"];
-              $crecords[$i]["AuthMaxSize"] = $crecords[$i]["AuthMaxSize"]."/".$crecords[$i+1+$ii]["AuthMaxSize"];
-              $crecords[$i]["TotalMaxSize"] = $crecords[$i]["TotalMaxSize"]."/".$crecords[$i+1+$ii]["TotalMaxSize"];
-              $crecords[$i]["FmReserve"] = $crecords[$i]["FmReserve"]."/".$crecords[$i+1+$ii]["FmReserve"];
-              $crecords[$i]["NTAMaxSize"] = $crecords[$i]["NTAMaxSize"]."/".$crecords[$i+1+$ii]["NTAMaxSize"];
-              $crecords[$i]["Enrolled"] = $crecords[$i]["Enrolled"]."/".$crecords[$i+1+$ii]["Enrolled"];
-              $crecords[$i]["Assigned"] = $crecords[$i]["Assigned"]."/".$crecords[$i+1+$ii]["Assigned"];
-              $crecords[$i]["Unassigned"] = $crecords[$i]["Unassigned"]."/".$crecords[$i+1+$ii]["Unassigned"];
-              $crecords[$i]["$AuthAssigned"] = $crecords[$i]["$AuthAssigned"]."/".$crecords[$i+1+$ii]["$AuthAssigned"];
-              unset($crecords[$i+1+$ii]);
-            }
-          }
-        }*/
         // 輸出課程資訊頁
         render("crs_info.php", ["title" => $crecords[0]["ChName"], "urlroot" => $urlroot, "crecords" => $crecords]);
       }
