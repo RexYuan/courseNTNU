@@ -1,83 +1,37 @@
+var debug = false;
 $(function() {
-  // TODO: 改 crs_info.php
-  // 按下推
-  $('.likebtn').click(function(event) {
-    var code = $(this).data("code");
-    var rate = $(this).data("rate")
+  $('.ratbtn').click(function(event) {
+    var id = $(this).data("cid");
+    var rate = $(this).data("rate");
+    var code = $(this).data("cod");
     event.preventDefault();
     FB.getLoginStatus(function(response) {
       var fbstatus = response.status;
       if (fbstatus == "connected")
       {
-        $.post("../rate_handle.php", {"token": token, "rate": rat, "code": cod})
+        $.post("../rate_handle.php", {"t": token, "r": rate, "i": id, "c": code})
           .done(function( data ) {
-            var datum = jQuery.parseJSON(data);
-            $('#rating_score').html(datum["ratings"]);
-            $('#like_bar').css("width", datum["like_bar"]);
-            $('#dislike_bar').css("width", datum["dislike_bar"]);
-            $('#message').html(datum["message"]);
-            if ($("#likebtn").hasClass("active"))
-            {
-              $("#likebtn").removeClass('active');
-            }
-            else
-            {
-              $("#likebtn").addClass('active');
-              $("#dislikebtn").removeClass('active');
-            }
+            var d = $.parseJSON(data)["scores"];
+            $.each(d, function(k,v) {
+              $(".lk-"+k).html(v["LikeIt"]);
+              $(".dlk-"+k).html(v["DislikeIt"]);
+              // TODO: 更新按鈕外觀樣子表示出已經按下去或是按起來
+            });
           })
           .fail(function( data ) {
-            alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
-            console.log(data);
+            if (debug)
+            {
+              alert("錯誤: 0\n(" + data.status + ": " + data.statusText + ")");
+              console.log(data);
+            }
           });
         }
         else
         {
-            $('#fbModal').modal('show');
+          $('#fbModal').modal('show');
         }
         });
     });
-
-    // 按下不推
-    $('.dislikebtn').click(function(event) {
-        event.preventDefault();
-        FB.getLoginStatus(function(response) {
-        var fbstatus = response.status;
-        if (fbstatus == "connected"){
-        var cod= $('#code').val();
-        var rat = $('#dislikebtn').val();
-
-        // update database
-        $.post("../rate.php", {"token": token, "rate": rat, "code": cod})
-            .done(function( data ) {
-                // update html
-                var datum = jQuery.parseJSON(data);
-                $('#rating_score').html(datum["ratings"]);
-                $('#like_bar').css("width", datum["like_bar"]);
-                $('#dislike_bar').css("width", datum["dislike_bar"]);
-                $('#message').html(datum["message"]);
-                if ($("#dislikebtn").hasClass("active"))
-                {
-                    $("#dislikebtn").removeClass('active');
-                }
-                else
-                {
-                    $("#dislikebtn").addClass('active');
-                    $("#likebtn").removeClass('active');
-                }
-            })
-            .fail(function( data ) {
-                //alert("錯誤: 1\n(" + data.status + ": " + data.statusText + ")");
-                console.log(data);
-            });
-        }
-        else
-        {
-            $('#fbModal').modal('show');
-        }
-        });
-    });
-
     // 按下追蹤
     $('.subscribe').click(function(event) {
       var n = $(this).data("serial");
@@ -92,8 +46,11 @@ $(function() {
               alert(n);
             })
             .fail(function( data ) {
-              alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
-              console.log(data);
+              if (debug)
+              {
+                alert("錯誤: 3\n(" + data.status + ": " + data.statusText + ")");
+                console.log(data);
+              }
             });
         }
         else
@@ -106,7 +63,7 @@ $(function() {
 
 // initialize btn state
 /*var initBtn = function() {
-  // 初始追蹤按鈕
+  // 初始追蹤按鈕以及投票按鈕
     $("#likebtn").prop('disabled', false);
     $("#dislikebtn").prop('disabled', false);
     var cod = $('#code').val();

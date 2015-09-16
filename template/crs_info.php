@@ -22,15 +22,15 @@
                         </li>
                         <li class="recom">
                             <div class="app-info">
-                                <span class="good"><?= $crecord["LikeIt"] ?></span> 人推薦
+                                <span class="good lk-<?= $crecord["TeacherId"] ?>"><?= $crecord["LikeIt"] ?></span> 人推薦
                             </div>
-                            <input class="likebtn" type="button" name="name" value="推" data-code="<?= $crecord["CourseId"] ?>" data-rate=1>
+                            <input class="ratbtn" type="button" name="name" value="推" data-cid="<?= $crecord["CourseId"] ?>" data-rate=1 data-cod="<?= $crecord["CourseCode"] ?>">
                         </li>
                         <li class="unrecom">
                             <div class="app-info">
-                                <span class="bad"><?= $crecord["DislikeIt"] ?></span> 人不推薦
+                                <span class="bad dlk-<?= $crecord["TeacherId"] ?>"><?= $crecord["DislikeIt"] ?></span> 人不推薦
                             </div>
-                            <input class="dislikebtn" type="button" name="name" value="不推" data-code="<?= $crecord["CourseId"] ?>" data-rate=0>
+                            <input class="ratbtn" type="button" name="name" value="不推" data-cid="<?= $crecord["CourseId"] ?>" data-rate=0 data-cod="<?= $crecord["CourseCode"] ?>">
                         </li>
                     </ul>
                 </div>
