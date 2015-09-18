@@ -1,4 +1,4 @@
-<div class="container" id="middle">
+<!--<div class="container" id="middle">
 
     <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -27,7 +27,7 @@
         </div>
         <div class="col-xs-12 col-sm-6">
             <h3>其他課程課程排行榜</h3>
-            <ul class="list-group"> 
+            <ul class="list-group">
                 <?php foreach ($otherleaders as $otherleader): ?>
 
                     <a href="<?= $urlroot ?>index.php?dpm=<?= $otherleader['department'] ?>&amp;cod=<?= $otherleader['code'] ?>">
@@ -53,5 +53,5 @@
     <div class="text-center">
         <h6>僅列出達到一定總投票數的課程</h6>
     </div>
-    
-</div>
+
+</div>-->

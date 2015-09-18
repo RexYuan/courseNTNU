@@ -1,5 +1,5 @@
 <?php
-
+/*
     // requirements
     require_once("functions.php");
     require_once("constants.php");
@@ -26,5 +26,5 @@
     {
         render("search_form.php", ["urlroot" => $urlroot, "home" => true]);
     }
-
+*/
 ?>

@@ -17,6 +17,10 @@ $(function() {
               $(".dlk-"+k).html(v["DislikeIt"]);
               // TODO: 更新按鈕外觀樣子表示出已經按下去或是按起來
             });
+            if (debug)
+            {
+              console.log(data);
+            }
           })
           .fail(function( data ) {
             if (debug)
@@ -44,6 +48,10 @@ $(function() {
             .done(function( data ) {
               // 更新前端
               alert(n);
+              if (debug)
+              {
+                console.log(data);
+              }
             })
             .fail(function( data ) {
               if (debug)

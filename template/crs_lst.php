@@ -1,32 +1,19 @@
-<?php $last_code = 0; ?>
 <div class="outer">
     <div class="courses-list">
-        <h2><?= $title ?></h2>  <!-- 系所名稱 -->
+        <h2><a href="<?=$urlroot?>index.php?dpm=<?= $_GET["dpm"] ?>"><?= $title ?></a></h2>
         <ul>
-            <?php foreach ($drecords as $dr): // 印出本系所有課程
-            if ($dr["code"] !== $last_code) {
-            ?>
-
+            <?php foreach ($drecords as $dr): ?>
             <li>
                 <a href="<?= $urlroot ?>index.php?dpm=<?= $_GET["dpm"] ?>&amp;cod=<?= $dr["code"] ?>">
                     <div class="teacherName">
                         <?= $dr["code"] ?>
                     </div>
                     <div class="courseName">
-                        <?php
-                            $last_code = $dr["code"];
-                            $tmp = $dr["name"];
-                            if (strlen($tmp) > 9 * 3)
-                            {
-                                $tmp = substr($tmp, 0, 9 * 3)."…";
-                            }
-                            echo $tmp
-                        ?>
+                        <?= (strlen($dr["name"]) > 9*3) ? substr($dr["name"], 0, 9*3-3)."…" : $dr["name"]; ?>
                     </div>
                 </a>
             </li>
-            <?php }
-            endforeach ?>
+            <?php endforeach ?>
         </ul>
     </div>
 </div>

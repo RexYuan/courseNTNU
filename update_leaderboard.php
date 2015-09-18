@@ -1,5 +1,5 @@
 <?php
-
+/*
     // requirements
     require_once("functions.php");
     require_once("constants.php");
@@ -10,5 +10,5 @@
 
     // render leaderboard
     render("leaderboard_plate.php", ["title" => "課程排行榜", "urlroot" => $urlroot, "geleaders" => $geleaderrows, "otherleaders" => $otherleaderrows])
-
+*/
 ?>

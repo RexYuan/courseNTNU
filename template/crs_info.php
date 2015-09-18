@@ -10,6 +10,7 @@
                 <h3>
                     開課教師：<?= $crecord["TeChName"] ?>
                     <?= ($crecord["TeEnName"] != "") ? "(".$crecord["TeEnName"].")" : "" ?>
+                    , 開課系所：<a href="<?=$urlroot?>index.php?dpm=<?= $_GET["dpm"] ?>"><?= $crecord["DeptChName"] ?></a>
                 </h3>
                 <div class="appraisal">
                     <h3>課程評價</h3>
@@ -42,6 +43,8 @@
                     <div class="info">
                         <h3>基本資訊</h3>
                         <ul>
+                            <li><a href="http://courseap.itc.ntnu.edu.tw/acadmOpenCourse/SyllabusCtrl?year=<?=$crecord["AcadmYear"]?>&amp;term=<?=$crecord["AcadmTerm"]?>&amp;courseCode=<?=$crecord["CourseCode"]?>&amp;courseGroup=<?=$crecord["CourseGroup"]?>&amp;deptCode=<?=$crecord["DeptCode"]?>&amp;formS=<?=$crecord["Grade"]?>&amp;classes1=<?=$crecord["ClassCode"]?>&amp;deptGroup=<?=$crecord["DeptGroup"]?>">
+                              課程綱要</a></li>
                             <li><?= $crecord["AcadmYear"] ?> 學年 - 第<?= $crecord["AcadmTerm"] ?>學期</li>
                             <li>系必／選修：<?= ($crecord["IsElective"]) ? "必" : "選" ?></li>
                             <li>開課序號：<?= $crecord["SerialNo"] ?></li>
@@ -82,7 +85,6 @@
             </li>
         <?php $x++; endforeach ?>
         </ul>
-        <!-- 還要規劃評論跟投票區，以及一個「追蹤（subscribe）」按鈕 -->
         <div class="fb-comments" data-href="<?= $urlroot.$_SERVER["REQUEST_URI"] ?>" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
     </div>
 </div>

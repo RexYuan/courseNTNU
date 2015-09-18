@@ -1,4 +1,4 @@
-<div class="container" id="middle">
+<!--<div class="container" id="middle">
 
     <h3>搜尋</h3>
     <div class="alert alert-warning hidden" id="search_blank_message" role="alert">欄位空白</div>
@@ -65,3 +65,4 @@
     </ul>
 
 </div>
+-->
