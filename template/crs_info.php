@@ -90,26 +90,37 @@
 </div>
 
 <script type="text/javascript">
-    /*var re = document.querySelector(".recom span") && document.querySelector(".recom span").innerHTML;
+	/*
+    var re = document.querySelector(".recom span") && document.querySelector(".recom span").innerHTML;
+    var unre = document.querySelector(".unrecom span") && document.querySelector(".unrecom span").innerHTML;
+    if (document.querySelector(".score span")) {
+        document.querySelector(".score span").innerHTML = Math.round(100 * Number(re) / (Number(re) + Number(unre)))
+        if (re - unre > 0) {
+            document.querySelector(".score span").classList.add("good");
+        }
+        else {
+            document.querySelector(".score span").classList.add("bad");
+        }
+    }*/
+    var re = document.querySelector(".recom span") && document.querySelector(".recom span").innerHTML;
     var unre = document.querySelector(".unrecom span") && document.querySelector(".unrecom span").innerHTML;
     if (re > 0 || unre > 0)
     {
-
-      var rat = sprintf("%2d", 100*(re/(re+unre)));
-      if (document.querySelector(".score span")) {
-          document.querySelector(".score span").innerHTML = rat;
-          if (rat >= 50) {
-              document.querySelector(".score span").classList.add("good");
-          }
-          else {
-              document.querySelector(".score span").classList.add("bad");
-          }
-      }
+        var rat = Math.round(100 * Number(re) / (Number(re) + Number(unre)))
+        if (document.querySelector(".score span")) {
+            document.querySelector(".score span").innerHTML = rat;
+            if (rat >= 50) {
+                document.querySelector(".score span").classList.add("good");
+            }
+            else {
+                document.querySelector(".score span").classList.add("bad");
+            }
+        }
     }
     else {
-      alert(re);
-      document.querySelector(".score span").innerHTML = "N/A";
-    }*/
+        alert(re);
+        document.querySelector(".score span").innerHTML = "N/A";
+    }
 </script>
 <!-- <h2><?= $crecord["TeacherId"] ?></h2> 教師識別碼 -->
 <!-- <h2><?= $crecord["CourseGroup"] ?></h2> 組別 -->
