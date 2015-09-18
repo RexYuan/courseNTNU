@@ -4,10 +4,10 @@
 ## Development
 
 ### Deployment
-確定你有 php tidy, php curl
+確定你有 php tidy, php curl, php pdo
 
 1. Clone the Repo
-2. Import `.sql`
+2. Create database `course_ntnu` and import the latest sql file
 3. `touch magic.php` and set the following
 ```PHP
 <?php

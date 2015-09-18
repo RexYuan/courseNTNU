@@ -5,3 +5,4 @@ magic.php
 .sass-cache
 *.css.map
 scrapers/cookies.txt
+scrapers/scraper_log.log

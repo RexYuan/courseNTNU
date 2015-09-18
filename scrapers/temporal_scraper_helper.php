@@ -18,7 +18,7 @@ function query()
  {
    try
    {
-     $handle = new PDO("mysql:dbname=testing;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
+     $handle = new PDO("mysql:dbname=course_ntnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
      //$handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
      $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, False);
    }
