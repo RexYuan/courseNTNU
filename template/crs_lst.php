@@ -1,7 +1,9 @@
 <div class="outer">
-    <div class="courses-list">
+    <div class="courses-list" id="clst">
         <h2><a href="<?=$urlroot?>index.php?dpm=<?= $_GET["dpm"] ?>"><?= $title ?></a></h2>
-        <ul>
+        <input class="search" />
+        <span class="sort" data-sort="name">Sort by name</span>
+        <ul class="list">
             <?php foreach ($drecords as $dr): ?>
             <li>
                 <a href="<?= $urlroot ?>index.php?dpm=<?= $_GET["dpm"] ?>&amp;cod=<?= $dr["code"] ?>">
@@ -9,7 +11,7 @@
                         <?= $dr["code"] ?>
                     </div>
                     <div class="courseName">
-                        <?= (strlen($dr["name"]) > 9*3) ? substr($dr["name"], 0, 9*3-3)."…" : $dr["name"]; ?>
+                        <?= (mb_strlen($dr["name"]) > 9) ? mb_substr($dr["name"], 0, 9-1)."…" : $dr["name"]; ?>
                     </div>
                 </a>
             </li>
@@ -17,3 +19,7 @@
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+var opts = {valueNames: [ 'courseName' ]};
+var clst = new List('clst', opts);
+</script>

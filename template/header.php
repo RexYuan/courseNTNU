@@ -22,7 +22,6 @@
         <script src="js/scripts.js"></script>
         <script src="js/konami.js"></script>
         <script src="js/list.js"></script>
-        <script src="js/listfuzzysearch.js"></script>
 
         <?php if (isset($title)): ?>
             <title>Course NTNU：<?= htmlspecialchars($title) ?></title>
