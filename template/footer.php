@@ -39,8 +39,11 @@
     		</div>
         	<div class="row">
             	<div class="col-xs-12">
-       				<!--<h6 class="text-center" id="report_entrance"><a href="<?= $urlroot ?>report.php">回報問題或提供意見</a></h6>-->
-              <h6 class="text-center"><a href="<?= $urlroot ?>policy.html">隱私權政策</a></h6>
+              <h6 class="text-center"><a href="#">關於</a>-
+                <a href="<?= $urlroot ?>policy.html">隱私權政策</a>-
+                <a href="http://survive.coursentnu.com/">Survive NTNU</a>-
+                <a href="https://www.facebook.com/CommunityNTNU">Facebook</a>-
+                <a href="<?= $urlroot ?>sub.php?u=<?= $_SESSION["u"] ?>">subscription</a></h6>
             	</div>
         	</div>
         </div>

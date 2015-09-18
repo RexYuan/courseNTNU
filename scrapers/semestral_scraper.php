@@ -9,24 +9,25 @@
   foreach ($DEPARTMENT_CODE_LIST as $dept_code => $dept_name)
   {
     // checking if already in database
-    $result = query("SELECT ChName FROM Departments WHERE DeptCode = ?", $dept_code);
+    $result = query("SELECT DeptChName FROM Departments WHERE DeptCode = ?", $dept_code);
     if ($result)
     {
       // if name was changed
       if ($result[0]['ChName'] != $dept_name)
       {
-        query("UPDATE Departments SET ChName = ? WHERE DeptCode = ?", $dept_name, $dept_code);
+        query("UPDATE Departments SET DeptChName = ? WHERE DeptCode = ?", $dept_name, $dept_code);
       }
     }
     // new dept
     else
     {
-      query("INSERT INTO Departments (DeptCode, ChName) VALUES (?, ?)", $dept_code, $dept_name);
+      query("INSERT INTO Departments (DeptCode, DeptChName) VALUES (?, ?)", $dept_code, $dept_name);
     }
   }
 
   // get courses
-  foreach (array_keys(array_slice($DEPARTMENT_CODE_LIST,98,1)) as $dept_code)
+  // for testing: $lst = array_slice($DEPARTMENT_CODE_LIST,98,1);
+  foreach (array_keys($DEPARTMENT_CODE_LIST) as $dept_code)
   {
     // build URL
     $URL_GET_LIST['deptCode'] = $dept_code;
@@ -111,11 +112,14 @@
       $d_record_result = query("SELECT * FROM DepartmentRecords WHERE DeptId = ?", $DeptId);
       if($d_record_result)
       {
-        query("UPDATE DepartmentRecords SET DeptCourseNameRecord = ?, DeptCourseCodeRecord = ? WHERE DeptId = ?", $d_record_result[0]['DeptCourseNameRecord'].'/'.$ChName, $d_record_result[0]['DeptCourseCodeRecord'].'/'.$CourseCode, $DeptId);
+        if (strpos($d_record_result[0]['DeptCourseCodeRecord'], $CourseCode) === false)
+        {
+          query("UPDATE DepartmentRecords SET DeptCourseNameRecord = ?, DeptCourseCodeRecord = ? WHERE DeptId = ?", $d_record_result[0]['DeptCourseNameRecord'].'/'.$ChName, $d_record_result[0]['DeptCourseCodeRecord'].'/'.$CourseCode, $DeptId);
+        }
       }
       else
       {
-        query("INSERT INTO DepartmentRecords (DeptId, DeptCourseNameRecord, DeptCourseCodeRecord) VALUES (?, ?, ?)", $DeptId, $ChName, $CourseCode);
+        query("INSERT INTO DepartmentRecords (DeptId, DeptCode, DeptCourseNameRecord, DeptCourseCodeRecord) VALUES (?, ?, ?, ?)", $DeptId, $course['dept_code'], $ChName, $CourseCode);
       }
       echo "$EnName\n";
     }

@@ -2,3 +2,7 @@ testfile.php
 test.php
 .DS_Store
 magic.php
+.sass-cache
+*.css.map
+scrapers/cookies.txt
+scrapers/scraper_log.log

@@ -21,11 +21,12 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
         <script src="js/konami.js"></script>
+        <script src="js/list.js"></script>
 
         <?php if (isset($title)): ?>
-            <title>courseNTNU：<?= htmlspecialchars($title) ?></title>
+            <title>Course NTNU：<?= htmlspecialchars($title) ?></title>
         <?php else: ?>
-            <title>courseNTNU</title>
+            <title>Course NTNU</title>
         <?php endif ?>
     </head>
 
@@ -35,7 +36,7 @@
         <div class="container-fluid" id="head">
             <div class="row">
                 <div class="col-xs-2 col-sm-2">
-                    <h2 class="text-left">
+                    <!--<h2 class="text-left">
                         <a href="leaderboard.php">
                             <span class="label label-warning">
                                 <small>
@@ -44,7 +45,7 @@
                                 </small>
                             </span>
                         </a>
-                    </h2>
+                    </h2>-->
                 </div>
                 <div class="col-xs-8 col-sm-8">
                     <h1 class="text-center">
@@ -52,7 +53,7 @@
                     </h1>
                 </div>
                 <div class="col-xs-2 col-sm-2">
-                    <h2 class="text-right">
+                    <!--<h2 class="text-right">
                         <a href="search.php">
                             <span class="label label-warning">
                                 <small>
@@ -61,7 +62,7 @@
                                 </small>
                             </span>
                         </a>
-                    </h2>
+                    </h2>-->
                 </div>
             </div>
         </div>

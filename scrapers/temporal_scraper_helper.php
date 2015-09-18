@@ -18,7 +18,7 @@ function query()
  {
    try
    {
-     $handle = new PDO("mysql:dbname=testing;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
+     $handle = new PDO("mysql:dbname=course_ntnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
      //$handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
      $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, False);
    }
@@ -74,7 +74,15 @@ $ACCOUNT = CUSERNAME;
 $PASSWORD = CPASSWORD;
 // 中文姓名
 $NAME = "";
-function get_data($dept_code)
+/* This function collects course info from $start of $DEPARTMENT_CODE_LIST
+ * with length $length.
+ * It then returns an indexed array of each element an associative array
+ * containing the courses info of that corresponding department.
+ * Note that, unlike Python, PHP does not calling functions with named arguments,
+ * e.g., get_data($length = 1) is the same as get_data(1). Also note that,
+ * albeit the unsupported named arguement, PHP does support default arguements.
+ */
+function get_data($start = 0, $length = Null)
 {
     $ch = curl_init();
     $id = get_id($ch);
@@ -86,8 +94,15 @@ function get_data($dept_code)
     query_request($ch);
     course_query($ch, "");
 
-    //Course query starts here
-    $result = course_query($ch, $dept_code);
+    global $DEPARTMENT_CODE_LIST;
+    $result = [];
+    //print_r(array_slice($DEPARTMENT_CODE_LIST,$start,1));
+    foreach (array_slice($DEPARTMENT_CODE_LIST,$start,$length) as $dept_code)
+    {
+      //Course query starts here
+      $result[] = json_decode(course_query($ch, $dept_code), $assoc = True)['List'];
+    }
+
     //end here
     curl_close($ch);
 

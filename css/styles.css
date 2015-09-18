@@ -83,45 +83,280 @@ a {
     font-size: 1.75rem;
 }
 
-#nav-trigger {
-    display: none;
-}
+  #nav > label {
+    display: none; } }
+@media screen and (max-width: 992px) {
+  body > #nav {
+    min-height: 2.5em;
+    width: 100%; }
+    body > #nav #navigation {
+      display: none; }
+    body > #nav label {
+      display: block;
+      text-align: right; }
+      body > #nav label img {
+        margin: .5em; }
+    body > #nav input:checked ~ div#navigation {
+      display: block; } }
+.outer {
+  text-align: center;
+  padding: 2rem 3rem; }
 
-@media screen and (min-width: 992px) {
+.tip {
+  display: inline-block;
+  margin: 1rem auto 0;
+  padding: 1rem;
+  border: 1px solid #E79022;
+  background-color: #ffc;
+  color: #E79022;
+  text-align: center;
+  box-shadow: 7px 7px 0 #ddd; }
+  .tip h2 {
+    display: inline-block;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    width: 90%;
+    border-bottom: 1px solid #ccc; }
+    .tip h2 a {
+      color: #BD7A22; }
+    .tip h2::before {
+      content: "# ";
+      color: #aaa; }
+  .tip pre {
+    display: inline;
+    padding: .25rem;
+    margin: 0 .25rem; }
+
+.deps {
+  padding-left: 3rem;
+  text-align: left; }
+  .deps h2 {
+    display: inline-block;
+    margin-left: 1rem;
+    padding-bottom: 1rem;
+    width: 95%;
+    text-align: left;
+    border-bottom: 1px solid #ccc; }
+    .deps h2 a {
+      color: #BD7A22; }
+    .deps h2::before {
+      content: "# ";
+      color: #aaa; }
+  .deps ul {
+    margin: 2rem 0;
+    max-width: 90%;
+    list-style-type: none; }
+    .deps ul li {
+      display: inline-block;
+      margin: 1rem;
+      border: 2px solid #E79022;
+      box-shadow: 7px 7px 0 #aaa; }
+      .deps ul li a {
+        display: block;
+        padding: 1rem 2rem;
+        background-color: #E79022;
+        color: #ffc;
+        font-size: 2rem; }
+        .deps ul li a:hover {
+          background-color: #ffc;
+          color: #E79022;
+          text-decoration: none;
+          transition-duration: .2s; }
+
+.courses-list h2 {
+  display: inline-block;
+  margin-left: 1rem;
+  padding-bottom: 1rem;
+  width: 95%;
+  text-align: left;
+  border-bottom: 1px solid #ccc; }
+  .courses-list h2 a {
+    color: #BD7A22; }
+  .courses-list h2::before {
+    content: "# ";
+    color: #aaa; }
+.courses-list ul {
+  padding: 0;
+  margin: 0; }
+  .courses-list ul li {
+    display: inline-block;
+    margin: 1rem;
+    width: 16%;
+    vertical-align: top;
+    border: 2px solid #E79022;
+    box-shadow: 7px 7px 0 #ddd; }
+    .courses-list ul li a {
+      display: block;
+      padding: 2rem;
+      height: 14rem;
+      background-color: #ffc;
+      color: #E79022;
+      font-size: 1.75rem; }
+      .courses-list ul li a .teacherName {
+        display: block;
+        margin-bottom: 1rem;
+        padding: .5rem;
+        border: 1px solid #E79022;
+        background-color: #E79022;
+        color: #ffc;
+        text-align: center; }
+      .courses-list ul li a .courseName {
+        font-size: 2rem; }
+      .courses-list ul li a:hover {
+        background-color: #E79022;
+        color: #ffc;
+        transition-duration: .2s;
+        text-decoration: none; }
+        .courses-list ul li a:hover .teacherName {
+          background-color: #ffc;
+          color: #E79022; }
+
+.allThisCourse {
+  margin: 0 auto;
+  max-width: 80%;
+  text-align: left; }
+  .allThisCourse h2 {
+    padding: 1rem;
+    background-color: #ffc;
+    color: #BD7A22;
+    border: 1px solid #BD7A22;
+    box-shadow: 5px 5px 0 #ccc;
+    cursor: default; }
+  .allThisCourse p {
+    margin: 1rem 2rem 3rem 0;
+    line-height: 2rem;
+    font-size: 1.3rem; }
+  .allThisCourse > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+  .allThisCourse label {
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    background-color: #E79022;
+    color: #ffc; }
+  .allThisCourse .intro, .allThisCourse .appraisal {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 3px dashed #E79022; }
+    .allThisCourse .intro h3, .allThisCourse .appraisal h3 {
+      display: inline-block;
+      padding: 1rem;
+      background-color: #E79022;
+      color: #ffc; }
+  .allThisCourse .appraisal ul {
+    padding: 0;
+    list-style-type: none; }
+    .allThisCourse .appraisal ul li {
+      padding: 2.5% 5% 2.5% 0;
+      width: 30%;
+      display: inline-block;
+      vertical-align: top; }
+      .allThisCourse .appraisal ul li .app-info {
+        padding-top: 1rem;
+        min-height: 5rem;
+        font-size: 1.5rem; }
+        .allThisCourse .appraisal ul li .app-info span {
+          padding: 0 1rem;
+          font-size: 2.5rem;
+          color: #fff;
+          border-radius: 5px; }
+          .allThisCourse .appraisal ul li .app-info span.good {
+            background-color: #5CB85C; }
+          .allThisCourse .appraisal ul li .app-info span.bad {
+            background-color: #D9534F; }
+      .allThisCourse .appraisal ul li input {
+        width: 95%;
+        padding: 1rem;
+        font-size: 1.5rem; }
+        .allThisCourse .appraisal ul li input[type="number"], .allThisCourse .appraisal ul li input[type="submit"] {
+          display: inline-block;
+          width: 45%; }
+        .allThisCourse .appraisal ul li input[type="button"], .allThisCourse .appraisal ul li input[type="submit"] {
+          background-color: #ffc;
+          color: #E79022;
+          border: 2px solid #E79022;
+          border-radius: 5px;
+          box-shadow: 0 2px #ccc; }
+          .allThisCourse .appraisal ul li input[type="button"]:hover, .allThisCourse .appraisal ul li input[type="submit"]:hover {
+            background-color: #E79022;
+            color: #ffc;
+            transition-duration: .2s; }
+  .allThisCourse .details .info {
+    display: inline-block;
+    padding: 0 5% 2rem;
+    widows: 20%;
+    vertical-align: top; }
+    .allThisCourse .details .info:first-child {
+      padding-left: 1.25rem; }
+    .allThisCourse .details .info h3 {
+      margin-left: -1rem;
+      padding: 1rem;
+      background-color: #E79022;
+      color: #ffc;
+      text-align: center; }
+    .allThisCourse .details .info ul {
+      text-align: left;
+      padding-left: 1rem; }
+  .allThisCourse .tabs {
+    position: relative;
+    margin: 3rem 0;
+    height: 90rem; }
+    .allThisCourse .tabs::before, .allThisCourse .tabs::after {
+      content: "";
+      display: table; }
+    .allThisCourse .tabs::after {
+      clear: both; }
+    .allThisCourse .tabs .tab {
+      float: left; }
+      .allThisCourse .tabs .tab:last-child .tab-label {
+        box-shadow: 5px 5px 0 #ccc; }
+    .allThisCourse .tabs .tab-switch {
+      display: none; }
+    .allThisCourse .tabs .tab-content {
+      padding: 1rem 4rem 4rem;
+      width: 100%;
+      background: #ffc;
+      color: #2c3e50;
+      position: absolute;
+      z-index: 1;
+      top: 5.6em;
+      left: 0;
+      border: 1px solid #BD7A22;
+      box-shadow: 5px 5px 0 #ccc; }
+      .allThisCourse .tabs .tab-content > h3 {
+        margin-bottom: 1rem;
+        padding-bottom: 2rem;
+        color: #E79022;
+        border-bottom: 3px dashed #E79022; }
+    .allThisCourse .tabs .tab-label {
+      position: relative;
+      display: block;
+      z-index: 1;
+      height: 8rem;
+      line-height: 2.5em;
+      padding: 0 1.618em;
+      background: #BD7A22;
+      color: #ffc;
+      cursor: pointer;
+      border: 1px solid #BD7A22;
+      top: 0;
+      transition-duration: .3s; }
+    .allThisCourse .tabs .tab-switch:checked + .tab-label {
+      background: #E79022;
+      color: #ffc;
+      border: 1px solid #BD7A22;
+      border-bottom: 1px solid #ffc; }
+    .allThisCourse .tabs .tab-switch:checked + .tab-label + .tab-content {
+      opacity: 1;
+      z-index: 3; }
+  .allThisCourse .fb-comments {
+    clear: both; }
+
+/*# sourceMappingURL=styles.css.map */
     #nav > label  {
         display: none;
     }
-}
-
-@media screen and (max-width: 992px) {
-
-    #nav > label {
-        display: block;
-        text-align: right;
-    }
-
-    #nav > label svg {
-        margin: 1em 1em .25rem;
-    }
-
-    #nav > label svg {
-        fill: #ffc;
-    }
-
-    #nav {
-        height:auto;
-        min-height: 2.5em;
-        width: 100%;
-        background: #E79022;
-    }
-
-    #navigation {
-        display: none;
-    }
-
-    #nav input:checked ~ ul#navigation {
-        display: block;
-        padding-bottom: 1rem;
-    }
-
 }

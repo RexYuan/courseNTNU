@@ -1,4 +1,4 @@
-<div class="container" id="middle">
+<!--<div class="container" id="middle">
 
     <div class="row">
         <div class="col-xs-12 col-sm-6">
@@ -52,5 +52,4 @@
     <div class="text-center">
         <h6>僅列出達到一定總投票數的課程。</h6>
     </div>
-
-</div>
+</div>-->

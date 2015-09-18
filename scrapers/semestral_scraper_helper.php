@@ -18,7 +18,7 @@ $TERM = 1;
   {
     try
     {
-      $handle = new PDO("mysql:dbname=testing;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
+      $handle = new PDO("mysql:dbname=course_ntnu;unix_socket=/Applications/MAMP/tmp/mysql/mysql.sock;port=3306", USERNAME, PASSWORD);
       //$handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
       $handle->setAttribute(PDO::ATTR_EMULATE_PREPARES, False);
     }
@@ -146,7 +146,7 @@ function parse_dept_code($dept_str) {
   */
 function lookup_teacher_id_by_name($dept_id, $name)
 {
-  $result = query("SELECT TeacherId FROM Teachers WHERE ChName = ? AND DeptId = ?", $name, $dept_id);
+  $result = query("SELECT TeacherId FROM Teachers WHERE TeChName = ? AND DeptId = ?", $name, $dept_id);
   //TODO: solve the problem of multiple teachers with identical name in the same department
   if ($result)
   {
@@ -154,8 +154,8 @@ function lookup_teacher_id_by_name($dept_id, $name)
   }
   else
   {
-    query("INSERT INTO Teachers (DeptId, ChName) VALUES (?, ?)", $dept_id, $name);
-    return query("SELECT TeacherId FROM Teachers WHERE ChName = ? AND DeptId = ?", $name, $dept_id)[0]['TeacherId'];
+    query("INSERT INTO Teachers (DeptId, TeChName) VALUES (?, ?)", $dept_id, $name);
+    return query("SELECT TeacherId FROM Teachers WHERE TeChName = ? AND DeptId = ?", $name, $dept_id)[0]['TeacherId'];
   }
 }
 
