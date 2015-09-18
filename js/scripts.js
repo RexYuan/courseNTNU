@@ -15,6 +15,9 @@ $(function() {
             $.each(d, function(k,v) {
               $(".lk-"+k).html(v["LikeIt"]);
               $(".dlk-"+k).html(v["DislikeIt"]);
+              if ((v["LikeIt"]+v["DislikeIt"])>0) {alert(1);$(".rt-"+k).html(Math.round(100*(v["LikeIt"]/(v["LikeIt"]+v["DislikeIt"]))));}
+              else {$(".rt-"+k).html("N/A");alert(2);}
+              alert("成功投票");
               // TODO: 更新按鈕外觀樣子表示出已經按下去或是按起來
             });
             if (debug)
@@ -47,7 +50,7 @@ $(function() {
           $.post("../sub_handle.php", {"n": n, "t": token})
             .done(function( data ) {
               // 更新前端
-              alert(n);
+              alert("成功追蹤");
               if (debug)
               {
                 console.log(data);

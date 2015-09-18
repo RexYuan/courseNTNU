@@ -17,7 +17,7 @@
                     <ul>
                         <li class="score">
                             <div class="app-info">
-                              推薦分數：<span></span> 分
+                              推薦分數：<span class="rt-<?= $crecord["TeacherId"] ?>"><?= ($crecord["LikeIt"]+$crecord["DislikeIt"]>0) ? round(100*$crecord["LikeIt"]/($crecord["LikeIt"]+$crecord["DislikeIt"])) : "N/A"; ?></span> 分
                             </div>
                             <input class="subscribe" type="button" name="name" value="追蹤" data-serial="<?= $crecord["SerialNo"] ?>">
                         </li>
@@ -102,7 +102,7 @@
             document.querySelector(".score span").classList.add("bad");
         }
     }*/
-    var re = document.querySelector(".recom span") && document.querySelector(".recom span").innerHTML;
+    /*var re = document.querySelector(".recom span") && document.querySelector(".recom span").innerHTML;
     var unre = document.querySelector(".unrecom span") && document.querySelector(".unrecom span").innerHTML;
     if (re > 0 || unre > 0)
     {
@@ -120,7 +120,7 @@
     else {
         alert(re);
         document.querySelector(".score span").innerHTML = "N/A";
-    }
+    }*/
 </script>
 <!-- <h2><?= $crecord["TeacherId"] ?></h2> 教師識別碼 -->
 <!-- <h2><?= $crecord["CourseGroup"] ?></h2> 組別 -->

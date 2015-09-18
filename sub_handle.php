@@ -1,6 +1,6 @@
 <?php
 // 處理當按下追蹤按鈕
-// $_SESSION["u"] 存 UserId, $_POST["n"] 存該課程 SerialNo
+// $_SESSION["u"] 存 UserId, $_POST["n"] 存該課程 SerialNo, $_POST["t"] 存 FB token
 // requirements
 require_once("functions.php");
 require_once("constants.php");
