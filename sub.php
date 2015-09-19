@@ -13,13 +13,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" AND isset($_GET["u"]))
   if ($sublst)
   {
     $sublst = $sublst[0]["SubLst"];
-    $nlst = explode("/", $sublst);
-    $clst = [];
-    foreach ($nlst as $n)
+    if ($sublst = "")
     {
-      $clst[] = query("SELECT Courses.*, Teachers.*, Departments.* FROM Courses INNER JOIN Teachers, Departments WHERE Courses.SerialNo = ? AND Courses.TeacherId = Teachers.TeacherId AND Courses.DeptId = Departments.DeptId", $n)[0];
+      redirect($urlroot."index.php");
     }
-    render("subs_lst.php", ["title" => "追蹤課程", "urlroot" => $urlroot, "clst" => $clst]);
+    else
+    {
+      $nlst = explode("/", $sublst);
+      $clst = [];
+      foreach ($nlst as $n)
+      {
+        $clst[] = query("SELECT Courses.*, Teachers.*, Departments.* FROM Courses INNER JOIN Teachers, Departments WHERE Courses.SerialNo = ? AND Courses.TeacherId = Teachers.TeacherId AND Courses.DeptId = Departments.DeptId", $n)[0];
+      }
+      render("subs_lst.php", ["title" => "追蹤課程", "urlroot" => $urlroot, "clst" => $clst]);
+    }
   }
   else
   {
