@@ -4,6 +4,7 @@
 // requirements
 require_once("functions.php");
 require_once("constants.php");
+session_start();
 // 按下推或不推
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -15,11 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $_SESSION["u"] = query("SELECT UserId FROM Users WHERE FBId = ?", $d["id"])[0]["UserId"];
   }
   // 檢查是否已經有投票過
-  $prevote = query("SELECT * FROM Votes WHERE UserId = ? AND CourseId = ?", $_SESSION["u"], $_POST["i"])[0];
+  $prevote = query("SELECT * FROM Votes WHERE UserId = ? AND CourseId = ?", $_SESSION["u"], $_POST["i"]);
   // 沒投票過
   if (empty($prevote))
   {
-      query("INSERT INTO Votes (CourseId, CourseCode, Decision, UserId) VALUES (?, ?, ?, ?)", $_POST["i"], $_POST["c"], $_POST["r"], $_SESSION["u"]);
+      $a = query("INSERT INTO Votes (CourseId, CourseCode, Decision, UserId) VALUES (?, ?, ?, ?)", $_POST["i"], $_POST["c"], $_POST["r"], $_SESSION["u"]);
       // 推
       if ($_POST["r"])
       {
@@ -35,8 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   else
   {
     // 之前是推
-    if ($prevote["Decision"])
+    if ($prevote[0]["Decision"])
     {
+      //echo
       // 收回推
       if ($_POST["r"])
       {
@@ -73,10 +75,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   $scores = [];
   foreach ($crecords as $crecord)
   {
+    $scores[$crecord["TeacherId"]]["LikeIt"] = 0;
+    $scores[$crecord["TeacherId"]]["DislikeIt"] = 0;
+  }
+  foreach ($crecords as $crecord)
+  {
     $scores[$crecord["TeacherId"]]["LikeIt"] += $crecord["LikeIt"];
     $scores[$crecord["TeacherId"]]["DislikeIt"] += $crecord["DislikeIt"];
   }
-  // 回傳分數
+  // 回傳分數*/
   echo json_encode(["scores" => $scores]);
 }
 // 亂來

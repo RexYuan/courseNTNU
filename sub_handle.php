@@ -4,6 +4,7 @@
 // requirements
 require_once("functions.php");
 require_once("constants.php");
+session_start();
 // 按下追蹤
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {

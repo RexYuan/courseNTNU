@@ -9,9 +9,10 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if ($_SERVER["REQUEST_METHOD"] == "GET" AND isset($_GET["u"]))
 {
-  $sublst = query("SELECT * FROM Subs WHERE UserId = ?", $_GET["u"])[0]["SubLst"];
+  $sublst = query("SELECT * FROM Subs WHERE UserId = ?", $_GET["u"]);
   if ($sublst)
   {
+    $sublst = $sublst[0]["SubLst"];
     $nlst = explode("/", $sublst);
     $clst = [];
     foreach ($nlst as $n)

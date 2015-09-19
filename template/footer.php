@@ -43,7 +43,7 @@
                 <a href="<?= $urlroot ?>policy.html">隱私權政策</a>-
                 <a href="http://survive.coursentnu.com/">Survive NTNU</a>-
                 <a href="https://www.facebook.com/CommunityNTNU">Facebook</a>-
-                <a href="<?= $urlroot ?>sub.php?u=<?= $_SESSION["u"] ?>">subscription</a></h6>
+                <a href="<?= $urlroot ?>sub.php<?= (isset($_SESSION["u"])) ? "?u=".$_SESSION["u"] : "" ?>">subscription</a></h6>
             	</div>
         	</div>
         </div>

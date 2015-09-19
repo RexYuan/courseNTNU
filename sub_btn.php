@@ -4,6 +4,7 @@
 // requirements
 require_once("functions.php");
 require_once("constants.php");
+session_start();
 // 初始化按鈕
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
