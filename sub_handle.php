@@ -15,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
           $d["id"], $d["name"], $d["locale"], $d["gender"]);
     $_SESSION["u"] = query("SELECT UserId FROM Users WHERE FBId = ?", $d["id"])[0]["UserId"];
   }
-  $sublst = query("SELECT * FROM Subs WHERE UserId = ?", $_SESSION["u"])[0]["SubLst"];
+  $sublst = query("SELECT * FROM Subs WHERE UserId = ?", $_SESSION["u"]);
   // 有追蹤過課
   if ($sublst)
   {
+    $sublst = $sublst[0]["SubLst"];
     $sublst = explode("/", $sublst);
     // 已經追蹤此課
     if (in_array((string)$_POST["n"], $sublst))
@@ -29,7 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     // 還沒追蹤此課
     else
     {
-      query("UPDATE Subs SET SubLst = ?", implode("/", $sublst)."/".$_POST["n"]);
+      if (empty($sublst[0]))
+      {
+        query("UPDATE Subs SET SubLst = ?", $_POST["n"]);
+      }
+      else
+      {
+        query("UPDATE Subs SET SubLst = ?", implode("/", $sublst)."/".$_POST["n"]);
+      }
     }
   }
   // 還沒追蹤任一堂課
