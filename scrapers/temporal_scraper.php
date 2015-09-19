@@ -1,6 +1,6 @@
 <?php
 // requirements
-require("temporal_scraper_helper.php");
+require("/home/rex/courseNTNU/scrapers/temporal_scraper_helper.php");
 
 // log stats
 date_default_timezone_set('Asia/Taipei');
@@ -44,7 +44,7 @@ foreach(get_data() as $courses)
   	$PtAssigned = $course['v_stfseld_unfull']; // 不佔名額生人數
     if ($DEBUG)
     {
-      require("temporal_scraper_tester.php");
+      require("/home/rex/courseNTNU/scrapers/temporal_scraper_tester.php");
     }
     $a = query("UPDATE Courses SET FmReserve = ?, Enrolled = ?, Assigned = ?, Unassigned = ?,
                                AuthAssigned = ?, ExAssigned = ?, PtAssigned = ?

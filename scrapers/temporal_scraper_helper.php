@@ -2,7 +2,7 @@
 $YEAR = 104;
 $TERM = 1;
 
-require("../magic.php");
+require("/home/rex/courseNTNU/magic.php");
 /* For more info on this, read functions.php
  * The return value of this function is
  * an array containg all the retrieved rows
