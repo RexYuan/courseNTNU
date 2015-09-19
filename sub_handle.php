@@ -25,18 +25,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if (in_array((string)$_POST["n"], $sublst))
     {
       unset($sublst[array_keys($sublst, (string)$_POST["n"])[0]]);
-      query("UPDATE Subs SET SubLst = ?", implode("/", $sublst));
+      query("UPDATE Subs SET SubLst = ? WHERE UserId = ?", implode("/", $sublst), $_SESSION["u"]);
     }
     // 還沒追蹤此課
     else
     {
       if (empty($sublst[0]))
       {
-        query("UPDATE Subs SET SubLst = ?", $_POST["n"]);
+        query("UPDATE Subs SET SubLst = ? WHERE UserId = ?", $_POST["n"], $_SESSION["u"]);
       }
       else
       {
-        query("UPDATE Subs SET SubLst = ?", implode("/", $sublst)."/".$_POST["n"]);
+        query("UPDATE Subs SET SubLst = ? WHERE UserId = ?", implode("/", $sublst)."/".$_POST["n"], $_SESSION["u"]);
       }
     }
   }
