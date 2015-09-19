@@ -22,7 +22,7 @@ function time_elapsed($secs){
 }
 $counter = 0;
 $t1 = time();
-$path = "scraper_log.log";
+$path = "/home/rex/courseNTNU/scrapers/scraper_log.log";
 
 // debugging mode
 $DEBUG = False;
