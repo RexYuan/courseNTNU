@@ -35,6 +35,11 @@
         }
         // 計算分數
         $scores = [];
+        foreach ($crecords as $crecord)
+        {
+          $scores[$crecord["TeacherId"]]["LikeIt"] = 0;
+          $scores[$crecord["TeacherId"]]["DislikeIt"] = 0;
+        }
         foreach ($crecords as $i => $crecord)
         {
           $scores[$crecord["TeacherId"]]["LikeIt"] += $crecord["LikeIt"];
