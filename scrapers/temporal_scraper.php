@@ -50,7 +50,7 @@ foreach(get_data() as $courses)
                                AuthAssigned = ?, ExAssigned = ?, PtAssigned = ?
                                WHERE CourseId = ?",$FmReserve,$Enrolled,$Assigned,
                                $Unassigned,$AuthAssigned,$ExAssigned,$PtAssigned,$CourseId);
-    echo $course['chnName']."\n";
+    //echo $course['chnName']."\n";
     $counter++;
   }
 }
@@ -60,5 +60,6 @@ $t2 = time();
 $time_passed = time_elapsed($t2-$t1);
 $time_stamp = date('Y-m-d H:i:s');
 $message = "\n[ $time_stamp ]: updated $counter courses, with $time_passed";
+echo $message;
 file_put_contents($path, $message, $flag=FILE_APPEND);
 ?>
