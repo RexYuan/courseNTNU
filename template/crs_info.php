@@ -17,7 +17,7 @@
                     <ul>
                         <li class="score">
                             <div class="app-info">
-                              推薦分數：<span class="rt-<?= $crecord["TeacherId"] ?>"><?= ($crecord["LikeIt"]+$crecord["DislikeIt"]>0) ? round(100*$crecord["LikeIt"]/($crecord["LikeIt"]+$crecord["DislikeIt"])) : "N/A"; ?></span> 分
+                              推薦分數：<span class="rat-num rt-<?= $crecord["TeacherId"] ?>"><?= ($crecord["LikeIt"]+$crecord["DislikeIt"]>0) ? round(100*$crecord["LikeIt"]/($crecord["LikeIt"]+$crecord["DislikeIt"])) : "N/A"; ?></span> 分
                             </div>
                             <input class="subscribe" type="button" name="name" value="追蹤" data-serial="<?= $crecord["SerialNo"] ?>">
                         </li>
