@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # http://code.google.com/p/sequel-pro/
 #
-# Host: localhost (MySQL 5.5.42)
+# Host: 127.0.0.1 (MySQL 5.5.44-0ubuntu0.14.04.1)
 # Database: course_ntnu
-# Generation Time: 2015-09-18 17:44:18 +0000
+# Generation Time: 2015-09-19 07:32:57 +0000
 # ************************************************************
 
 
@@ -3232,12 +3232,12 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table courses
+# Dump of table Courses
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `courses`;
+DROP TABLE IF EXISTS `Courses`;
 
-CREATE TABLE `courses` (
+CREATE TABLE `Courses` (
   `CourseId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SerialNo` smallint(5) unsigned NOT NULL,
   `CourseCode` char(7) COLLATE utf8_unicode_ci NOT NULL,
@@ -3288,14 +3288,14 @@ CREATE TABLE `courses` (
   KEY `SearchSerial` (`SerialNo`),
   KEY `SearchYear` (`AcadmYear`),
   KEY `SearchTerm` (`AcadmTerm`),
-  CONSTRAINT `courses_ibfk_1` FOREIGN KEY (`TeacherId`) REFERENCES `Teachers` (`TeacherId`),
-  CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`DeptId`) REFERENCES `Departments` (`DeptId`)
+  CONSTRAINT `Courses_ibfk_1` FOREIGN KEY (`TeacherId`) REFERENCES `Teachers` (`TeacherId`),
+  CONSTRAINT `Courses_ibfk_2` FOREIGN KEY (`DeptId`) REFERENCES `Departments` (`DeptId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-LOCK TABLES `courses` WRITE;
-/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+LOCK TABLES `Courses` WRITE;
+/*!40000 ALTER TABLE `Courses` DISABLE KEYS */;
 
-INSERT INTO `courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
+INSERT INTO `Courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
 VALUES
 	(1,1038,'01UG004',104,1,'音樂鑑賞','Music Appreciation',2787,'A','','H',2,1,'',0,'','N',0,'','',0,'','本部誠101',NULL,'四3-4',0,'',NULL,14,0.08,3,170,2,'歌劇發展雖僅有四百多年，但已成為全球公認的最高舞台藝術，並對所有的表演藝術領域有著直接而全面的影響。多位歌劇大師的經典作品裡，多面向地反映創作者的時代背景、個人人生觀與藝術觀，融合在創作者的音樂語法裡。這些經典作品在不同的時代被演出時，透過不同的詮釋者，又呈現出不同的樣貌。本課程依開課學年度，選取一位歌劇大師之經典作品，引導學生直接與世界歌劇舞台接軌，並就其作品，細細剖析歌劇相關之藝術美感，如劇本文學、音樂語言、舞台設計、肢體走位、導演理念等等，帶領學生直接接觸最高總體藝術的不同面向，培養個人的藝術品味、美感與判斷力。',26,170,170,0,13,0,0,10,4),
 	(2,1039,'01UG004',104,1,'音樂鑑賞','Music Appreciation',2788,'B','','H',2,1,'',0,'','N',0,'','',0,'','本部音209',NULL,'三3-4',0,'',NULL,20,0.4,0,50,2,'歌劇發展雖僅有四百多年，但已成為全球公認的最高舞台藝術，並對所有的表演藝術領域有著直接而全面的影響。多位歌劇大師的經典作品裡，多面向地反映創作者的時代背景、個人人生觀與藝術觀，融合在創作者的音樂語法裡。這些經典作品在不同的時代被演出時，透過不同的詮釋者，又呈現出不同的樣貌。本課程依開課學年度，選取一位歌劇大師之經典作品，引導學生直接與世界歌劇舞台接軌，並就其作品，細細剖析歌劇相關之藝術美感，如劇本文學、音樂語言、舞台設計、肢體走位、導演理念等等，帶領學生直接接觸最高總體藝術的不同面向，培養個人的藝術品味、美感與判斷力。',8,50,50,0,3,0,0,0,0),
@@ -4139,7 +4139,7 @@ VALUES
 	(840,3987,'AAC7304',104,1,'變動環境中的珊瑚礁生態系','Coral Reef Ecosystem in a Changing World',3334,'A','7','H',3,7,'',0,'','N',0,'1','',0,'','',NULL,'',0,'理學院;海洋研究所;單偉彌;一234；海研115。;生漁組碩士班12年級。',NULL,0,0,0,2,3,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),
 	(841,4180,'AAC7305',104,1,'氣候變遷與環境生態','Climate Change and Environmental Ecology',3335,'A','7','H',3,7,'',0,'','N',0,'1','',0,'','',NULL,'',0,'生物資源暨農學院;生物環境系統工程學研究所;童慶斌;四234(農工九);',NULL,0,0,0,2,3,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0);
 
-INSERT INTO `courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
+INSERT INTO `Courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
 VALUES
 	(842,4199,'AAC7306',104,1,'計算與資料科學軟體開發','Software Development for Computational and Data Science',3336,'A','7','H',3,7,'',0,'','N',0,'1','',0,'','',NULL,'',0,'理學院;數學研究所;王偉仲;二910(天數430)、四910(天數430);',NULL,0,0,0,2,3,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),
 	(843,4200,'AAC7307',104,1,'數值線性代數','Numerical Linear Algebra',3336,'A','7','H',3,7,'',0,'','N',0,'1','',0,'','',NULL,'',0,'理學院;數學研究所;王偉仲;二78(天數430)、四78(天數430);',NULL,0,0,0,2,3,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),
@@ -4601,7 +4601,7 @@ VALUES
 	(1299,83,'PCU0086',104,1,'心理與教育測驗','Mental and Educational Measurement',3727,'','','H',3,18,'',0,'2','N',0,'','',0,'','本部教511',NULL,'一2-4',0,'',NULL,20,0.4,0,50,3,'本課程的主要目標是要讓學生了解心理與教育測驗的理論、方法與應用。課程內容包含心理與教育測驗的基本概念，測驗的理論、方法與技術，現代測驗理論與應用，以及現代常用的能力測驗、性格測驗等。授課方式包括講授、測驗分析實作、命題實作、測驗實作，以及特定主題的分組報告。期望修課學生能了解當代心理與教育測驗的基本概念與應用，並具備使用測驗、編製測驗與評估測驗效能的能力。',0,50,50,0,0,0,0,0,0),
 	(1300,84,'PCU0114',104,1,'教育心理學','Educational Psychology',3728,'','','H',3,18,'',0,'2','N',0,'','◎必須先修過(也可以同時修)【普通心理學（一）】、【普通心理學（二）】、【發展心理學】其中一門',0,'','本部教513',NULL,'二2-4',0,'',NULL,20,0.4,0,50,3,'1. 能夠應用學習心理學，認知論與社會認知論，以及動機理論於實際教學情境 2. 探討教室班級經營與常規處理，以及教學理論與教學歷程之探討及其對策',0,50,50,0,7,0,0,0,0),
 	(1301,86,'PCU0009',104,1,'生涯輔導','Career Guidance',3729,'','','H',2,18,'',0,'3','N',0,'1','',0,'','本部教602',NULL,'三8-9',0,'',NULL,20,0.4,0,50,2,'本課程目的在簡介生涯輔導相關理論，並配合論進行生涯探索實務活動，提供學生回顧自我之生涯發展，並規劃未來。此外，引導學由微觀及宏觀角度生認識工作世界，練習面談及履歷撰寫等求職技巧。',0,50,50,0,5,0,0,0,0),
-	(1302,87,'PCU0032',104,1,'社會心理學','Social Psychology',3730,'','','H',2,18,'',0,'3','N',0,'1','',0,'','本部教513',NULL,'四9-10',0,'',NULL,20,0.4,0,50,2,'社會心理學是研究一個人的思想、情感、和行為如何受到他人影響。課程內容包括社會知覺、社會認知、歸因、自我、態度、團體歷程等議題。期待透過此課程學生能瞭解社會心理學的基本概念，將社會心理學原理應用至教育情境及日常生活，並能認真思考如何建立一個健康的社會。',0,50,50,0,8,0,0,1,0),
+	(1302,87,'PCU0032',104,1,'社會心理學','Social Psychology',3730,'','','H',2,18,'',0,'3','N',0,'1','',0,'','本部教513',NULL,'四9-10',0,'',NULL,20,0.4,0,50,2,'社會心理學是研究一個人的思想、情感、和行為如何受到他人影響。課程內容包括社會知覺、社會認知、歸因、自我、態度、團體歷程等議題。期待透過此課程學生能瞭解社會心理學的基本概念，將社會心理學原理應用至教育情境及日常生活，並能認真思考如何建立一個健康的社會。',0,50,50,0,8,0,0,1,1),
 	(1303,88,'PCU0036',104,1,'認知心理學','Cognitive Psychology',3731,'','','H',3,18,'',0,'3','N',0,'1','',0,'','本部教602',NULL,'一2-4',0,'',NULL,20,0.4,0,50,3,'認知心理學是以科學方式探討人類心智歷程的一門知識，要扎扎實實認識它必須透過聽講與閱讀，無法光靠反省自身經驗或討論就能產生的，所以請修課同學要有好好唸書的心理準備。本課程是認知心理學的入門課程，以講課方式介紹認知心理學的重要理論、研究發現，以及研究方法。課程份量很重，請學生上課前必須先行預習，如能上課時發問，更能澄清問題。修課學生若有普通心理學及實驗心理學的基礎，會較容易掌握課程內容。',0,49,49,0,6,0,0,0,0),
 	(1304,89,'PCU0048',104,1,'變態心理學','Abnormal Psychology',3732,'','','H',2,18,'',0,'3','N',0,'1','',0,'','本部教602',NULL,'二3-4',0,'',NULL,20,0.4,0,50,2,'1. 瞭解人類異常行為的現象與分類 2. 對常見心理疾病具備初步的診斷與處理能力 3. 瞭解個案的個別需求與相關社會資源 4. 瞭解心理衛生相關機構、人員與服務',0,50,50,0,11,0,0,0,0),
 	(1305,90,'PCU0130',104,1,'諮商理論','Theories of Counseling',3733,'','','H',3,18,'',0,'3','N',0,'','◎必須先修過(也可以同時修)【人格心理學】',0,'','本部教513',NULL,'四2-4',0,'',NULL,20,0.4,0,50,3,'1. 認識與理解心理諮商之基本要素，包括:人性的諮商員特質、諮商關係 2. 增進同學學習諮商理論的不同取向，理解各理論對： i. 健康心理功能的定義，適應不良的觀點與成因 ii. 個人成長、改變歷程的概念與目標 iii. 諮商歷程與核心諮商技術的應用 3.學習各理論對案主的心理、行為及與情緒的概念理解之異同。 4.了解多元文化諮商、倫理與法律規範',0,45,45,0,0,0,0,0,0),
@@ -4968,7 +4968,7 @@ VALUES
 	(1666,794,'ISM0311',104,1,'資訊尋求行為研究','Studies in Information Seeking Behavior',3979,'','','H',3,47,'',0,'','N',0,'1','',0,'','本部教室自排',NULL,'三2-4',0,'',NULL,20,0.4,5,50,3,'Course Description: Survey of information needs, information seeking behavior, and information use by people in their various roles, situations, and contexts. Methods that are used to study information needs, uses, and information seeking behavior. Course Objectives: 1.Identify the major concepts and findings of the literature on information needs, seeking, and use, including the important research programs and the questions, theories, and researchers associated with each; 2.Critique the major areas of research on information seeking, including a description of their strengths and weaknesses; 3.Apply concepts and frameworks from the research literature to examples or cases; and 4.Observe and analytically describe information seeking/use activities and behavior in both library/archive/museum contexts and in everyday life situations. (Adopted from http://slisweb.lis.wisc.edu/~ewhitmire/syllabus.html and http://polaris.gseis.ucla.edu/llievrou/IS246F04Syl.pdf)',0,19,19,0,0,0,0,0,0),
 	(1667,795,'ISM0430',104,1,'網路技術研究','Studies in Internet Technology',3980,'','','H',3,47,'',0,'','N',0,'1','',0,'','本部教室自排',NULL,'四2-4',0,'',NULL,20,0.4,5,50,3,'We will discuss how XML impacts the information display and transmission via Internet. Several current network issue will be also discussed, for example, Search Engine Optimization(SEO) and Competitive Intelligence(CI). You can download slides from Moodle playform. Be sure that you can login to Moodle platform. All of assignments, and results of project should be submitted to Moodle Course platform.',0,15,15,0,0,0,0,0,0);
 
-INSERT INTO `courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
+INSERT INTO `Courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
 VALUES
 	(1668,796,'ISC0210',104,1,'知識管理研究','Studies in Knowledge Management',3981,'','8','H',3,47,'',0,'','N',0,'1','',0,'','本部教室自排',NULL,'三7-9',0,'',NULL,20,0.4,5,50,3,'This course is designed to survey KM elements and to understand how to align organizational characteristics with KM strategies, tools, systems, and programs. The concept of KM is approached from four perspectives: historical/philosophical, technological, managerial, and social/cultural. The course describes current theories and classics relating to organizational science with an emphasis on culture and environment. It also describes the relationship between KM and learning organizations. It provides analytical tools and techniques for knowledge acquisition, assessment, evaluation, management, organization and dissemination. Lastly, it examines evaluation strategies and criteria for identifying, selecting and implementing KM tools, technologies and systems. Upon completion of this course, students will have accomplished each of the following activities: 1.To understand the historical and philosophical foundation of knowledge management within the broader framework of information studies and organizational science. 2. To understand principles of knowledge management in terms of knowledge creation, capture, accessibility and usability 3. To analyze organizational learning models in terms of change theory, with an emphasis on adaptive and proactive results 4. To examine the hardware/software infrastructure supporting knowledge management within organizations 5.To evaluate case studies describing knowledge management programs in a variety of industries and applications',0,23,23,0,0,0,0,0,0),
 	(1669,797,'ISC8004',104,1,'資料探勘技術與應用專題研究','Special Topics on Data Mining Techniques and Applications',3982,'','8','H',3,47,'',0,'','N',0,'1','',0,'','本部教室自排',NULL,'四5-7',0,'',NULL,20,0.4,5,50,3,'Data mining is the process of discovering interesting knowledge from large amounts of data stored either in databases, data warehouses, or other form of information repositories. The discovered knowledge may be known factual patterns, or may be knowledge, constraints, rules that have not yet been known. The goals of this course lie in introducing the concepts and framework of data mining, various data mining techniques, and data mining\'s application in library and information science, and Internet.',0,4,4,0,0,0,0,0,0),
@@ -5464,7 +5464,7 @@ VALUES
 	(2159,265,'THM0050',104,1,'臺灣社會文化史專題研究','Special Topics on Taiwan Social and Cultural History',4276,'','','H',3,73,'',0,'','N',0,'1','',0,'','本部勤308',NULL,'三7-9',0,'',NULL,0,0,0,50,3,'本課程擬規劃包括社會史與文化史兩個研究領域的專題討論，並且以臺灣為主體，因而有此課程名稱。本課程以專題方式引介現代歐美史學兩大領域、「新社會史」及「新文化史」的發展，而後討論臺灣史該領域相關研究專題及成果，目的在拓展學生研究視野及研究應用的能力。 所謂社會史是引介1960年代以來西方新史學的分支「新社會史學派」、也稱為「英國馬克思主義史學派」研究概念與成果。基本上，新社會史家因身處的時代與經歷，而發展出一些共通的研究取向，首先，強調擴大的總體社會史概念，認爲社會史應該是總體史，包括經濟、政治、文化等各個方面，應該把各個方面作爲研究視角，來全面分析社會各種現象，進行多學科或跨學科的研究。其次，重視研究社會下層和人民群衆的歷史。再者，注重對歷史過程的調查，並結合歷史的理論性與敍事性。代表性學者如：莫里斯‧道布（Maurice Dobb）、霍布斯邦（Eric Hobsbawm）、湯普森（E. P. Thompson）等。 其次，1970、80年代歐美史學界倡導「新文化史」（New Cultural History）研究，如美國文化史家Lynn Hunt的The New Cultural History一書，以及英國文化史家Peter Burke 在Varieties of Cultural History，致力於開發文化史的新領域，擴充、也翻新了原先的文化史概念。受到文化人類學克利福•吉爾茲（Glifford Geertz）對於文化的詮釋，米歇爾•傅科（Michel Foucault）對於權力概念的討論，以及文學批評理論、尤其是後現代主義理論的影響，新文化史重視探討隱藏於各種文化表象之下的深層意義，對於歷史敘述也更重視其背後隱藏的文化內涵與價值。因此，政治史研究也可以新的詮釋方式，研究政治行為中隱含的表演及其文化價值。新文化史所發展的重要概念包括：權力、意識形態、階級、認同、族群、表演、歷史記憶等。 本課程規劃基於授課時間的限制，專題討論著重清代以降社會史及文化史議題，包括：國家與社會、近代知識與殖民權力、法律文化、民族文化、大眾文化與歷史記憶、族群政治與認同等。本課程目標有三： (一)探討臺灣社會史、文化史基本概念與研究方法。 (二)研究學習臺灣史跨領域研究方法與應用。 (三)拓展及深化臺灣社會史、文化史研究。',0,8,8,0,0,0,0,0,0),
 	(2160,1650,'THM0052',104,1,'臺灣國際政治史研究','Studies in the International Political History of Taiwan',4277,'','','H',2,73,'',0,'','N',0,'1','',0,'','本部勤308',NULL,'二9-10',0,'',NULL,0,0,0,50,2,'1. 探討臺灣在各個歷史時期與周邊國家、勢力或非主權團體及人民之間的各種關係，深入考察國際多角關係之發展脈絡，建立宏觀的歷史視野。 2. 以國際政治關係為探究焦點，延伸相關歷史主題之研析，回應當代臺灣史研究需求。 3. 訓練書寫政治史的文字邏輯，以及培養解析政治運作的洞察力。',0,7,7,0,0,0,0,0,0);
 
-INSERT INTO `courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
+INSERT INTO `Courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
 VALUES
 	(2161,266,'THM0053',104,1,'臺灣史料與研究法（一）','Seminar in Taiwan Historical Materials and the Research Method of Taiwan History(I)',4278,'','','H',2,73,'',0,'','N',0,'','',0,'','本部勤308',NULL,'一6-7',0,'',NULL,0,0,0,50,2,'一、 教學主旨 本課程以臺灣史料之介紹與研究方法之引介為主要內容，目的在分析各類史料的特性、運用與史學研究的觀念、理論、方法等，除了讓學生瞭解作為歷史研究基礎的史料內容以外，更訓練學生洞悉史料記錄的觀點與不同史料之相互辯證。 二、教學目標 （一）瞭解史料的性質與如何利用於學術研究。 （二）瞭解臺灣史研究狀況。 （三）臺灣史料研讀與研究方法之探討。 （四）重要的臺灣史料內容介紹。 （五）瞭解臺灣史料主要庋藏場所與網站。',0,12,12,0,0,0,0,0,0),
 	(2162,267,'THM0057',104,1,'博物館臺灣藏品研究與展示（一）','Studies in Research and Display of Museum Taiwan Collections(I)',4276,'','','H',2,73,'',0,'','N',0,'1','',0,'','本部勤308',NULL,'四6-7',0,'',NULL,0,0,0,50,2,'本課程計畫係臺灣史研究的實務應用實作課程，課程名稱定為「博物館藏品的研究與展示」，內容重點在引進臺灣史研究應用相關的博物館課程；在教學課程安排上，與「國立臺灣歷史博物館」建立教學合作關係。藉此，本課程企圖培養學生以臺灣歷史為核心之藏品研究、展示規劃以及解說教育等博物館實務應用及實作能力。 本課程之提出係配合教育部100至103學年度中綱計畫「人文社會科學應用能力及專長培育計畫」，針對該計畫B類：「實務應用實作課程（Program of Practical Application and Performance）」，因此規劃「博物館藏品的研究與展示」為核心之系列課程，並前往臺灣歷史博物館實習，發展臺灣歷史博物館相關「實務應用實作課程」。 由於國立臺灣歷史博物館之建制，自始被賦予重大的任務與社會責任，因此使本課程計畫選定國立臺灣歷史博物館做為教學合作機構，也具有臺灣史研究及社會實踐之重要意義。對於「國立臺灣歷史博物館」如此重要的教育文化設施，從臺灣史研究與教學的角度而言，必然關切的重要問題是：「臺灣歷史」博物館如何透過臺灣史相關文物典藏研究以及展示教育，形塑臺灣社會人民的歷史記憶，建立臺灣主體認同。',0,7,7,0,0,0,0,0,0),
@@ -6249,7 +6249,7 @@ VALUES
 	(2941,1293,'ITU2053',104,1,'多媒體教材設計與製作','Design & Production for Multimedia Instructional Materials',4823,'','','H',3,118,'',0,'3','N',0,'','◎限大三修習',0,'','本部科510',NULL,'二7-9',0,'',NULL,5,0.17,5,30,3,'本課程將探討數位學習教學策略與多媒體教材設計原則，應用各類多媒體技術及工具與軟體製作多媒體教材。課程內容包括課堂理論講解與討論、相關應用教材說明、及數位教材的設計與製作。學期中及期末需繳交多媒體教材設計成品。',0,30,30,0,4,0,0,0,0),
 	(2942,1294,'ITU2063',104,1,'設計素描與表現技法','Sketch and Presentation Technique for Design',4834,'','','H',3,118,'',0,'3','N',0,'1','◎限大三修習',0,'','本部科502',NULL,'一7-9',0,'',NULL,5,0.17,0,30,3,'本課程教導學生透過觀察、描繪，培養對於物體由造型構想、描繪設計之能力。',0,28,28,0,12,0,0,0,0);
 
-INSERT INTO `courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
+INSERT INTO `Courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
 VALUES
 	(2943,1295,'ITU0154',104,1,'生活科技概論','Introduction to Living Technology',4835,'','','H',3,118,'',0,'4','N',0,'1','◎限大四修習◎限生科系（含輔系）、地科系（含輔系）選修',0,'','本部科501',NULL,'二7-9',0,'',NULL,10,0.29,0,35,3,'為強化自然學域準教師的科技素養，並使其於未來任教時具備教導生活科技課程的相關基本知能，本課程主要著重在教導科技的概念性（conceptual knowledge）與程序性知識（procedural knowledge），其中，概念性知識著重在介紹各科技領域的系統概念，以及相關的演進、理念、意涵，而程序性知識主要介紹科技活動的設計理念、問題解決流程、以及相關的教學策略與方法。',0,30,30,0,8,0,0,1,0),
 	(2944,1296,'ITU0156',104,1,'專題製作（二）','Capstone Projects (II)',4825,'A','','H',1,118,'',0,'4','N',0,'','◎限大四修習◎必須先修過【專題製作（一）】',0,'朱益賢','本部科504',NULL,'二A-B',0,'',NULL,0,0,0,30,2,'本課程之目標旨探討為增進本系學生實務經驗，提高學習效果以利職涯發展。在專題製作的過程中，學生需要整合三年來在系內所學各科目之知識與技能並加以運用，以檢視求學時期的學習成效，與探索未來適合發展的職涯方向。課程的進行需要與指導老師密集討論，從專題主題的尋找與篩選、訂定專題製作的進度與檢核計畫，並鼓勵學生參與國際與國內的大型比賽。專題製作的成果，並需先通過初審與口頭提報，然後參與與規劃專題製作展覽，並完成書面的專題成果報告書。',0,10,10,0,0,0,0,0,0),
@@ -7056,7 +7056,7 @@ VALUES
 	(3745,2269,'MUU0456',104,1,'西洋音樂史（一）','History of Western Music(I)',5218,'','1','H',2,152,'',0,'2','N',0,'','',0,'','本部音308',NULL,'一1-2',0,'',NULL,20,0.4,0,50,2,'1.使學生對西洋音樂之發展有一通盤概念 2.使學生對巴洛克時期以前之音樂歷史有詳盡之認識 3.藉由音樂史之認識,更能了解美術,文化的演進',0,34,34,0,0,0,0,0,0),
 	(3746,2270,'0000060',104,1,'服務學習（二）－音樂系','Service-Learning (II)',5154,'','2','H',0,152,'',0,'2','N',0,'','',0,'','',NULL,'',0,'本課程不開放系統選課，請務必出席第一堂課，了解課程相關規定後，方能領取授權碼選課。',NULL,30,1,0,0,1,'服務學習課程以「協同合作」、「互惠」、「尊重多元差異」、「學習為基礎」、「社會正義為焦點」等特質為基礎，以「準備」、「服務」、「反思」、「慶賀」等學習歷程，服務範圍以自己的生活與學習環境為起點而推展至專業社群，服務的技能由一般服務推展至專業服務，服務地點由系所而校園乃至於社區，依序漸進。以培養學生關懷社會及服務人群的情操，並促進公民責任之實踐。 服務學習課程（二）為必修0學分，基本課程時數為18小時(包括服務知能4-8小時及服務實作10-14小時)課程內容以校園服務、社區服務及機構服務為原則。除學系開課外，另有行政單位及社團開課，鼓勵學生依興趣選修，以發展多元價值觀及問題解決的能力。',0,0,0,0,17,0,0,0,0);
 
-INSERT INTO `courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
+INSERT INTO `Courses` (`CourseId`, `SerialNo`, `CourseCode`, `AcadmYear`, `AcadmTerm`, `ChName`, `EnName`, `TeacherId`, `CourseGroup`, `ClassCode`, `Duration`, `Credit`, `DeptId`, `DeptGroup`, `IsEngTeach`, `Grade`, `GenderRestrict`, `IsMOOC`, `IsElective`, `RestrictInfo`, `RemoteTeach`, `selfTeachName`, `ChLocation`, `EnLocation`, `TimeInfo`, `StatusInfo`, `ChComment`, `EnComment`, `AuthMaxSize`, `AuthRate`, `NTAMaxSize`, `TotalMaxSize`, `Hour`, `Description`, `FmReserve`, `Enrolled`, `Assigned`, `Unassigned`, `AuthAssigned`, `ExAssigned`, `PtAssigned`, `LikeIt`, `DislikeIt`)
 VALUES
 	(3747,2271,'MUU0329',104,1,'對位法（一）','Counterpoint(I)',5154,'','2','H',2,152,'',0,'2','N',0,'','',0,'','本部音210',NULL,'一1-2',0,'',NULL,20,0.67,0,30,2,'1.能熟悉二聲部及三聲部對位之技巧 2.能分析及了解有關對位音樂之結構 3.有能力模仿創作各類對位音樂',0,30,30,0,3,0,0,0,0),
 	(3748,2272,'MUU0456',104,1,'西洋音樂史（一）','History of Western Music(I)',5153,'','2','H',2,152,'',0,'2','N',0,'','',0,'','本部音409',NULL,'一3-4',0,'',NULL,20,0.4,0,50,2,'1.使學生對西洋音樂之發展有一通盤概念 2.使學生對巴洛克時期以前之音樂歷史有詳盡之認識 3.藉由音樂史之認識,更能了解美術,文化的演進',0,49,49,0,0,0,0,0,0),
@@ -7407,7 +7407,7 @@ VALUES
 	(4093,3274,'PGU7008',104,1,'韓國學概論','Introduction to Korean Studies',5452,'','','H',2,198,'',0,'','N',0,'1','',0,'','本部綜508會議室',NULL,'二8-9',0,'',NULL,20,0.4,0,50,2,'本課程通過韓籍客座教員的專長，培養深入理解韓國的基礎。本次韓國學概論通過地方文化觀看韓國。本課程理解韓國各地方的自然環境、人文背景、文化特色，理解這些因素如何形成韓國特色的文化整體。',0,40,40,0,0,0,0,0,0),
 	(4094,4202,'PGU8003',104,1,'社團經營實習（一）','Practicum in Student Club Management (I)',5454,'','','H',2,199,'',0,'','N',0,'','◎第一階段需人工加選◎第二階段需人工加選◎加退選階段需人工加選',0,'','本部教室自排',NULL,'一1-4',0,'上課教室：綜301',NULL,20,0.4,0,50,4,'學生社團是高等教育中重要的學習環境，可培養博雅、通識且具人文精神的優質人才，並引導學生不斷創新，使校園充滿活力與創意，是增進學生多元智慧與能力的重要場域，亦有助於增強學生未來就業競爭力。\n            本課程以「促進學生參與社團」、「建立正確社團觀念」、「提升社團運作專業知能」、「強化社團學生心理建設」為核心價值，課程規劃兼具理論與實作，內容囊括社團經營規劃、社團行政運作、人際關係與壓力調適等多元面向，透過系統化及結構化之專業知能課程、實地執行社團經營工作、各階段執行成效檢核、個案研討等，從實作中反思並驗證社團學習經驗，激發學生潛能與創意思維，促進學生全人發展，並培養未來社會之領導人才。',0,0,0,0,0,0,0,0,0);
 
-/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -7839,6 +7839,15 @@ CREATE TABLE `Subs` (
   KEY `UserId` (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+LOCK TABLES `Subs` WRITE;
+/*!40000 ALTER TABLE `Subs` DISABLE KEYS */;
+
+INSERT INTO `Subs` (`id`, `UserId`, `SubLst`)
+VALUES
+	(1,133,'87');
+
+/*!40000 ALTER TABLE `Subs` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table Teachers
@@ -10535,12 +10544,12 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table users
+# Dump of table Users
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `Users`;
 
-CREATE TABLE `users` (
+CREATE TABLE `Users` (
   `UserId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `FBId` bigint(20) unsigned NOT NULL,
   `UserName` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -10550,10 +10559,10 @@ CREATE TABLE `users` (
   UNIQUE KEY `SearchFBId` (`FBId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+LOCK TABLES `Users` WRITE;
+/*!40000 ALTER TABLE `Users` DISABLE KEYS */;
 
-INSERT INTO `users` (`UserId`, `FBId`, `UserName`, `Gender`, `Locale`)
+INSERT INTO `Users` (`UserId`, `FBId`, `UserName`, `Gender`, `Locale`)
 VALUES
 	(1,1020049831343812,'陳令家','male',''),
 	(2,1048429728506995,'Tsai Aliya','female',''),
@@ -10942,16 +10951,16 @@ VALUES
 	(385,10202816920139099,'廖玉梅','female',''),
 	(386,1063842206968456,'李宇莉','female','');
 
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table votes
+# Dump of table Votes
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `votes`;
+DROP TABLE IF EXISTS `Votes`;
 
-CREATE TABLE `votes` (
+CREATE TABLE `Votes` (
   `VoteId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `CourseId` int(10) unsigned NOT NULL,
   `CourseCode` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -10959,17 +10968,13 @@ CREATE TABLE `votes` (
   `UserId` int(10) unsigned NOT NULL,
   `VoteTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`VoteId`),
-  UNIQUE KEY `OneVotePerUser` (`CourseId`,`UserId`),
-  UNIQUE KEY `SearchCourse` (`CourseId`),
-  UNIQUE KEY `SearchUser` (`UserId`),
-  CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`CourseId`) REFERENCES `Courses` (`CourseId`),
-  CONSTRAINT `votes_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `Users` (`UserId`)
+  UNIQUE KEY `OneVotePerUser` (`CourseId`,`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-LOCK TABLES `votes` WRITE;
-/*!40000 ALTER TABLE `votes` DISABLE KEYS */;
+LOCK TABLES `Votes` WRITE;
+/*!40000 ALTER TABLE `Votes` DISABLE KEYS */;
 
-INSERT INTO `votes` (`VoteId`, `CourseId`, `CourseCode`, `Decision`, `UserId`, `VoteTime`)
+INSERT INTO `Votes` (`VoteId`, `CourseId`, `CourseCode`, `Decision`, `UserId`, `VoteTime`)
 VALUES
 	(1,1552,'CEU0072',1,1,'0000-00-00 00:00:00'),
 	(2,7,'01UG012',1,2,'0000-00-00 00:00:00'),
@@ -11162,9 +11167,10 @@ VALUES
 	(1241,1910,'ENU0217',1,384,'2015-09-01 21:37:15'),
 	(1246,1859,'ENU0183',1,359,'2015-09-16 13:24:38'),
 	(1247,1551,'CEU0017',0,385,'2015-09-17 15:05:17'),
-	(1260,1525,'CEU0383',1,386,'2015-09-18 01:26:14');
+	(1260,1525,'CEU0383',1,386,'2015-09-18 01:26:14'),
+	(1264,1302,'PCU0032',0,133,'2015-09-19 15:32:35');
 
-/*!40000 ALTER TABLE `votes` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Votes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
