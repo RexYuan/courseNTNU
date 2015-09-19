@@ -24,7 +24,7 @@
                 // 可能會在非 80 port 開發，若 server 不是 www.coursentnu.com 的話，就直接進 else
                 if ($_SERVER['HTTP_HOST']=="www.coursentnu.com")
                 {
-                  $handle = new PDO("mysql:dbname=coursentnu;host=localhost;port=3306", USERNAME, PASSWORD);
+                  $handle = new PDO("mysql:dbname=course_ntnu;host=localhost;port=3306", USERNAME, PASSWORD);
                 }
                 else
                 {
