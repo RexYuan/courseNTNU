@@ -73,9 +73,9 @@
                         <ul>
                             <li>一般限制：<?= ($crecord["RestrictInfo"] == "") ? "No" : $crecord["RestrictInfo"] ?>
                             <li>性別限制：<?= ($crecord["GenderRestrict"] == "N") ? "No" : $crecord["GenderRestrict"] ?></li>
-                            <li>全英語授課：<?= ($crecord["IsEngTeach"] == "N") ? "No" : "Yes" ?></li>
-                            <li>MOOC：<?= ($crecord["IsMOOC"] == "N") ? "No" : "Yes" ?></li>
-                            <li>遠距授課：<?= ($crecord["RemoteTeach"] == "N") ? "No" : "Yes" ?></li>
+                            <li>全英語授課：<?= ($crecord["IsEngTeach"] == 0) ? "No" : "Yes" ?></li>
+                            <li>MOOC：<?= ($crecord["IsMOOC"] == 0) ? "No" : "Yes" ?></li>
+                            <li>遠距授課：<?= ($crecord["RemoteTeach"] == 0) ? "No" : "Yes" ?></li>
                             <li>備註：<?= ($crecord["ChComment"] == "") ? "No" : $crecord["ChComment"] ?><?= ($crecord["EnComment"] != "") ? $crecord["EnComment"] : "" ?></li>
                         </ul>
                     </div>
