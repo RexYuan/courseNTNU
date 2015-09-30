@@ -2,7 +2,6 @@
     <div class="courses-list" id="clst">
         <h2><a href="<?=$urlroot?>index.php?dpm=<?= $_GET["dpm"] ?>"><?= $title ?></a></h2>
         <input class="search" />
-        <span class="sort" data-sort="name">Sort by name</span>
         <ul class="list">
             <?php foreach ($drecords as $dr): ?>
             <li>
