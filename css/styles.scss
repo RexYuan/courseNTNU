@@ -1,3 +1,10 @@
+/* Here is tmp, would be remove in the future */
+.fuzzy-search {
+    display: none;
+}
+
+
+
 #head {
     background-color: #BD7A22;
 
@@ -68,7 +75,7 @@
 
 .tip {
     display: inline-block;
-    margin: 1rem auto 0;
+    margin: 1rem auto;
     padding: 1rem;
     border: 1px solid #E79022;
     background-color: #ffc;
@@ -101,7 +108,6 @@
 }
 
 .deps {
-    padding-left: 3rem;
     text-align: left;
 
     h2 {
@@ -430,5 +436,60 @@
 
     .fb-comments {
         clear: both;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tip {
+        display: none;
+    }
+
+    .outer {
+        padding: 2rem 1rem;
+    }
+
+    .courses-list ul li {
+        width: 40%;
+    }
+
+    .allThisCourse .appraisal ul li {
+        width: auto;
+
+        &.score {
+            display: block;
+        }
+    }
+
+}
+
+@media screen and (max-width: 454px) {
+    #head h1 {
+        strong {
+            font-size: 2.5rem;
+        }
+        small {
+            font-size: 1rem;
+        }
+    }
+
+    .courses-list ul li {
+        width: 70%;
+    }
+
+    .allThisCourse {
+        max-width: 90%;
+
+        p {
+            margin-right: 0;
+        }
+
+        .tabs {
+            .tab-label {
+                padding: 0 1rem;
+            }
+            .tab-content {
+                padding: 1rem 2rem 2rem;
+            }
+        }
     }
 }
