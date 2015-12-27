@@ -1,0 +1,37 @@
+rex@courseNTNU:~$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/vda1       30830588 5692264  23549188  20% /
+none                   4       0         4   0% /sys/fs/cgroup
+udev              498100       4    498096   1% /dev
+tmpfs             101792     336    101456   1% /run
+none                5120       0      5120   0% /run/lock
+none              508944       0    508944   0% /run/shm
+none              102400       0    102400   0% /run/user
+rex@courseNTNU:~$ lscpu
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                1
+On-line CPU(s) list:   0
+Thread(s) per core:    1
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 62
+Stepping:              4
+CPU MHz:               2399.998
+BogoMIPS:              4799.99
+Virtualization:        VT-x
+Hypervisor vendor:     KVM
+Virtualization type:   full
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              4096K
+NUMA node0 CPU(s):     0
+rex@courseNTNU:~$ free
+             total       used       free     shared    buffers     cached
+Mem:       1017888     746380     271508       5028     130136     410068
+-/+ buffers/cache:     206176     811712
+Swap:      2097148      35148    2062000
